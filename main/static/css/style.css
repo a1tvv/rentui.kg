@@ -1,0 +1,616 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: serif 'Urbainst';
+}
+
+:root {
+	--absolute-white: #fff;
+	--absolute-black: #000;
+	--purple-60: #703bf7;
+	--purple-65: #8254f8;
+	--purple-70: #946cf9;
+	--purple-75: #a685fa;
+	--purple-90: #dbcefd;
+	--purple-95: #ede7fe;
+	--purple-97: #f4f0fe;
+	--purple-99: #fbfaff;
+	--white-90: #e4e4e7;
+	--white-95: #f1f1f3;
+	--white-97: #f7f7f8;
+	--white-99: #fcfcfd;
+	--grey-08: #141414;
+	--grey-10: #1a1a1a;
+	--grey-15: #262626;
+	--grey-20: #333;
+	--grey-30: #4d4d4d;
+	--grey-40: #666;
+	--grey-50: #808080;
+	--grey-60: #999;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #1a1a1a;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0; 
+}
+
+.container {
+    max-width: 1200px; 
+    margin-left: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-left{
+    display: flex;
+    align-items: center; /* Это выровняет картинку и текст по вертикальной оси */
+    gap: 12px;
+}
+
+.header-left img{
+    width: 50px;
+    height: 50px;
+}
+
+.header-left h2{
+    font-size: 30px;
+    color: var(--white-99);
+}
+
+header a {
+    margin: 0 15px; 
+    color: white;
+    border-radius: 12px;
+    display: inline-block;
+
+    transition: all 0.3s ease;
+}
+
+
+header a:hover{
+    color: #a685fa;
+    transform: scale(1.02);
+}
+
+.header-right a{
+    background-color: #252525;
+    padding: 14px 24px;
+}
+
+
+/* ---------------------------------------- */
+
+                /* Main  */
+
+/* ----------------------------------------  */
+
+main{
+    background-color: #141414;
+    margin-bottom: 150px;
+}
+
+.hero{
+    display: flex;
+}
+
+.main-desc{
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 120%;
+    color: #cdcdcd;
+}
+
+.main-left p{
+    margin-top: 24px;
+    font-size: 18px;
+    color: #999999;
+    max-width: 760px;
+}
+
+.main-left a{
+    display: inline-block;
+    margin-top: 60px;
+    padding: 18px 24px;
+    color: #cdcdcd;
+    border-radius: 10px;
+}
+
+.main-btn-1{
+    background-color: #1A1A1A;
+    border: #9c9c9c 1px solid;
+    transition: all 0.3s ease;
+}
+
+.main-btn-1:hover{
+    transform: scale(1.02);
+    background-color: #252525;
+}
+
+.main-btn-2{
+    background-color: #703bf7;
+    margin-left: 20px;
+
+    transition: all 0.3s ease;
+}
+
+.main-btn-2:hover{
+    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.7);
+    transform: scale(1.02);
+}
+
+.main-right{
+    max-width: 920px;
+}
+
+.hero .container{
+    display: flex;
+}
+
+.main-stat{
+    display: flex;
+    margin-top: 60px;
+    gap: 20px;
+}
+
+.main-stat-1, .main-stat-2, .main-stat-3{
+    background-color: #1a1a1a;
+    padding: 16px 34px;
+    border-radius: 10px;
+    border: #9c9c9c 1px solid;
+
+    transition: all 0.3s ease;
+}
+
+.main-stat-1:hover, .main-stat-2:hover, .main-stat-3:hover{
+    background-color: #252525;
+    transform: scale(1.02);
+}
+
+.main-stat h1, h2{
+    display: inline-block;
+    font-weight: 700;
+    font-style: 40px;
+    line-height: 150%;
+    color: #fff;
+}
+
+.main-stat h2{
+    font-size: 18px;
+    font-weight: 500;
+    color: #999999;
+}
+
+
+/* ----------------------------------------------------------- */
+                    /* Features */
+/* ----------------------------------------------------------- */
+/* Контейнер для всей верхней части секции */
+.featured-top {
+    display: flex;
+    justify-content: space-between; /* Текст влево, кнопка вправо */
+    align-items: flex-end;         /* Выравнивание по нижней линии */
+    gap: 50px;                     /* Расстояние между текстом и кнопкой */
+    margin-bottom: 60px;           /* Отступ до карточек */
+}
+
+/* Блок с текстом */
+.featured-text-group {
+    max-width: 800px; /* Чтобы текст не растягивался слишком сильно */
+}
+
+.featured-text-group h1 {
+    font-weight: 600;
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 15px; /* Отступ между заголовком и параграфом */
+}
+
+.featured-text-group p {
+    font-size: 18px;
+    color: #999999;
+    line-height: 1.5;
+}
+
+
+/* Стили кнопки */
+.view-all-btn {
+    display: inline-block;
+    background-color: #1a1a1a;
+    padding: 18px 24px;
+    color: #fff; 
+    border-radius: 10px;
+    border: 1px solid #262626;
+    white-space: nowrap; 
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background-color: #272727;
+    border-color: #703bf7;
+    color: #703bf7; 
+}
+
+/* Fea */
+
+.featured .container{
+    margin-left: 120px;
+}
+
+.fea-content-container{
+    display: flex;
+}
+
+.fea-card{
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 10px;
+    border: 2px solid #9c9c9c;
+    margin-bottom: 150px;
+    max-width: 512px;
+}
+
+.fea-image{
+    display: inline-block;
+    width: 432px;
+    height: 300px;
+}
+
+.fea-card:last-of-type{
+    margin-right: 0;
+}
+
+.fea-img{
+    height: 320px;
+    width: 430px;
+}
+
+.fea-info{
+    margin-bottom: 30px;
+    padding-left: 20px;
+}
+
+.tag{
+    display: inline-block;
+    margin-left: 14px;
+    padding: 8px 14px;
+    color: #9c9c9c;
+}
+
+.fea-info h2{
+    margin-top: 30px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 150%;
+    color: #fff;
+}
+
+.fea-info p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #9c9c9c;
+}
+
+.fea-info a{
+    color: #fff;
+}
+
+.fea-tags{
+    display: flex;
+}
+
+.fea-tags .tag{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    background-color: #141414;
+    border-radius: 10px;
+    border: 1px solid #9c9c9c;
+}
+
+
+.fea-footer{
+    display: flex;
+    margin-left: 20px;
+    margin-top: 32px;
+    margin-bottom: 40px;
+}
+
+.fea-footer .price-block{
+    display: flex;
+    flex-direction: column;
+}
+
+.fea-footer span{
+    color: #9c9c9c;
+}
+
+.fea-footer span{
+    font-size: 18px;
+    color: #cdcdcd;
+}
+
+.fea-footer a{
+    color: #cdcdcd;
+    background-color: #703bf7;
+    padding: 16px 24px;
+    border-radius: 10px;
+    margin-left: 40px;
+    display: inline-block;
+
+    transition: all 0.3s ease;
+}
+
+.fea-footer a:hover{
+    transform: scale(1.01);
+    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.7);
+}
+
+
+
+/* -------------------------------------------------------- */
+
+/*                          Reviews                          */
+
+/* -------------------------------------------------------- */
+
+.reviews .container{
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews-top{
+    display: flex;
+}
+
+.reviews-top-desc h1{
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 150%;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.reviews-top-desc p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #999999;
+}
+
+
+.reviews-bottom{
+    display: flex;
+}
+
+.reviews-content{
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 150px;
+}
+
+.reviews-item{
+    border: 1px solid #262626;
+    border-radius: 12px;
+    margin-right: 30px;
+    padding: 60px;
+    transition: all 0.3s ease;
+}
+
+.reviews-item:hover{
+    transform: scale(1.02);
+}
+
+.reviews-item:last-of-type{
+    margin-right: 0;
+}
+
+
+.reviews-stars{
+    margin-bottom: 40px;
+}
+
+.reviews-text h2{
+    margin-bottom: 14px;
+}
+
+.reviews-text p{
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #9c9c9c;
+}
+
+.reviews-profile-text{
+    display: flex;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.reviews-profile-text p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: #9c9c9c;
+}
+
+
+
+
+
+/* -------------------------------------------------------- */
+
+                /* Footer */
+
+/* -------------------------------------------------------- */
+
+
+.footer {
+    color: white;
+    padding: 80px 0 40px 0;
+    font-family: 'Urbanist', sans-serif;
+}
+
+footer .logo img{
+    width: 50px;
+    height: 50px;
+}
+
+.logo h2{
+    font-size: 20px;
+    color: var(--white-99);
+}
+
+.footer .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Верхняя часть: Лого + Навигация */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+/* Блок бренда и подписки */
+.footer-brand {
+    flex: 0 1 300px;
+}
+
+.footer-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+
+.subscribe-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #9c9c9c;
+    border-radius: 10px;
+    padding: 12px 16px;
+    gap: 10px;
+}
+
+.subscribe-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+.subscribe-box button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.submit i{
+    color: #999999;
+}
+
+/* Навигация */
+.footer-nav {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.footer-main {
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.nav-column a {
+    display: block;
+    color: #999999;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.nav-column a:hover {
+    transform: scale(1.02);
+    color: #fff;
+}
+
+
+
+/* Обновляем нижнюю часть */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; /* Расталкивает блоки в разные стороны */
+    align-items: center;
+    width: 100%; /* Занимает всю ширину контейнера */
+    padding: 20px 0;
+}
+
+/* Блок с текстом слева */
+.footer-info {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+.footer-info a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+/* Блок с иконками справа */
+.social-links {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; /* Дополнительная страховка */
+}
+
+/* Стили для самих иконок (чтобы они были круглыми, как на макете) */
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--gray-30);
+}
+
+.social-links a{
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover{
+    color: var(--white-99);
+    transform: scale(1.1);
+}
+
+
+/* ----------------------------------------- */
+

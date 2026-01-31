@@ -1,0 +1,460 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/icon.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inder&family=Syne:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    {% block title %}<title>RentUi</title>{% endblock %}
+
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock extra_css %}
+
+</head>
+<body>
+
+
+    <header>
+
+        <div class="container">
+
+            <div class="header-left">
+                <img src="{% static 'img/Logo.png' %}" alt="Logo">
+                <h2>Rent Ui</h2>
+            </div>
+
+            <div class="header-center">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About Us</a>
+                <a href="{% url 'properties' %}">Properties</a>
+                <a href="{% url 'services'%}">Services</a>
+                <a href="{% url 'contacts'%}">Contact Us</a>
+            </div>
+
+        <div class="header-right">
+            <a href="{% url 'sign-up'%}">Log In</a>
+        </div>
+
+            </div>
+
+    </header>
+
+    {% block main %}
+
+    <main class='hero' id='hero'>
+
+        <div class="container">
+
+            <div class="main-left">
+                
+                <h1 class='main-desc'> Discover Your Dream Property with Estatein </h1>
+                <p>
+                    Your journey to finding the perfect property begins here.
+                    Explore our listings to find the home that matches your dreams.
+                </p>
+
+                <a href="{% url 'about'%}" class='main-btn-1'>Learn More</a>
+                <a href="{% url 'properties' %}" class='main-btn-2'>Browse Properties</a>
+
+                <div class="main-stat">
+
+                    <div class="main-stat-1">
+                        <h1>200+</h1>
+                        <h2>Happy Customers</h2>
+                    </div>
+
+                    <div class="main-stat-2">
+                        <h1>10k+</h1>
+                        <h2>Properties For Client</h2>
+                    </div>
+
+                    <div class="main-stat-3">
+                        <h1>16+</h1>
+                        <h2>Years of Expirience</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-right">
+            <img src="static/img/main-image.png" alt="">
+        </div>
+
+
+
+    </main>
+
+    <sectoin class="featured" id='featured'>
+
+        <div class="container">
+
+          <div class="featured-top">
+            <div class="featured-text-group">
+                <h1>Featured Properties</h1>
+                <p>Explore our handpicked selection of featured properties. 
+                   Each listing offers a glimpse into exceptional homes and investments available through Estatein. 
+                   Click "View Details" for more information.</p>
+            </div>
+
+            <div class="featured-action">
+                <a href="{% url 'properties' %}" class="view-all-btn">View All Properties</a>
+            </div>
+        </div>
+
+
+            </div>
+
+        <div class="container">
+
+            <div class="fea-content-container">
+                
+                    <div class="fea-card">
+                        <div class="fea-image">
+                            <img src="static/img/fea-1.png" alt="Seaside Serenity Villa">
+                        </div>
+                        
+                        <div class="fea-info">
+                            <h2>Seaside Serenity Villa</h2>
+                            <p>A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood... <a href="#">Read More</a></p>
+                        </div>
+
+                        <div class="fea-tags">
+                            <div class="tag">
+                                <img src="static/img/bed-room.png" alt="">
+                                <span>4-Bedroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/bathroom.png" alt="">
+                                <span>3-Bathroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/villa.png" alt="">
+                                <span>Villa</span>
+                            </div>
+                        </div>
+
+                        <div class="fea-footer">
+                            <div class="price-block">
+                                <span>Price</span>
+                                <h2>$550,000</h2>
+                            </div>
+                            <a href="{% url 'property_detail'%}" class="btn-details">
+                                View Property Details
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="fea-card">
+                        <div class="fea-image">
+                            <img src="static/img/fea-2.png" alt="Metropolitan Haven">
+                        </div>
+                        
+                        <div class="fea-info">
+                            <h2>Metropolitan Haven</h2>
+                            <p>A chic and fully-furnished 2-bedroom apartment with panoramic city views... <a href="#">Read More</a></p>
+                        </div>
+
+                        <div class="fea-tags">
+                            <div class="tag">
+                                <img src="static/img/bed-room.png" alt="">
+                                <span>2-Bedroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/bathroom.png" alt="">
+                                <span>2-Bathroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/villa.png" alt="">
+                                <span>Villa</span>
+                            </div>
+                        </div>
+
+                        <div class="fea-footer">
+                            <div class="price-block">
+                                <span>Price</span>
+                                <h2>$550,000</h2>
+                            </div>
+                            <a href="{% url 'property_detail'%}" class="btn-details">
+                                View Property Details
+                            </a>
+                        </div>
+                    </div>
+                
+                    <div class="fea-card">
+                        <div class="fea-image">
+                            <img src="static/img/fea-3.png" alt="Rustic Retreat Cottage">
+                        </div>
+                        
+                        <div class="fea-info">
+                            <h2>Rustic Retreat Cottage</h2>
+                            <p>An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community... <a href="#">Read More</a></p>
+                        </div>
+
+                        <div class="fea-tags">
+                            <div class="tag">
+                                <img src="static/img/bed-room.png" alt="">
+                                <span>3-Bedroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/bathroom.png" alt="">
+                                <span>3-Bathroom</span>
+                            </div>
+                            <div class="tag">
+                                <img src="static/img/villa.png" alt="">
+                                <span>Villa</span>
+                            </div>
+                        </div>
+
+                        <div class="fea-footer">
+                            <div class="price-block">
+                                <span>Price</span>
+                                <h2>$550,000</h2>
+                            </div>
+                            <a href="{% url 'property_detail'%}" class="btn-details">View Property Details</a>
+                        </div>
+                    </div>
+                
+
+            </div>
+
+
+            
+            
+        </div>
+
+
+        </div>
+
+    </sectoin>
+
+{% comment %} Reiews {% endcomment %}
+
+    <section class="reviews">
+
+        <div class="container">
+
+            <div class="reviews-top">
+
+                <div class="reviews-top-desc">
+
+                    <h1>What Our Clients Say</h1>
+                    <p>Read the success stories and heartfelt testimonials from our valued clients.
+                    Discover why they chose Estatein for their real estate needs.</p>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="reviews-bottom">
+
+                {% comment %} отзывы {% endcomment %}
+                <div class="reviews-content">
+
+                    <div class="reviews-item">
+
+                        <div class="reviews-stars">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                        </div>
+
+                        <div class="reviews-text">
+
+                            <h2>Exceptional Service!</h2>
+                            <p>Our experience with Estatein was outstanding.
+                            Their team's dedication and professionalism made finding our
+                            dream home a breeze. Highly recommended!</p>
+
+                        </div>
+
+                        <div class="reviews-profile">
+
+                            <img src="static/img/profile.png" alt="">
+                            <div class="reviews-profile-text">
+                                <h2>Wade Warren</h2>
+                                <p>USA, California</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="reviews-item">
+
+                        <div class="reviews-stars">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                        </div>
+
+                        <div class="reviews-text">
+
+                            <h2>Efficient and Reliable</h2>
+                            <p>Estatein provided us with top-notch service. 
+                            They helped us sell our property quickly and at a great price. 
+                            We couldn't be happier with the results.</p>
+
+                        </div>
+
+                        <div class="reviews-profile">
+
+                            <img src="static/img/profile (2).png" alt="">
+                            <div class="reviews-profile-text">
+                                <h2>Emelie Thomson</h2>
+                                <p>USA, Florida </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="reviews-item">
+
+                        <div class="reviews-stars">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                            <img src="static/img/stars.png" alt="">
+                        </div>
+
+                        <div class="reviews-text">
+
+                            <h2>Trusted Advisors</h2>
+                            <p>The Estatein team guided us through the entire buying process. 
+                            Their knowledge and commitment to our needs were impressive. 
+                            Thank you for your support!</p>
+
+                        </div>
+
+                        <div class="reviews-profile">
+
+                            <img src="static/img/profile (1).png" alt="">
+                            <div class="reviews-profile-text">
+                                <h2>John Mans</h2>
+                                <p>USA, Nevada</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endblock %}
+
+    <hr>
+    
+    <footer class="footer">
+        
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="{% static 'img/Logo.png' %}" alt="Logo">
+                        <h2>Rent Ui</h2>
+                    </div>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter Your Email">
+                        <button type="submit" >
+                            <i class="fa-brands fa-telegram"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <nav class="footer-nav">
+                    <div class="nav-column">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'home' %}#hero">Hero Section</a>
+                        <a href="{% url 'home' %}#featured">Featured</a>
+                    </div>
+                    <div class="nav-column">
+
+                        <a href="{% url 'about' %}#">About Us</a>
+                        <a href="https://www.instagram.com/fidea.312/" target="_blank">
+                            Our Team
+                        </a>
+
+                    </div>
+                    <div class="nav-column">
+                        <a href="{% url 'properties' %}">Properties</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Our Clients</a>
+                    </div>
+                    <div class="nav-column">
+                        <a href="{% url 'contacts' %}">Contact Us</a>
+                        <a href="{%url 'contacts'%}#register">Contact Form</a>
+                    </div>
+                </nav>
+            </div>
+
+            
+
+        </div>
+
+        {% comment %} ------------------- {% endcomment %}
+
+        <hr class="footer-divider">
+        
+        <div class="container">
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <span>@2026 RentUi Created by studets IUCA.</span>
+                </div>
+        
+            <div class="social-links">                    
+                <a href="https://www.instagram.com/fidea.312/" target="_blank">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+            </div>
+            
+        </div>
+
+        </div>
+
+    </footer>
+
+
+    
+
+</body>
+</html>

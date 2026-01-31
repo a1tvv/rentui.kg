@@ -1,0 +1,260 @@
+:root {
+	--absolute-white: #fff;
+	--absolute-black: #000;
+	--purple-60: #703bf7;
+	--purple-65: #8254f8;
+	--purple-70: #946cf9;
+	--purple-75: #a685fa;
+	--purple-90: #dbcefd;
+	--purple-95: #ede7fe;
+	--purple-97: #f4f0fe;
+	--purple-99: #fbfaff;
+	--white-90: #e4e4e7;
+	--white-95: #f1f1f3;
+	--white-97: #f7f7f8;
+	--white-99: #fcfcfd;
+	--grey-08: #141414;
+	--grey-10: #1a1a1a;
+	--grey-15: #262626;
+	--grey-20: #333;
+	--grey-30: #4d4d4d;
+	--grey-40: #666;
+	--grey-50: #808080;
+	--grey-60: #999;
+}
+/* Переменные у вас уже есть, используем их */
+
+.hero-section {
+    background-color: var(--grey-08);
+    padding: 80px 20px;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.hero-text {
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--grey-15); /* Линия как на макете, если нужна */
+    padding-bottom: 40px;
+	max-width: 500px;
+}
+
+.hero-text h1{
+	font-size: 48px;
+	margin-bottom: 30px;
+}
+
+.hero-text p{
+	color: var(--grey-60);
+}
+
+/* Сетка карточек */
+.services-grid {
+    display: grid;
+    /* Создаем 2 колонки */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+}
+
+.service-card {
+    background: var(--grey-10);
+    border: 1px solid var(--grey-15);
+    border-radius: 12px;
+    padding: 40px 24px;
+    position: relative;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+/* Делаем третью карточку (Main Headquarters) на всю ширину */
+.service-card:nth-child(3) {
+    grid-column: 1 / span 2;
+}
+
+.service-card a {
+    text-decoration: none;
+    display: block;
+}
+
+.service-card:hover {
+    background: var(--grey-15);
+    transform: translateY(-5px);
+}
+
+/* Иконка с двойным свечением/кольцами */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--purple-60);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Эффект свечения как на картинке */
+    box-shadow: 0 0 0 4px var(--grey-10), 0 0 0 5px rgba(112, 59, 247, 0.2);
+}
+
+.icon-box img {
+    width: 24px;
+    height: 24px;
+}
+
+.service-card p {
+    color: var(--absolute-white);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Стрелочка в углу */
+.arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.service-card:hover .arrow {
+    opacity: 1;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* В одну колонку на телефонах */
+    }
+    .service-card:nth-child(3) {
+        grid-column: 1;
+    }
+}
+
+
+/* ------------------------------------------------------------- */
+/* 							Info								 */
+/* ------------------------------------------------------------- */
+
+.info{
+	display: flex;
+	margin-bottom: 50px;
+}
+
+.info-left{
+	margin-right: 60px;
+    flex: 0 0 35%; 
+    max-width: 450px;
+}
+
+.info-left h1{
+	font-weight: 600;
+	font-size: 48px;
+	line-height: 100%;
+	color: var(--absolute-white);
+	margin-bottom: 30px;
+}
+
+.info-left p{
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 150%;
+	color: var(--grey-60);
+	margin-top: 10px;
+}
+
+.info-bottom{
+	margin-top: 40px;
+	border: 1px solid var(--grey-15);
+	border-radius: 12px;
+	padding: 30px;
+}
+
+.info-bottom{
+	margin-bottom: 30px;
+}
+
+.info-bottom a{
+	display: inline-block;
+	border: 1px solid var(--grey-15);
+	border-radius: 10px;
+	padding: 18px 140px;
+	background: var(--grey-08);
+	margin-top: 30px;
+	font-family: var(--font-family);
+	font-size: 18px;
+	color: var(--absolute-white);
+
+	transition: all 0.3s ease;
+}
+
+.info-bottom a:hover{
+	transform: scale(1.02);
+	background: var(--grey-15);
+    box-shadow: 0 0 20px 7px rgba(81, 81, 81, 0.7);
+    transform: scale(1.02);
+}
+
+/* ---------------------- */
+
+.info .container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px; 
+    max-width: 1300px; /* Увеличим общий контейнер, чтобы было просторнее */
+    margin: 0 auto;
+}
+
+.info-right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+    flex: 1; 
+}
+
+.info-right-top, .info-right-bottom {
+    display: contents; 
+}
+
+
+.info-right-item{
+	margin-bottom: 20px;
+}
+
+.info-card{
+	border: 1px solid var(--grey-15);
+	border-radius: 12px;
+	padding: 50px;
+
+	transition: all 0.3s ease;
+}
+
+.info-card:hover{
+	transform: scale(1.02);
+	background-color: #262626;
+}
+
+
+.info-card div{
+	display: flex;
+	margin-bottom: 30px;
+	font-weight: 600;
+	color: var(--absolute-white);
+}
+
+.info-card h2{
+	font-size: 20px;
+	margin-left: 15px;
+	text-align: center;
+}
+
+.info-card p{
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 150%;
+	color: var(--grey-60);
+}

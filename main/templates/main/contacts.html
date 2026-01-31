@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}<title>Контакты</title>{% endblock %}
+
+
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+
+<main class="hero-section">
+    <div class="container">
+        <div class="hero-text">
+            <h1>Get in Touch with Estatein</h1>
+            <p>
+                Welcome to Estatein's Contact Us page.
+                We're here to assist you with any inquiries, requests, or feedback you may have.
+                Whether you're looking to buy or sell a property, explore investment opportunities, or simply want to connect, we're just a message away. Reach out to us, and let's start a conversation.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <a href="">
+
+                    <div class="icon-box"><img src="{% static 'img/gmail.png' %}" alt=""></div>
+                    <p>info@estatein.com</p>
+                    <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="">
+
+                <div class="icon-box"><img src="{% static 'img/call.png' %}" alt=""></div>
+                <p>+1 (123) 456-7890</p>
+                <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="">
+
+                <div class="icon-box"><img src="{% static 'img/location.png' %}" alt=""></div>
+                <p>Main Headquarters</p>
+                <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</main>
+
+
+<section class="register" id='register'>
+
+    <div class="container">
+
+        <div class="register-h1">
+
+            <h1>Let's Connect</h1>
+            <p>
+                We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.
+                Whether you're a prospective client, partner, or simply curious about our services, we're here to answer your questions and provide the assistance you need.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <style>
+            form {
+                background: url("{% static 'img/contacts-form.jpg' %}") no-repeat center center fixed;
+                background-size: cover;
+            }
+        </style>
+
+        <form action="{% url 'contacts' %}" method="post" class="contact-form">
+            {% csrf_token %} <div class="form-grid">
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Enter First Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number">
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiry_type">Inquiry Type</label>
+                    <select id="inquiry_type" name="inquiry_type">
+                        <option value="" disabled selected>Select Inquiry Type</option>
+                        <option value="general">General</option>
+                        <option value="support">Support</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="source">How Did You Hear About Us?</label>
+                    <select id="source" name="source">
+                        <option value="" disabled selected>Select</option>
+                        <option value="google">Google</option>
+                        <option value="social">Instagram</option>
+                        <option value="social">Tik Tok</option>
+                        <option value="social">Whats'up</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your Message here.."></textarea>
+            </div>
+
+            <div class="form-footer">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreement" name="agreement" required>
+                    <label for="agreement">I agree with <a href="#" class='terms'>Terms of Use</a> and <a href="#" class='terms'>Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="submit-btn">Send Your Message</button>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock main %}

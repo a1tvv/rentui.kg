@@ -39,8 +39,5 @@ def properties(request):
 def services(request):
     return render(request, 'main/services.html')
 
-def signup(request):
-    return render(request, 'main/sign-up.html')
-
 def property_detail(request):
     return render(request, 'main/property_det.html')

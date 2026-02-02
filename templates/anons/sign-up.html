@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Регистрация</title>{% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+<style>
+    body {
+        background: url("{% static 'img/sign-up-bg.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+    }
+    /* Стили для ошибок Django */
+    .errorlist {
+        color: #ff4d4d;
+        list-style: none;
+        padding: 0;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<section class="auth-section">
+    <div class="auth-container">
+        <h2>Регистрация</h2>
+        <p id='create'>Создайте аккаунт, чтобы продолжить</p>
+
+        <form method="post" class="auth-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div class="error-messages">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="password-wrapper">
+                        {{ field }}
+                        {% if 'password' in field.name %}
+                            <button type="button" class="toggle-btn togglePassword">👁️</button>
+                        {% endif %}
+                    </div>
+                    {% if field.errors %}
+                        <span class="errorlist">{{ field.errors }}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="form-options">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="remember_me">
+                    <span class="checkmark"></span>
+                    <p class='remind-me'>Запомнить меня</p>
+                </label>
+            </div>
+
+            <button type="submit" class="auth-btn">Зарегистрироваться</button>
+
+            <p class="auth-footer">
+                Уже есть аккаунт? <a href="#">Войти</a>
+            </p>
+        </form>
+    </div>
+</section>
+
+<script>
+    // Универсальный скрипт для всех полей пароля (пароль и подтверждение)
+    document.querySelectorAll('.togglePassword').forEach(button => {
+        button.addEventListener('click', function () {
+            const input = this.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    });
+</script>
+{% endblock main %}

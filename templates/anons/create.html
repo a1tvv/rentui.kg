@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}  {% block title %} <title>Создать объявление</title> {% endblock title %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/create.css' %}">
+
+<div class="create-section">
+    <div class="create-container">
+        <h2>Новое объявление</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label>{{ field.label }}</label>
+                    {{ field }}
+                    
+                    {% if field.errors %}
+                        <small style="color: #ff4d4d;">{{ field.errors }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-btn">Опубликовать</button>
+        </form>
+    </div>
+</div>
+
+</body>
+{% endblock %}

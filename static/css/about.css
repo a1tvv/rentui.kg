@@ -189,3 +189,66 @@ main{
     font-size: 16px;
     line-height: 1.5;
 }
+
+/* ----------------------------- */
+
+@media (max-width: 768px) {
+    /* 1. Убираем картинку справа в первой секции */
+    .main-about-right {
+        display: none !important;
+    }
+
+    /* 3. Первая секция (Our Journey) */
+    .main-about-left {
+        margin-right: 0 !important;
+        text-align: center;
+    }
+
+    .main-about-left h1 {
+        font-size: 28px !important;
+        margin-top: 40px;
+    }
+
+    .main-about-content {
+        flex-direction: column; /* Статистика (200+, 10k+) в столбик */
+        gap: 15px;
+    }
+
+    .main-about-item {
+        margin-right: 0 !important;
+        width: 100%;
+    }
+
+    /* 4. Секция Our Values (Левая часть с заголовком) */
+    .values-left {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .values-left h1 {
+        font-size: 28px !important;
+    }
+
+    /* 5. ПЕРЕВОДИМ СЕТКУ В 1 КОЛОНКУ (Values Grid) */
+    .values-right {
+        padding: 10px !important;
+        margin-bottom: 40px;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr !important; /* Было 2, стало 1 */
+    }
+
+    .values-grid-item {
+        border-right: none !important; /* Убираем вертикальную разделительную линию */
+        border-bottom: 1px solid #262626 !important; /* Добавляем горизонтальную всем */
+        padding: 30px 15px !important;
+    }
+
+    .values-grid-item:last-child {
+        border-bottom: none !important; /* У последней карточки линию убираем */
+    }
+}

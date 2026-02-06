@@ -22,26 +22,26 @@
 
         <div class="services-grid">
             <div class="service-card">
-                <a href="">
+                <a href="mailto:altaiabdurahim07@gmail.com">
 
                     <div class="icon-box"><img src="{% static 'img/gmail.png' %}" alt=""></div>
-                    <p>info@estatein.com</p>
+                    <p>Наш gmail</p>
                     <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
 
                 </a>
             </div>
 
             <div class="service-card">
-                <a href="">
+                <a href="https://wa.me/+996999888615">
 
                 <div class="icon-box"><img src="{% static 'img/call.png' %}" alt=""></div>
-                <p>+1 (123) 456-7890</p>
+                <p>WhatsApp</p>
                 <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
 
                 </a>
             </div>
 
-            <div class="service-card">
+            {% comment %} <div class="service-card">
                 <a href="">
 
                 <div class="icon-box"><img src="{% static 'img/location.png' %}" alt=""></div>
@@ -49,7 +49,7 @@
                 <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
 
                 </a>
-            </div>
+            </div> {% endcomment %}
 
 
         </div>
@@ -57,7 +57,7 @@
 </main>
 
 
-<section class="register" id='register'>
+{% comment %} <section class="register" id='register'>
 
     <div class="container">
 
@@ -74,12 +74,12 @@
     </div>
 
     <div class="container">
-        <style>
+        {% comment %} <style>
             form {
-                background: url("{% static 'img/contacts-form.jpg' %}") no-repeat center center fixed;
+                background: url("{% static 'img/forms-bg.jpg' %}") no-repeat center center fixed;
                 background-size: cover;
             }
-        </style>
+        </style> 
 
         <form action="{% url 'contacts' %}" method="post" class="contact-form">
             {% csrf_token %} <div class="form-grid">
@@ -140,6 +140,6 @@
 
     </div>
 
-</section>
+</section> {% endcomment %}
 
 {% endblock main %}

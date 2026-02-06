@@ -1,8 +1,8 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: serif 'Urbainst';
+    font-family: 'Urbanist', serif; 
 }
 
 :root {
@@ -45,10 +45,19 @@ header {
 
 .container {
     max-width: 1200px; 
-    margin-left: 120px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+main .container {
+    max-width: 1200px;
+    margin: 0 auto; /* Центрируем, как и в хедере */
+    padding: 0 50px; /* Если нужен отступ слева, используй padding */
+    display: flex;
+    box-sizing: border-box;
 }
 
 .header-left{
@@ -95,9 +104,9 @@ header a:hover{
 /* ----------------------------------------  */
 
 main{
-    background-color: #141414;
     margin-bottom: 150px;
 }
+
 
 .hero{
     display: flex;
@@ -191,172 +200,6 @@ main{
 }
 
 
-/* ----------------------------------------------------------- */
-                    /* Features */
-/* ----------------------------------------------------------- */
-/* Контейнер для всей верхней части секции */
-.featured-top {
-    display: flex;
-    justify-content: space-between; /* Текст влево, кнопка вправо */
-    align-items: flex-end;         /* Выравнивание по нижней линии */
-    gap: 50px;                     /* Расстояние между текстом и кнопкой */
-    margin-bottom: 60px;           /* Отступ до карточек */
-}
-
-/* Блок с текстом */
-.featured-text-group {
-    max-width: 800px; /* Чтобы текст не растягивался слишком сильно */
-}
-
-.featured-text-group h1 {
-    font-weight: 600;
-    font-size: 48px;
-    color: #fff;
-    margin-bottom: 15px; /* Отступ между заголовком и параграфом */
-}
-
-.featured-text-group p {
-    font-size: 18px;
-    color: #999999;
-    line-height: 1.5;
-}
-
-
-/* Стили кнопки */
-.view-all-btn {
-    display: inline-block;
-    background-color: #1a1a1a;
-    padding: 18px 24px;
-    color: #fff; 
-    border-radius: 10px;
-    border: 1px solid #262626;
-    white-space: nowrap; 
-    transition: all 0.3s ease;
-}
-
-.view-all-btn:hover {
-    background-color: #272727;
-    border-color: #703bf7;
-    color: #703bf7; 
-}
-
-/* Fea */
-
-.featured .container{
-    margin-left: 120px;
-}
-
-.fea-content-container{
-    display: flex;
-}
-
-.fea-card{
-    display: inline-block;
-    margin-right: 20px;
-    border-radius: 10px;
-    border: 2px solid #9c9c9c;
-    margin-bottom: 150px;
-    max-width: 512px;
-}
-
-.fea-image{
-    display: inline-block;
-    width: 432px;
-    height: 300px;
-}
-
-.fea-card:last-of-type{
-    margin-right: 0;
-}
-
-.fea-img{
-    height: 320px;
-    width: 430px;
-}
-
-.fea-info{
-    margin-bottom: 30px;
-    padding-left: 20px;
-}
-
-.tag{
-    display: inline-block;
-    margin-left: 14px;
-    padding: 8px 14px;
-    color: #9c9c9c;
-}
-
-.fea-info h2{
-    margin-top: 30px;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 150%;
-    color: #fff;
-}
-
-.fea-info p{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: #9c9c9c;
-}
-
-.fea-info a{
-    color: #fff;
-}
-
-.fea-tags{
-    display: flex;
-}
-
-.fea-tags .tag{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    background-color: #141414;
-    border-radius: 10px;
-    border: 1px solid #9c9c9c;
-}
-
-
-.fea-footer{
-    display: flex;
-    margin-left: 20px;
-    margin-top: 32px;
-    margin-bottom: 40px;
-}
-
-.fea-footer .price-block{
-    display: flex;
-    flex-direction: column;
-}
-
-.fea-footer span{
-    color: #9c9c9c;
-}
-
-.fea-footer span{
-    font-size: 18px;
-    color: #cdcdcd;
-}
-
-.fea-footer a{
-    color: #cdcdcd;
-    background-color: #703bf7;
-    padding: 16px 24px;
-    border-radius: 10px;
-    margin-left: 40px;
-    display: inline-block;
-
-    transition: all 0.3s ease;
-}
-
-.fea-footer a:hover{
-    transform: scale(1.01);
-    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.7);
-}
-
-
 
 /* -------------------------------------------------------- */
 
@@ -371,6 +214,10 @@ main{
 
 .reviews-top{
     display: flex;
+}
+
+.reviews-top-desc{
+    margin-left: 0;
 }
 
 .reviews-top-desc h1{
@@ -415,36 +262,53 @@ main{
     margin-right: 0;
 }
 
-
-.reviews-stars{
+.reviews-stars {
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;  
+    justify-content: flex-start; 
     margin-bottom: 40px;
-}
-
-.reviews-text h2{
-    margin-bottom: 14px;
+    min-height: 24px;
 }
 
 .reviews-text p{
-    margin-bottom: 40px;
-    font-weight: 500;
     font-size: 18px;
-    line-height: 150%;
     color: #9c9c9c;
+    margin: 20px 0;
 }
 
-.reviews-profile-text{
+/* 1. Делаем контейнер профиля флексбоксом, чтобы фото и текст были в ряд */
+.reviews-profile {
     display: flex;
-    display: inline-block;
-    margin-left: 2px;
+    align-items: center; /* Центрируем аватарку и текст по вертикали */
+    gap: 12px;           /* Расстояние между фото и текстом */
 }
 
-.reviews-profile-text p{
-    font-weight: 500;
+.reviews-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviews-profile-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 4. Сбрасываем лишние отступы у заголовков внутри профиля */
+.reviews-profile-text h2 {
+    margin: 0;
     font-size: 18px;
-    line-height: 150%;
+    color: #fff;
+}
+
+.reviews-profile-text p {
+    margin: 0 !important;
+    font-size: 16px;
     color: #9c9c9c;
 }
-
 
 
 
@@ -569,6 +433,10 @@ footer .logo img{
     align-items: center;
     width: 100%; /* Занимает всю ширину контейнера */
     padding: 20px 0;
+    flex-direction: column-reverse; /* Соцсети сверху, копирайт снизу */
+    gap: 25px;
+    padding-top: 30px;
+    border-top: 1px solid #f4f0fe;
 }
 
 /* Блок с текстом слева */
@@ -582,6 +450,10 @@ footer .logo img{
 .footer-info a{
     text-decoration: none;
     color: aliceblue;
+}
+    
+.footer-info span{
+    margin-top: 40px;
 }
 
 /* Блок с иконками справа */
@@ -614,3 +486,171 @@ footer .logo img{
 
 /* ----------------------------------------- */
 
+/* ----------------------------------------- */
+/* --- ОБЩИЙ АДАПТИВ (Планшеты и Телефоны) --- */
+
+
+@media (max-width: 1024px) {
+    .container, .featured .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. Сбрасываем жесткие отступы контейнера */
+    .container, .featured .container {
+        flex-direction: column;
+        margin: 0 auto !important;
+        padding: 0 15px;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* 2. Хедер */
+    header .container {
+        gap: 15px;
+    }
+    
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    header a {
+        margin: 5px !important;
+        font-size: 14px;
+    }
+
+    /* 3. Герой-секция (Main) */
+    .hero {
+        flex-direction: column;
+    }
+
+    .main-left {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .main-desc {
+        font-size: 28px;
+    }
+
+    .main-right {
+        display: none !important; /* Убираем картинку, если она мешает */
+    }
+
+    .main-btn-2 {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+
+    .main-stat {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .main-stat-1, .main-stat-2, .main-stat-3 {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* 4. Карточки (Features) */
+    .featured-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .fea-content-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fea-card {
+        margin-right: 0;
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .fea-img, .fea-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* 5. Отзывы */
+    .reviews-content {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 50px;
+    }
+
+    .reviews-item {
+        margin-right: 0;
+        padding: 30px;
+    }
+
+    /* 6. ИСПРАВЛЕННЫЙ ФУТЕР */
+    .footer {
+        padding: 40px 0;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footer-brand {
+        flex: none;
+        width: 100%;
+    }
+
+    .footer-brand .logo {
+        justify-content: center;
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-column {
+        text-align: center;
+    }
+
+    /* Показываем все колонки, либо настраиваем их */
+    .nav-column:last-of-type {
+        display: block; 
+    }
+
+    .footer-bottom {
+        flex-direction: column-reverse; /* Соцсети сверху, копирайт снизу */
+        gap: 25px;
+        padding-top: 30px;
+        border-top: 1px solid #666;
+    }
+
+    .footer-info {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .footer-info span {
+        margin-top: 10px;
+    }
+
+    .social-links {
+        justify-content: center;
+        width: 100%;
+    }
+}

@@ -25,7 +25,6 @@
 /* Переменные у вас уже есть, используем их */
 
 .hero-section {
-    background-color: var(--grey-08);
     padding: 80px 20px;
     color: white;
 }
@@ -257,4 +256,59 @@
 	font-size: 18px;
 	line-height: 150%;
 	color: var(--grey-60);
+}
+
+
+/* --- Адаптив для страницы Сервисов и Инфо --- */
+@media (max-width: 1024px) {
+    .info .container {
+        flex-direction: column; /* Текст (лево) встает над карточками (право) */
+        padding: 0 20px;
+    }
+
+    .info-left {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 40px;
+        text-align: center; /* Центрируем заголовок для красоты */
+    }
+
+	.service-card{
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 768px) {
+    /* 1. Переводим сетку из 2 колонок в 1 колонку */
+    .info-right {
+        grid-template-columns: 1fr; /* Теперь карточки 1х4 */
+        width: 100%;
+    }
+
+    /* 2. Настраиваем отступы в карточках, чтобы на мобилках было компактнее */
+    .info-card {
+        padding: 30px 20px;
+    }
+
+    /* 3. Кнопка "Learn More" под текстом */
+    .info-bottom a {
+        width: 100%; /* Растягиваем кнопку на всю ширину */
+        padding: 18px 0;
+        text-align: center;
+    }
+
+    /* 4. Исправляем заголовок */
+    .info-left h1 {
+        font-size: 32px;
+    }
+
+    /* Сброс margin-left у контейнера, если он остался от прошлых стилей */
+    .container {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+	
+	.service-card{
+		margin-bottom: 30px;
+	}
 }

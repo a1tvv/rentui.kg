@@ -1,0 +1,110 @@
+
+    .create-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+        padding: 40px 20px;
+    }
+
+    .create-container {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    .create-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #703bf7;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    /* Стили для полей Django */
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid #333;
+        border-radius: 8px;
+        color: white;
+        transition: 0.3s;
+    }
+
+    .form-group input:focus {
+        border-color: #703bf7;
+        outline: none;
+    }
+
+    /* Красивая кнопка */
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: #703bf7;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #8254f8;
+        box-shadow: 0 0 15px rgba(112, 59, 247, 0.5);
+    }
+
+/* Стилизация контейнера поля файла */
+.form-group input[type="file"] {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    padding: 8px; /* Немного меньше отступ для корректного вида кнопки */
+    cursor: pointer;
+}
+
+/* Стилизация самой кнопки внутри инпута (Выберите файл) */
+.form-group input[type="file"]::file-selector-button {
+    background: #262626; /* Темный фон кнопки */
+    color: white;
+    border: 1px solid #703bf7; /* Фиолетовая рамка */
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: 0.3s;
+    font-family: inherit;
+}
+
+/* Эффект при наведении на кнопку выбора */
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #703bf7;
+    box-shadow: 0 0 10px rgba(112, 59, 247, 0.3);
+}
+
+/* Для Safari/Chrome старых версий (если нужно) */
+.form-group input[type="file"]::-webkit-file-upload-button {
+    background: #262626;
+    color: white;
+    border: 1px solid #703bf7;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}

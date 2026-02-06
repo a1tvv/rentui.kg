@@ -41,7 +41,6 @@ select:-webkit-autofill:focus {
 }
 
 .hero-section {
-    background-color: #141414; /* Темный фон всей секции */
     padding: 80px 20px;
     color: white; /* Делаем весь текст белым */
 }

@@ -31,15 +31,32 @@
             </div>
 
             <div class="header-center">
-                <a href="{% url 'home' %}">Home</a>
-                <a href="{% url 'about' %}">About Us</a>
-                <a href="{% url 'properties' %}">Properties</a>
-                <a href="{% url 'services'%}">Services</a>
-                <a href="{% url 'contacts'%}">Contact Us</a>
+                    <a href="{% url 'home' %}">Home</a>
+
+                    <a href="{% url 'about'%}">About</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'properties'%}">Properties</a>
+                    {% else%}
+                    <a href="{% url 'sign-up'%}">Properties</a>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'services'%}">Services</a>
+                    {% else%}
+                    <a href="{% url 'sign-up'%}">Services</a>
+                {% endif %}
+
+                    <a href="{% url 'contacts'%}">Contact Us</a>
+
             </div>
 
         <div class="header-right">
-            <a href="{% url 'sign-up'%}">Log In</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'create'%}">Create</a>
+                {% else%}
+                <a href="{% url 'sign-up'%}">Log In</a>
+            {% endif %}
         </div>
 
             </div>
@@ -95,150 +112,6 @@
 
 
     </main>
-
-    <sectoin class="featured" id='featured'>
-
-        <div class="container">
-
-          <div class="featured-top">
-            <div class="featured-text-group">
-                <h1>Featured Properties</h1>
-                <p>Explore our handpicked selection of featured properties. 
-                   Each listing offers a glimpse into exceptional homes and investments available through Estatein. 
-                   Click "View Details" for more information.</p>
-            </div>
-
-            <div class="featured-action">
-                <a href="{% url 'properties' %}" class="view-all-btn">View All Properties</a>
-            </div>
-        </div>
-
-
-            </div>
-
-        <div class="container">
-
-            <div class="fea-content-container">
-                
-                    <div class="fea-card">
-                        <div class="fea-image">
-                            <img src="static/img/fea-1.png" alt="Seaside Serenity Villa">
-                        </div>
-                        
-                        <div class="fea-info">
-                            <h2>Seaside Serenity Villa</h2>
-                            <p>A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood... <a href="#">Read More</a></p>
-                        </div>
-
-                        <div class="fea-tags">
-                            <div class="tag">
-                                <img src="static/img/bed-room.png" alt="">
-                                <span>4-Bedroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/bathroom.png" alt="">
-                                <span>3-Bathroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/villa.png" alt="">
-                                <span>Villa</span>
-                            </div>
-                        </div>
-
-                        <div class="fea-footer">
-                            <div class="price-block">
-                                <span>Price</span>
-                                <h2>$550,000</h2>
-                            </div>
-                            <a href="{% url 'property_detail'%}" class="btn-details">
-                                View Property Details
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="fea-card">
-                        <div class="fea-image">
-                            <img src="static/img/fea-2.png" alt="Metropolitan Haven">
-                        </div>
-                        
-                        <div class="fea-info">
-                            <h2>Metropolitan Haven</h2>
-                            <p>A chic and fully-furnished 2-bedroom apartment with panoramic city views... <a href="#">Read More</a></p>
-                        </div>
-
-                        <div class="fea-tags">
-                            <div class="tag">
-                                <img src="static/img/bed-room.png" alt="">
-                                <span>2-Bedroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/bathroom.png" alt="">
-                                <span>2-Bathroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/villa.png" alt="">
-                                <span>Villa</span>
-                            </div>
-                        </div>
-
-                        <div class="fea-footer">
-                            <div class="price-block">
-                                <span>Price</span>
-                                <h2>$550,000</h2>
-                            </div>
-                            <a href="{% url 'property_detail'%}" class="btn-details">
-                                View Property Details
-                            </a>
-                        </div>
-                    </div>
-                
-                    <div class="fea-card">
-                        <div class="fea-image">
-                            <img src="static/img/fea-3.png" alt="Rustic Retreat Cottage">
-                        </div>
-                        
-                        <div class="fea-info">
-                            <h2>Rustic Retreat Cottage</h2>
-                            <p>An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community... <a href="#">Read More</a></p>
-                        </div>
-
-                        <div class="fea-tags">
-                            <div class="tag">
-                                <img src="static/img/bed-room.png" alt="">
-                                <span>3-Bedroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/bathroom.png" alt="">
-                                <span>3-Bathroom</span>
-                            </div>
-                            <div class="tag">
-                                <img src="static/img/villa.png" alt="">
-                                <span>Villa</span>
-                            </div>
-                        </div>
-
-                        <div class="fea-footer">
-                            <div class="price-block">
-                                <span>Price</span>
-                                <h2>$550,000</h2>
-                            </div>
-                            <a href="{% url 'property_detail'%}" class="btn-details">View Property Details</a>
-                        </div>
-                    </div>
-                
-
-            </div>
-
-
-            
-            
-        </div>
-
-
-        </div>
-
-    </sectoin>
 
 {% comment %} Reiews {% endcomment %}
 
@@ -380,12 +253,6 @@
                         <img src="{% static 'img/Logo.png' %}" alt="Logo">
                         <h2>Rent Ui</h2>
                     </div>
-                    <div class="subscribe-box">
-                        <input type="email" placeholder="Enter Your Email">
-                        <button type="submit" >
-                            <i class="fa-brands fa-telegram"></i>
-                        </button>
-                    </div>
                 </div>
 
                 <nav class="footer-nav">
@@ -419,14 +286,18 @@
         </div>
 
         {% comment %} ------------------- {% endcomment %}
-
-        <hr class="footer-divider">
         
         <div class="container">
 
             <div class="footer-bottom">
                 <div class="footer-info">
-                    <span>@2026 RentUi Created by studets IUCA.</span>
+                    <span>@2026 RentUi. Made by 
+                        <a href="https://www.instagram.com/fidea.312" style="color: #703BF7;" target="_blank">Fidea</a>
+                {% comment %}                     
+                        <a href="https://wa.me/+996554016042"> <span>   +996 554 016 042</span> </a> 
+                        <a href="https://wa.me/+996999888615"> <span>   +996 999 888 615</span> </a>  {% endcomment %}
+                    </span>
+
                 </div>
         
             <div class="social-links">                    
@@ -434,15 +305,11 @@
                     <i class="fa-brands fa-instagram"></i>
                 </a>
 
-                <a href="#">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-
-                <a href="#">
+                <a href="https://wa.me/+996999888615" target="_blank">
                     <i class="fa-brands fa-whatsapp"></i>
                 </a>
 
-                <a href="#">
+                <a href="#" target="_blank">
                     <i class="fa-brands fa-telegram"></i>
                 </a>
             </div>

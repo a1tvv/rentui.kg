@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-73y4!-fk_6x$66y2n38ce9k%14n=k#rf7_h*!iq0g+y+wlx3s7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localholst', 'rentui-kg.vercel.app']
+ALLOWED_HOSTS = ['rentui-kg.vercel.app', 'localhost', '127.0.0.1', '.vercel.app']
 
 
 # Application definition
@@ -56,10 +56,11 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'], # Важно: используйте BASE_DIR
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',

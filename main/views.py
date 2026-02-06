@@ -28,7 +28,7 @@ def contacts(request):
 
 
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'base.html')
 
 def about(request):
     return render(request,'main/about.html')

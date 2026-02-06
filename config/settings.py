@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-73y4!-fk_6x$66y2n38ce9k%14n=k#rf7_h*!iq0g+y+wlx3s7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'localholst']
+ALLOWED_HOSTS = ['*', 'localholst', 'rentui-kg.vercel.app']
 
 
 # Application definition

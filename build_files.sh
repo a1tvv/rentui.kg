@@ -1,5 +1,11 @@
 #!/bin/bash
-python -m pip install --upgrade pip
+
+# Установка зависимостей
+pip install --upgrade pip
 pip install -r requirements.txt
-python manage.py collectstatic --noinput
-python manage.py migrate
+
+# Сбор статических файлов
+python manage.py collectstatic --noinput --clear
+
+# Миграции
+python manage.py migrate --noinput

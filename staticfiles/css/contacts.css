@@ -1,0 +1,281 @@
+:root {
+	--absolute-white: #fff;
+	--absolute-black: #000;
+	--purple-60: #703bf7;
+	--purple-65: #8254f8;
+	--purple-70: #946cf9;
+	--purple-75: #a685fa;
+	--purple-90: #dbcefd;
+	--purple-95: #ede7fe;
+	--purple-97: #f4f0fe;
+	--purple-99: #fbfaff;
+	--white-90: #e4e4e7;
+	--white-95: #f1f1f3;
+	--white-97: #f7f7f8;
+	--white-99: #fcfcfd;
+	--grey-08: #141414;
+	--grey-10: #1a1a1a;
+	--grey-15: #262626;
+	--grey-20: #333;
+	--grey-30: #4d4d4d;
+	--grey-40: #666;
+	--grey-50: #808080;
+	--grey-60: #999;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    /* Меняет цвет текста на белый */
+    -webkit-text-fill-color: #ffffff;
+    /* Убирает стандартный фон браузера и заменяет его на ваш #262626 */
+    box-shadow: 0 0 0px 1000px #262626 inset;
+    /* Плавный переход для цвета (чтобы не моргало) */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.hero-section {
+    padding: 80px 20px;
+    color: white; /* Делаем весь текст белым */
+}
+
+.container {
+    max-width: 1200px;
+    margin-left: 120px;
+}
+
+/* Блок с текстом всегда сверху */
+.hero-text {
+    margin-bottom: 60px; /* Отступ до кнопок */
+    max-width: 500px;  /* Чтобы текст не растягивался слишком сильно вширь */
+    margin-right: 40px;
+}
+
+.hero-text p{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: var(--grey-60);
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ffffff; /* Убедись, что заголовок белый */
+}
+
+/* Сетка карточек в ряд */
+.services-grid {
+    display: flex;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    flex-wrap: wrap; /* Чтобы на маленьких экранах переносились */
+}
+
+.service-card {
+    flex: 1;
+    min-width: 250px;
+    background: #1A1A1A;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    text-align: center;
+
+	transition: all 0.4s ease;
+}
+
+.service-card:hover{
+	background: #262626;
+	transform: scale(1.02);
+}
+
+.service-card p{
+	color: var(--absolute-white);
+}
+
+/* Круглая иконка */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #703BF7;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+
+.register{
+    margin-bottom: 100px;
+}
+
+.register-h1 h1{
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 150%;
+    color: var(--absolute-white);
+}
+
+.register-h1 p{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    color: var(--grey-60);
+}
+
+.register-h1{
+    margin-bottom: 40px;
+}
+
+.contact-form{
+    border: 1px #999 solid;
+    border-radius: 12px;
+    padding: 40px;
+}
+
+.contact-form-section {
+    display: flex;
+    justify-content: center; /* Центрирует по горизонтали */
+    width: 100%;            /* Растягиваем контейнер на всю ширину */
+    padding: 40px 0;
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 1200px;      /* Ограничиваем максимальную ширину как на макете */
+    margin: 0 auto;         /* Дополнительная страховка центрирования */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    background-color: #262626;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    color: #fff;
+    outline: none;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #6c5ce7;
+}
+
+.full-width {
+    grid-column: span 3;
+    margin-top: 20px;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+.checkbox-group label {
+    margin-bottom: 0 !important;
+    font-size: 16px; 
+    font-weight: 400;
+    line-height: 1;
+    display: inline-block;
+    color: var(--grey-60);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--purple-60);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.checkbox-group a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.submit-btn {
+    background-color: var(--purple-60);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.7);
+    transform: scale(1.02);
+}
+
+.register label{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: var(--absolute-white);
+    margin-bottom: 20px;
+}
+
+.terms{
+    transition: all 0.4s ease;
+}
+
+.terms:hover{
+    color: var(--purple-60);
+}

@@ -1,3 +1,5 @@
-pip install -r requirements.txt --break-system-packages
-python3.12 manage.py collectstatic --noinput --clear
-echo "BUILD END"
+#!/bin/bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+python manage.py collectstatic --noinput
+python manage.py migrate

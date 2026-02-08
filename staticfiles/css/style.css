@@ -40,16 +40,20 @@ body{
 
 header {
     width: 100%;
-    padding: 20px 0; 
+    padding: 20px 0;
 }
 
 .container {
     max-width: 1200px; 
     display: flex;
-    justify-content: space-around;
     align-items: center;
     width: 100%;
+    margin-left: 120px;
     margin: 0 auto;
+}
+
+main{
+    margin-top: 100px;
 }
 
 main .container {

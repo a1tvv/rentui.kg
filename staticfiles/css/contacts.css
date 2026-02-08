@@ -45,10 +45,6 @@ select:-webkit-autofill:focus {
     color: white; /* Делаем весь текст белым */
 }
 
-.container {
-    max-width: 1200px;
-    margin-left: 120px;
-}
 
 /* Блок с текстом всегда сверху */
 .hero-text {

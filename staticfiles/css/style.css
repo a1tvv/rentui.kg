@@ -57,9 +57,6 @@ main{
 }
 
 main .container {
-    max-width: 1200px;
-    margin: 0 auto; /* Центрируем, как и в хедере */
-    padding: 0 50px; /* Если нужен отступ слева, используй padding */
     display: flex;
     box-sizing: border-box;
 }

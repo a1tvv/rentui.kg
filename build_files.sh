@@ -1,9 +1,7 @@
 #!/bin/bash
 
-echo "Building the project..."
+# Установка библиотек (включая whitenoise)
 python3.9 -m pip install -r requirements.txt
 
-# Важно: указываем ту же папку, что в settings.py и vercel.json
+# Сборка статики в папку /staticfiles
 python3.9 manage.py collectstatic --noinput --clear
-
-echo "Build Finished!"

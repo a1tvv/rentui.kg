@@ -31,31 +31,31 @@
             </div>
 
             <div class="header-center">
-                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'home' %}">Главная</a>
 
-                    <a href="{% url 'about'%}">About</a>
+                    <a href="{% url 'about'%}">О нас</a>
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'properties'%}">Properties</a>
+                    <a href="{% url 'properties'%}">Свойства</a>
                     {% else%}
-                    <a href="{% url 'sign-up'%}">Properties</a>
+                    <a href="{% url 'sign-up'%}">Свойства</a>
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'services'%}">Services</a>
+                    <a href="{% url 'services'%}">Сервис</a>
                     {% else%}
-                    <a href="{% url 'sign-up'%}">Services</a>
+                    <a href="{% url 'sign-up'%}">Сервис</a>
                 {% endif %}
 
-                    <a href="{% url 'contacts'%}">Contact Us</a>
+                    <a href="{% url 'contacts'%}">Контакты</a>
 
             </div>
 
         <div class="header-right">
             {% if user.is_authenticated %}
-                <a href="{% url 'create'%}">Create</a>
+                <a href="{% url 'create'%}">Создать</a>
                 {% else%}
-                <a href="{% url 'sign-up'%}">Log In</a>
+                <a href="{% url 'sign-up'%}">Авторизоваться</a>
             {% endif %}
         </div>
 
@@ -71,30 +71,30 @@
 
             <div class="main-left">
                 
-                <h1 class='main-desc'> Discover Your Dream Property with Estatein </h1>
+                <h1 class='main-desc'> Откройте для себя недвижимость своей мечты с Rent Ui </h1>
                 <p>
-                    Your journey to finding the perfect property begins here.
-                    Explore our listings to find the home that matches your dreams.
+                    Найдите свой идеальный дом здесь. 
+                    Изучайте актуальные предложения и выбирайте лучшее.
                 </p>
 
-                <a href="{% url 'about'%}" class='main-btn-1'>Learn More</a>
-                <a href="{% url 'properties' %}" class='main-btn-2'>Browse Properties</a>
+                <a href="{% url 'about'%}" class='main-btn-1'>Узнать больше</a>
+                <a href="{% url 'properties' %}" class='main-btn-2'>Просмотр свойств</a>
 
                 <div class="main-stat">
 
                     <div class="main-stat-1">
-                        <h1>200+</h1>
-                        <h2>Happy Customers</h2>
+                        <h1>100%</h1>
+                        <h2>Проверенные объекты</h2>
                     </div>
 
                     <div class="main-stat-2">
-                        <h1>10k+</h1>
-                        <h2>Properties For Client</h2>
+                        <h1>Новые</h1>
+                        <h2>Объекты каждый день</h2>
                     </div>
 
                     <div class="main-stat-3">
-                        <h1>16+</h1>
-                        <h2>Years of Expirience</h2>
+                        <h1>Премиум</h1>
+                        <h2>Выбор объектов</h2>
                     </div>
 
                 </div>
@@ -116,9 +116,9 @@
 
                 <div class="reviews-top-desc">
 
-                    <h1>What Our Clients Say</h1>
-                    <p>Read the success stories and heartfelt testimonials from our valued clients.
-                    Discover why they chose Estatein for their real estate needs.</p>
+                    <h1>Что говорят наши клиенты</h1>
+                    <p>Посмотрите реальные истории тех, кто уже нашел жилье через наш сервис. 
+                       Узнайте, почему Rent Ui выбирают для поиска идеального дома в аренду.</p>
 
                 </div>
 
@@ -143,10 +143,10 @@
 
                         <div class="reviews-text">
 
-                            <h2>Exceptional Service!</h2>
-                            <p>Our experience with Estatein was outstanding.
-                            Their team's dedication and professionalism made finding our
-                            dream home a breeze. Highly recommended!</p>
+                            <h2>Отличный сайт!</h2>
+                            <p>Очень крутой сервис!
+                               Нашли подходящий вариант буквально за пару дней. Всё чётко, профессионально и, главное, без нервов. 
+                               Спасибо!</p>
 
                         </div>
 
@@ -154,8 +154,8 @@
 
                             <img src="{% static 'img/profile.png' %}" alt="">
                             <div class="reviews-profile-text">
-                                <h2>Wade Warren</h2>
-                                <p>USA, California</p>
+                                <h2>Домердиев Альберт</h2>
+                                <p>Кыргызстан, Баткен</p>
                             </div>
 
                         </div>
@@ -174,10 +174,10 @@
 
                         <div class="reviews-text">
 
-                            <h2>Efficient and Reliable</h2>
-                            <p>Estatein provided us with top-notch service. 
-                            They helped us sell our property quickly and at a great price. 
-                            We couldn't be happier with the results.</p>
+                            <h2>Проверенный и надежный</h2>
+                            <p>Отличный сервис! 
+                               Сдали жилье выгодно и без лишней волокиты.
+                               Если цените свое время и нервы — вам точно сюда.</p>
 
                         </div>
 
@@ -185,8 +185,8 @@
 
                             <img src="{% static 'img/profile (2).png' %}" alt="">
                             <div class="reviews-profile-text">
-                                <h2>Emelie Thomson</h2>
-                                <p>USA, Florida </p>
+                                <h2>Каманбаева Анара</h2>
+                                <p>Кыргызстан, Бишкек </p>
                             </div>
 
                         </div>
@@ -205,10 +205,10 @@
 
                         <div class="reviews-text">
 
-                            <h2>Trusted Advisors</h2>
-                            <p>The Estatein team guided us through the entire buying process. 
-                            Their knowledge and commitment to our needs were impressive. 
-                            Thank you for your support!</p>
+                            <h2>Нашли то, что искали</h2>
+                            <p>Нам помогли на каждом этапе покупки.
+                               Ребята знают рынок от и до, подобрали именно то, что мы искали. 
+                               Спасибо за терпение и профессионализм!</p>
 
                         </div>
 
@@ -216,8 +216,8 @@
 
                             <img src="{% static 'img/profile (1).png' %}" alt="">
                             <div class="reviews-profile-text">
-                                <h2>John Mans</h2>
-                                <p>USA, Nevada</p>
+                                <h2>Коркоев Мирлан</h2>
+                                <p>Кыргызстан, Ош</p>
                             </div>
 
                         </div>
@@ -250,26 +250,26 @@
 
                 <nav class="footer-nav">
                     <div class="nav-column">
-                        <a href="{% url 'home' %}">Home</a>
-                        <a href="{% url 'home' %}#hero">Hero Section</a>
+                        <a href="{% url 'home' %}">Главная</a>
+                        <a href="{% url 'home' %}#hero">Главная страница</a>
                         <a href="{% url 'home' %}#featured">Featured</a>
                     </div>
                     <div class="nav-column">
 
-                        <a href="{% url 'about' %}#">About Us</a>
+                        <a href="{% url 'about' %}#">О нас</a>
                         <a href="https://www.instagram.com/fidea.312/" target="_blank">
-                            Our Team
+                            Наша команда
                         </a>
 
                     </div>
                     <div class="nav-column">
-                        <a href="{% url 'properties' %}">Properties</a>
-                        <a href="#">Portfolio</a>
-                        <a href="#">Our Clients</a>
+                        <a href="{% url 'properties' %}">Свойства</a>
+                        <a href="#">Портфолио</a>
+                        <a href="#">Наши клиенты</a>
                     </div>
                     <div class="nav-column">
-                        <a href="{% url 'contacts' %}">Contact Us</a>
-                        <a href="{%url 'contacts'%}#register">Contact Form</a>
+                        <a href="{% url 'contacts' %}">Связаться с нами</a>
+                        <a href="{%url 'contacts'%}#register">Контакты</a>
                     </div>
                 </nav>
             </div>

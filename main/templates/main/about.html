@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>О нас</title>
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+{% endblock %}
+
+{% block main %}
+
+<main>
+
+    <div class="container">
+        
+        <div class="main-about-left">
+            <h1>Наше путешествие</h1>
+            <p>
+                    Наша история - это история непрерывного роста и развития.
+                Мы начинали как небольшая команда с большими мечтами, полная решимости создать платформу для рынка недвижимости, которая бы выходила за рамки обыденности.
+                За эти годы мы расширили сферу своего влияния, наладили ценные партнерства и завоевали доверие бесчисленного количества клиентов.
+            </p>
+
+            <div class="main-about-content">
+                <div class="main-about-item">
+                    <h2>100%</h2>
+                    <p>Проверенные объекты</p>
+                </div>
+                <div class="main-about-item">
+                    <h2>Новые</h2>
+                    <p>Объекты каждый день</p>
+                </div>
+                <div class="main-about-item">
+                    <h2>Премиум</h2>
+                    <p>Выбор объектов</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-about-right">
+            <img src="{% static 'img/main-about.png' %}" alt="About Us">
+        </div>
+
+    </div>
+
+</main>
+
+<section class="values">
+    <div class="container values-container">
+        
+        <div class="values-left">
+            <h1>Наши ценности</h1>
+            <p>Наша история — это путь постоянного роста и эволюции. Мы начинали как небольшая команда с большими амбициями, полная решимости создать платформу по недвижимости, выходящую за рамки привычного.</p>
+        </div>
+
+        <div class="values-right">
+            <div class="values-grid">
+                
+                <div class="values-grid-item">
+                    <div class="values-item-header">
+                        <div class="icon-circle"><img src="{% static 'img/stars-about.png' %}" alt=""></div>
+                        <h2>Доверие</h2>
+                    </div>
+                    <p>Доверие — это фундамент любой успешной сделки с недвижимостью..</p>
+                </div>
+
+                <div class="values-grid-item">
+                    <div class="values-item-header">
+                        <div class="icon-circle"><img src="{% static 'img/education.png' %}" alt=""></div>
+                        <h2>Ценности</h2>
+                    </div>
+                    <p>Мы ставим высокую планку во всём: от объектов в нашем каталоге до услуг, которые мы оказываем.</p>
+                </div>
+
+                <div class="values-grid-item">
+                    <div class="values-item-header">
+                        <div class="icon-circle"><img src="{% static 'img/contacts.png' %}" alt=""></div>
+                        <h2>Интересы клиента</h2>
+                    </div>
+                    <p>Ваши мечты и потребности — в центре нашей вселенной. Мы слушаем и понимаем.</p>
+                </div>
+
+                <div class="values-grid-item">
+                    <div class="values-item-header">
+                        <div class="icon-circle"><img src="{% static 'img/stars-about.png' %}" alt=""></div>
+                        <h2>Наши обязательства</h2>
+                    </div>
+                    <p>Мы стремимся обеспечить вам высочайший уровень сервиса, профессионализма и поддержки.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock main %}

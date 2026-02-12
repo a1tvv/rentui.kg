@@ -19,9 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-73y4!-fk_6x$66y2n38ce9k%14n=k#rf7_h*!iq0g+y+wlx3s7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -134,7 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL-адрес для доступа к этим файлам через браузер
 MEDIA_URL = '/media/'
-
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login' 

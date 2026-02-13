@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "PYTHON_VERSION": "3.12"
+  },
   "builds": [
     {
       "src": "config/wsgi.py",

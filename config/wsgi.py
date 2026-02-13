@@ -1,7 +1,9 @@
+import dj_database_url
 import os
-from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
-
-application = get_wsgi_application()
-app = application  # Добавьте эту строку для Vercel
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3', # Оставляем для локальной разработки
+        conn_max_age=600
+    )
+}

@@ -1,3 +1,35 @@
+/* 1. Исправляем автозаполнение (чтобы не было белым, когда браузер подставляет пароль) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    /* Используем цвет #1a1a1a, чтобы совпадало с обычным состоянием поля */
+    box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* 2. Основные стили полей */
+.auth-card input[type="text"],
+.auth-card input[type="password"],
+.auth-card input[type="email"],
+.auth-card input[type="search"] {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #1a1a1a !important; /* Принудительно серый */
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* 3. Состояние при нажатии (Focus) - убираем белый фон здесь */
+.auth-card input:focus {
+    background-color: #1a1a1a !important; /* Чтобы не становилось белым */
+    border-color: #7c4dff;
+    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
+}
 /* Общий контейнер для центрирования */
 .auth-container {
     display: flex;
@@ -45,24 +77,6 @@
     color: #e0e0e0;
 }
 
-.auth-card input[type="text"],
-.auth-card input[type="password"],
-.auth-card input[type="email"] {
-    width: 100%;
-    padding: 12px 16px;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    box-sizing: border-box; /* Чтобы padding не раздувал ширину */
-}
-
-.auth-card input:focus {
-    outline: none;
-    border-color: #7c4dff;
-    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
-}
 
 /* Кнопка */
 .auth-btn {
@@ -94,4 +108,44 @@
     color: white;
     text-decoration: none;
     font-weight: 600;
+}
+
+
+/* --- Адаптив для мобильных устройств --- */
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 20px; /* Чтобы карточка не прилипала к краям экрана */
+        min-height: 90vh; /* Чуть больше места для маневра на мобилках */
+    }
+
+    .auth-card {
+        padding: 30px 20px; /* Уменьшаем внутренние отступы карточки */
+        max-width: 100%;    /* Карточка занимает всю доступную ширину */
+        border-radius: 10px;
+    }
+
+    .auth-card h2 {
+        font-size: 20px; /* Чуть уменьшаем заголовок */
+    }
+
+    .auth-card input[type="text"],
+    .auth-card input[type="password"],
+    .auth-card input[type="email"] {
+        padding: 10px 14px; /* Удобный размер для нажатия пальцем */
+        font-size: 14px;    /* Чтобы текст не вылезал */
+    }
+
+    .auth-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* Для очень маленьких экранов или ландшафтной ориентации */
+@media (max-height: 600px) {
+    .auth-container {
+        align-items: flex-start; /* На маленьких по высоте экранах лучше скроллить сверху */
+        padding-top: 20px;
+    }
 }

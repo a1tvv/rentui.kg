@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Войти в Аккаунт</title>{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock extra_css %}
+
+{% block main %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Вход</h2>
+        <p class="auth-description">Введите свои данные, чтобы войти</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="auth-btn">Войти</button>
+        </form>
+
+        <div class="auth-footer">
+            Нет аккаунта? <a href="{% url 'sign-up' %}">Зарегистрироваться</a>
+        </div>
+    </div>
+</div>
+{% endblock main %}

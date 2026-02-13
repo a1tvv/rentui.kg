@@ -6,20 +6,6 @@
 {% block main %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
-<style>
-    body {
-        background: url("{% static 'img/sign-up-bg.jpg' %}") no-repeat center center fixed;
-        background-size: cover;
-    }
-    /* Стили для ошибок Django */
-    .errorlist {
-        color: #ff4d4d;
-        list-style: none;
-        padding: 0;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-</style>
 
 <section class="auth-section">
     <div class="auth-container">
@@ -61,8 +47,9 @@
             <button type="submit" class="auth-btn">Зарегистрироваться</button>
 
             <p class="auth-footer">
-                Уже есть аккаунт? <a href="#">Войти</a>
+                Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
             </p>
+
         </form>
     </div>
 </section>

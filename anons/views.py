@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, logout
 from .forms import Announcement
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def signup(request):
     if request.method == 'POST':
@@ -38,7 +39,6 @@ def create(request):
     # Обязательно передаем объект form в контекст шаблона!
     return render(request, 'anons/create.html', {'form': form})
 
-
 @login_required # Только залогиненные могут добавлять
 def create_announcement(request):
     if request.method == 'POST':
@@ -51,3 +51,24 @@ def create_announcement(request):
     else:
         form = Announcement()
     return render(request, 'anons/create.html', {'form': form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, "Вы успешно вошли в аккаунт!")
+            return redirect('home')
+        else:
+            messages.error(request, "Неверный логин или пароль")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'anons/login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "Вы вышли из аккаунта")
+    return redirect('home')

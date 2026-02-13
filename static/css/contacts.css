@@ -47,7 +47,6 @@ select:-webkit-autofill:focus {
 
 .container {
     max-width: 1200px;
-    margin-left: 120px;
 }
 
 /* Блок с текстом всегда сверху */

@@ -53,14 +53,6 @@ header {
     margin: 0 auto;
 }
 
-main .container {
-    max-width: 1200px;
-    margin: 0 auto; /* Центрируем, как и в хедере */
-    padding: 0 50px; /* Если нужен отступ слева, используй padding */
-    display: flex;
-    box-sizing: border-box;
-}
-
 .header-left{
     display: flex;
     align-items: center; /* Это выровняет картинку и текст по вертикальной оси */
@@ -115,6 +107,7 @@ main{
 
 .hero{
     display: flex;
+    justify-content: stretch;
 }
 
 .main-desc{

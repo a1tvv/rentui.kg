@@ -37,7 +37,8 @@ main{
 }
 
 .main-about-left{
-    margin-right: 120px;
+    flex: 1;
+    padding-right: 50px;
 }
 
 .main-about-left h1{
@@ -54,6 +55,12 @@ main{
     line-height: 150%;
     color: #d5d5d5;
     margin-bottom: 40px;
+}
+
+.main-about-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .main-about-content{
@@ -93,16 +100,17 @@ main{
 
 .values-container {
     display: flex;
+    justify-content: space-between; /* Расталкивает текст влево, а сетку вправо */
     align-items: flex-start;
-    padding: 60px 0;
+    gap: 40px;                      /* Минимальный зазор между ними */
+    padding: 80px 0;                /* Вертикальные отступы для дыхания секции */
+    width: 100%;
 }
 
-
 .values-left {
-    flex: 1;
-    max-width: 400px;
-    margin-right: 60px;
-    margin-left: 100px;
+    flex: 0 1 400px;  /* Не дает тексту раздуваться шире 400px */
+    margin: 0;        /* Убираем все старые маржины, которые мешали */
+    text-align: left;
 }
 
 .values-left h1{
@@ -122,11 +130,13 @@ main{
 }
 
 .values-right {
-    flex: 2;
-    background: #1A1A1A; /* Темный фон как на фото */
+    flex: 1;          /* Занимает всё оставшееся пространство справа */
+    max-width: 800px; /* Чтобы сетка не становилась слишком гигантской на больших мониторах */
+    background: #1A1A1A;
     border: 1px solid #262626;
     border-radius: 12px;
     padding: 40px;
+    /* Убираем автоматические отступы, если они были */
 }
 
 /* Сетка 2 колонки и 2 строки */

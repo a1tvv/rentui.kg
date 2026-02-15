@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Устанавливаем зависимости
-pip install -r requirements.txt
+# Устанавливаем зависимости, игнорируя блокировку среды
+python3 -m pip install --break-system-packages -r requirements.txt
 
-# Собираем статику. 
-# ВАЖНО: используем python3, так как Vercel понимает эту команду
+# Собираем статику
 python3 manage.py collectstatic --noinput --clear
 
-echo "Билд завершен успешно!"
+echo "Билд завершен!"

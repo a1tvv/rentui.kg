@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# Устанавливаем зависимости, игнорируя блокировку среды
-python3 -m pip install --break-system-packages -r requirements.txt
+# Устанавливаем зависимости
+pip install -r requirements.txt
+
+# Применяем миграции к базе Neon (КРИТИЧЕСКИЙ ШАГ)
+python3.12 manage.py migrate --noinput
 
 # Собираем статику
-python3 manage.py collectstatic --noinput --clear
+python3.12 manage.py collectstatic --noinput --clear
 
-echo "Билд завершен!"
+echo "Билд успешно завершен!"

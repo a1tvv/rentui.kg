@@ -7,3 +7,4 @@ gunicorn==21.2.0
 Django>=4.0
 dj-database-url
 psycopg2-binary
+whitenoise

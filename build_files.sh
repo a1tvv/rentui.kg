@@ -1,16 +1,10 @@
 #!/bin/bash
 
-echo "Создаем виртуальное окружение..."
-python3 -m venv venv
-source venv/bin/activate
+# Устанавливаем зависимости
+pip install -r requirements.txt
 
-echo "Обновляем pip..."
-python3 -m pip install --upgrade pip
-
-echo "Устанавливаем зависимости из requirements.txt..."
-python3 -m pip install -r requirements.txt
-
-echo "Собираем статику..."
+# Собираем статику. 
+# ВАЖНО: используем python3, так как Vercel понимает эту команду
 python3 manage.py collectstatic --noinput --clear
 
-echo "Билд завершен!"
+echo "Билд завершен успешно!"

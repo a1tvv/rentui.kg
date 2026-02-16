@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
+        default='postgresql://neondb_owner:npg_dy7MiDHcEme2@ep-weathered-dawn-agn0uo4l-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
         conn_max_age=600
     )
 }

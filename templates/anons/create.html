@@ -21,6 +21,12 @@
                 </div>
             {% endfor %}
 
+            <div class="extra-images-list" style="display: flex; gap: 5px; margin-top: 10px;">
+                {% for extra in el.announcementimage_set.all %}
+                    <img src="{{ extra.image.url }}" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                {% endfor %}
+            </div>
+
             <button type="submit" class="submit-btn">Опубликовать</button>
         </form>
     </div>

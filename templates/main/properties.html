@@ -46,11 +46,24 @@
     <div class="container grid-container">
         {% for el in anons %}
         <div class="property-card">
-            {% if el.image %}
-                <div class="property-image">
-                    <img src="{{ el.image.url }}" alt="{{ el.title }}">
+
+            <div class="property-image-slider">
+                <div class="slider-wrapper" id="slider-{{ el.id }}">
+                    {% if el.image %}
+                        <img src="{{ el.image.url }}" class="slide active">
+                    {% else %}
+                        <img src="https://via.placeholder.com/400x300?text=No+Photo" class="slide active">
+                    {% endif %}
+
+                    {% for img_obj in el.images.all %}
+                        <img src="{{ img_obj.image.url }}" class="slide">
+                    {% endfor %}
                 </div>
-            {% endif %}
+
+                <button class="slider-prev" onclick="moveSlide('{{ el.id }}', -1)">&#10094;</button>
+                <button class="slider-next" onclick="moveSlide('{{ el.id }}', 1)">&#10095;</button>
+                <div class="photo-badge">1 / {{ el.images.count|add:1 }}</div>
+            </div>
 
             <div class="property-info">
                 <div class="property-header">
@@ -83,14 +96,10 @@
 
                 {% if user.is_authenticated and el.author == user %}
                 <div class="property-actions">
-                    <a href="{% url 'property_edit' el.id %}" class="btn-edit">
-                        Изменить
-                    </a>
-                    <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del">
+                    <a href="{% url 'property_edit' el.id %}" class="btn-edit">Изменить</a>
+                    <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn-del" onclick="return confirm('Вы уверены, что хотите удалить это объявление?')">
-                            Удалить
-                        </button>
+                        <button type="submit" class="btn-del" onclick="return confirm('Удалить?')">Удалить</button>
                     </form>
                 </div>
                 {% endif %}
@@ -98,10 +107,46 @@
         </div>
         {% empty %}
             <div class="empty-state">
-                <p>Объявлений пока нет. Станьте первым!</p>
+                <p>Объявлений пока нет.</p>
                 <a href="{% url 'create' %}" class="main-btn-2">Создать объявление</a>
             </div>
         {% endfor %}
     </div>
 </section>
+
+<script>
+function moveSlide(id, step) {
+    const container = document.getElementById('slider-' + id);
+    if (!container) return;
+
+    const slides = container.querySelectorAll('.slide');
+    const badge = container.parentElement.querySelector('.photo-badge');
+    
+    if (slides.length <= 1) return; // Смысла листать нет
+
+    let activeIndex = -1;
+
+    // Ищем индекс текущего активного слайда
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            activeIndex = index;
+            slide.classList.remove('active');
+        }
+    });
+
+    // Высчитываем следующий индекс
+    let nextIndex = activeIndex + step;
+    if (nextIndex >= slides.length) nextIndex = 0;
+    if (nextIndex < 0) nextIndex = slides.length - 1;
+
+    // Активируем новый слайд
+    slides[nextIndex].classList.add('active');
+    
+    // Обновляем счетчик (бадж)
+    if (badge) {
+        badge.innerText = (nextIndex + 1) + ' / ' + slides.length;
+    }
+}
+</script>
+
 {% endblock main %}

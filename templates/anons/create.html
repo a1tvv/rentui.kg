@@ -15,20 +15,53 @@
                     <label>{{ field.label }}</label>
                     {{ field }}
                     
+                    {% if field.name == 'image' %}
+                        <small class="form-text">Можно выбрать несколько фото (зажмите Ctrl или Shift)</small>
+                        <div id="preview-container" class="preview-grid"></div>
+                    {% endif %}
+
                     {% if field.errors %}
                         <small style="color: #ff4d4d;">{{ field.errors }}</small>
                     {% endif %}
                 </div>
             {% endfor %}
 
-            <div class="extra-images-list" style="display: flex; gap: 5px; margin-top: 10px;">
-                {% for extra in el.announcementimage_set.all %}
-                    <img src="{{ extra.image.url }}" style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
-                {% endfor %}
-            </div>
+            {% if edit_mode %}
+                <div class="existing-images">
+                    <p>Уже загруженные фото:</p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        {% for img_obj in form.instance.images.all %}
+                            <img src="{{ img_obj.image.url }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
 
-            <button type="submit" class="submit-btn">Опубликовать</button>
-        </form>
+            <button type="submit" class="submit-btn">
+        {% if edit_mode %}Сохранить изменения{% else %}Опубликовать{% endif %}
+    </button>
+</form>
+
+<script>
+    // Скрипт для отображения выбранных фото перед загрузкой
+    document.querySelector('input[type="image"], input[name="image"]').addEventListener('change', function(e) {
+        const container = document.getElementById('preview-container');
+        container.innerHTML = '';
+        [...this.files].forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = '70px';
+                img.style.height = '70px';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '5px';
+                container.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
     </div>
 </div>
 

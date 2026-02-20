@@ -31,9 +31,14 @@ body{
     background: var(--grey-08);
 }
 
-main{
+main {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row; /* На компьютерах в ряд */
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px; /* Ограничиваем ширину, чтобы не разъезжалось */
+    margin: 0 auto;    /* Центрируем сам контейнер main */
+    padding: 0 20px;   /* Отступы по бокам, чтобы текст не лип к краям экрана */
 }
 
 .main-about-left{
@@ -199,15 +204,20 @@ main{
 /* ----------------------------- */
 
 @media (max-width: 768px) {
-    /* 1. Убираем картинку справа в первой секции */
     .main-about-right {
         display: none !important;
     }
-
-    /* 3. Первая секция (Our Journey) */
-    .main-about-left {
-        margin-right: 0 !important;
+    
+    main {
+        flex-direction: column; /* Элементы встают в столбик */
+        align-items: center;    /* Центрируем содержимое */
         text-align: center;
+    }
+
+    .main-about-left {
+        padding-right: 0;      /* Убираем правый паддинг, который толкает текст влево */
+        margin-bottom: 30px;
+        width: 100%;
     }
 
     .main-about-left h1 {

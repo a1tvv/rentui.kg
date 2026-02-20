@@ -41,7 +41,13 @@ body{
 header {
     width: 100%;
     padding: 20px 0; 
-    margin-bottom: 120px;
+    margin-bottom: 100px;
+}
+
+header a.active {
+    color: var(--purple-60) !important;
+    background-color: rgba(112, 59, 247, 0.1); /* Легкий фиолетовый фон */
+    font-weight: 600;
 }
 
 .container {

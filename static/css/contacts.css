@@ -278,3 +278,137 @@ select:-webkit-autofill:focus {
 .terms:hover{
     color: var(--purple-60);
 }
+
+/* ============================================================
+   ФИНАЛЬНЫЙ АДАПТИВ (ИСПРАВЛЕНИЕ ЦЕНТРОВКИ И СЕТКИ)
+   ============================================================ */
+
+/* 1. Общие правки для контейнеров */
+main, .hero-section, .contact-form-section, .register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Ограничиваем контент и центрируем */
+.container, .contact-form, .register-h1, .values-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* 2. Медиа-запрос для планшетов и мобилок (до 768px) */
+@media (max-width: 768px) {
+    
+    /* --- СТРАНИЦА "О НАС" (Main & Values) --- */
+    main {
+        text-align: center;
+    }
+
+    .main-about-left {
+        padding-right: 0 !important; /* Убираем отступ, который толкал влево */
+        margin-bottom: 30px;
+        flex: none;
+        width: 100%;
+    }
+
+    .main-about-right {
+        display: none !important; /* Прячем декор, если он мешает */
+    }
+
+    .values-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+
+    .values-left {
+        flex: none;
+        width: 100%;
+        max-width: 100% !important;
+        text-align: center;
+        margin: 0 0 20px 0 !important;
+    }
+
+    .values-right {
+        max-width: 100%;
+        padding: 20px !important;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr !important; /* Сетка в одну колонку */
+    }
+
+    .values-grid-item {
+        border-right: none !important;
+        border-bottom: 1px solid #262626 !important;
+        padding: 20px 10px !important;
+    }
+
+    /* --- СТРАНИЦА "КОНТАКТЫ" (Hero & Form) --- */
+    .hero-text {
+        margin-right: 0 !important; /* Убираем 40px из твоего кода */
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .hero-text h1, .register-h1 h1 {
+        font-size: 32px !important; /* Уменьшаем огромные заголовки */
+    }
+
+    .services-grid {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .service-card {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* ФОРМА РЕГИСТРАЦИИ */
+    .contact-form {
+        padding: 25px 15px !important;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr !important; /* Все инпуты в ряд по одному */
+        gap: 15px;
+    }
+
+    .full-width {
+        grid-column: span 1 !important;
+    }
+
+    .form-footer {
+        flex-direction: column; /* Чекбокс сверху, кнопка снизу */
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .submit-btn {
+        width: 100%; /* Кнопка на всю ширину для удобства нажатия пальцем */
+        padding: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 14px;
+    }
+}
+
+/* 3. Фикс для совсем маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    .main-about-left h1, .hero-text h1, .register-h1 h1 {
+        font-size: 26px !important;
+    }
+    
+    .contact-form-section {
+        padding: 20px 0;
+    }
+}

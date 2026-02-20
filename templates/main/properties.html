@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}<title>Объявления</title>{% endblock %}
+{% block title %}<title>Объявления - RentUi</title>{% endblock %}
 
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/properties.css' %}">
@@ -18,9 +18,9 @@
 
         <div class="search-container">
             <div class="search-main">
-                <input type="text" placeholder="Search For A Property" class="search-input">
+                <input type="text" placeholder="Поиск недвижимости..." class="search-input">
                 <button type="button" class="btn-search">
-                    <span class="icon-search">🔍</span> Поиск недвижимости
+                    <span class="icon-search">🔍</span> Поиск
                 </button>
             </div>
 
@@ -30,16 +30,12 @@
                     <select name="location"><option value="">Локация</option></select>
                 </div>
                 <div class="filter-item">
-                    <span class="filter-icon">📍</span>
-                    <select name="location"><option value="">Локация</option></select>
-                </div>
-                <div class="filter-item">
                     <span class="filter-icon">🏠</span>
-                    <select name="property-type"><option value="">Тип недвижимости</option></select>
+                    <select name="property-type"><option value="">Тип жилья</option></select>
                 </div>
                 <div class="filter-item">
                     <span class="filter-icon">💰</span>
-                    <select name="pricing-range"><option value="">Диапазон цен</option></select>
+                    <select name="pricing-range"><option value="">Цена</option></select>
                 </div>
             </div>
         </div>
@@ -47,7 +43,7 @@
 </main>
 
 <section class="properties-list">
-    <div class="container">
+    <div class="container grid-container">
         {% for el in anons %}
         <div class="property-card">
             {% if el.image %}
@@ -57,44 +53,55 @@
             {% endif %}
 
             <div class="property-info">
-                <p class="property-created">{{ el.created_at }}</p>
-                <h2 class="property-title">{{ el.title }}</h2>
-                <p class="property-desc">{{ el.description|truncatewords:15 }}</p>
-                <p class="property-price">{{ el.price }} сом</p>
-
-                <div class="mini-gallery">
-                    {% for img_obj in el.announcementimage_set.all %}
-                    <img src="{{ img_obj.image.url }}" width="50">
-                    {% endfor %}
+                <div class="property-header">
+                    <p class="property-created">{{ el.created_at|date:"d E Y" }} г.</p>
+                    <h2 class="property-title">{{ el.title }}</h2>
                 </div>
                 
+                <p class="property-desc">{{ el.description|truncatewords:15 }}</p>
+                
+                <div class="property-price-row">
+                    <p class="property-price">{{ el.price }} <span>сом</span></p>
+                </div>
+
                 <div class="property-footer">
-                    <p class="property-address">📍 {{ el.address|default:"Не указан" }}</p>
-                    <p class="property-seller">👤 {{ el.author.username }}</p>
+                    <div class="footer-details">
+                        <p class="property-address">
+                            <i class="fas fa-map-marker-alt"></i> {{ el.address|default:"Бишкек" }}
+                        </p>
+                        <p class="property-phone">
+                            <i class="fas fa-phone-alt"></i> 
+                            <a href="tel:{{ el.phone }}">{{ el.phone }}</a>
+                        </p>
+                    </div>
+                    <div class="footer-author">
+                        <p class="property-seller">
+                            <i class="fas fa-user"></i> {{ el.author.username }}
+                        </p>
+                    </div>
                 </div>
 
                 {% if user.is_authenticated and el.author == user %}
-                <div class="property-actions" style="margin-top: 15px; border-top: 1px solid #eee; pt-2;">
+                <div class="property-actions">
                     <a href="{% url 'property_edit' el.id %}" class="btn-edit">
                         Изменить
                     </a>
-                
-                    <form action="{% url 'property_delete' el.id %}" method="POST" style="display:inline;">
+                    <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del">
                         {% csrf_token %}
-                        <button type="submit" class="btn-del" onclick="return confirm('Вы уверены?')">
+                        <button type="submit" class="btn-del" onclick="return confirm('Вы уверены, что хотите удалить это объявление?')">
                             Удалить
                         </button>
-
-
                     </form>
                 </div>
                 {% endif %}
             </div>
         </div>
         {% empty %}
-            <p style="text-align: center; padding: 50px;">Объявлений пока нет.</p>
+            <div class="empty-state">
+                <p>Объявлений пока нет. Станьте первым!</p>
+                <a href="{% url 'create' %}" class="main-btn-2">Создать объявление</a>
+            </div>
         {% endfor %}
-        </div>
+    </div>
 </section>
-
 {% endblock main %}

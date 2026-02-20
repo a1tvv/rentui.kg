@@ -3,139 +3,105 @@
     --card-bg: #1A1A1A;
     --border-color: #262626;
     --accent-purple: #703BF7;
+    --accent-light: #946cf9;
     --text-gray: #999999;
-    --max-width: 1200px; /* Ограничиваем ширину сайта */
+    --white: #ffffff;
+    --danger: #ff453a;
 }
 
+/* Общие стили */
 body {
     background-color: var(--bg-dark);
-    color: white;
+    color: var(--white);
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Urbanist', sans-serif;
 }
 
-/* Общий контейнер для центрирования */
 .container {
-    max-width: var(--max-width);
-    margin: 0 auto; /* ЦЕНТРИРОВАНИЕ */
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-section{
-    margin-bottom: 100px;
+a { text-decoration: none; }
+
+/* --- HERO SECTION --- */
+.hero-section {
+    padding: 80px 0;
 }
 
-/* Исправляем главный контейнер в герое */
 .hero-section .container {
     display: flex;
-    flex-direction: column; /* Выстраивает элементы вертикально (текст сверху, поиск снизу) */
-    align-items: center;    /* Центрирует их по горизонтали */
-    text-align: center;     /* Центрирует сам текст внутри заголовка и описания */
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-/* 1. Главный контейнер — теперь он гибкий */
-.hero-section .container {
-    display: flex;
-    flex-direction: row;      /* По умолчанию в ряд (для ПК) */
-    flex-wrap: wrap;          /* Разрешаем перенос на новую строку */
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    margin: 0 auto;
-    padding: 100px 20px;      /* Отступы сверху и с боков */
-    max-width: 1200px;
 }
 
-/* 2. Блок с текстом */
 .hero-content {
-    flex: 1 1 500px;          /* Растягивается, но не меньше 500px (если меньше — прыгнет вниз) */
-    text-align: left;
+    flex: 1 1 500px;
 }
 
-.hero-content h1{
-    margin-bottom: 40px;
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
 }
 
-/* 3. Контейнер поиска */
+.hero-content p {
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* Поиск и фильтры */
 .search-container {
-    flex: 1 1 400px;          /* Тоже гибкий */
+    flex: 1 1 500px;
     background: var(--card-bg);
     padding: 24px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
 }
 
-/* Поисковик теперь будет под текстом */
-.search-container {
-    width: 100%;            /* Растягиваем на всю доступную ширину контейнера */
-    max-width: 900px;       /* Но не шире 900px, чтобы выглядело аккуратно */
-    margin: 0 auto;
-}
-
-/* Контейнер поиска */
-.search-container {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
-}
-
 .search-main {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .search-input {
     flex: 1;
-    background: #141414;
+    background: #111;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 15px;
+    padding: 14px;
     color: white;
-    outline: none;
 }
 
 .btn-search {
     background: var(--accent-purple);
     color: white;
     border: none;
-    padding: 0 30px;
+    padding: 0 24px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
     transition: 0.3s;
 }
 
-.btn-search:hover {
-    filter: brightness(1.2);
-    box-shadow: 0 0 15px var(--accent-purple);
-}
-
-/* Сетка фильтров */
 .filters-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 фильтра в ряд */
-    gap: 15px;
-    background: #111111;
-    padding: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    background: #111;
+    padding: 12px;
     border-radius: 10px;
 }
 
 .filter-item {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
+    padding: 10px;
     border-radius: 8px;
-    padding: 12px;
     display: flex;
-    align-items: center;
+    gap: 8px;
 }
 
 .filter-item select {
@@ -143,38 +109,31 @@ section{
     color: white;
     border: none;
     width: 100%;
-    outline: none;
-    cursor: pointer;
+    font-size: 13px;
 }
 
-
-
-
-/* Список объявлений */
-
-
-
-.properties-list .container {
+/* --- КАРТОЧКИ ОБЪЯВЛЕНИЙ --- */
+.grid-container {
     display: grid;
-    /* Фиксируем ширину карточки: минимум 300px, максимум 380px */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 380px)); 
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
-    justify-content: center;
-    align-items: start; /* Чтобы карточки разной высоты не растягивались */
+    padding-bottom: 60px;
 }
 
-/* Сама карточка */
 .property-card {
-    display: flex;
-    flex-direction: column; 
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     overflow: hidden;
-    height: 100%; /* Чтобы все карточки в ряду были одной высоты */
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
 }
 
-/* Блок картинки */
+.property-card:hover {
+    border-color: var(--text-gray);
+}
+
 .property-image {
     width: 100%;
     height: 220px;
@@ -184,159 +143,120 @@ section{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px; 
 }
 
-/* Блок текста */
 .property-info {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    flex-grow: 1;
 }
 
 .property-title {
     font-size: 20px;
-    font-weight: 600;
-    margin: 0;
+    margin: 10px 0;
 }
 
 .property-price {
-    font-size: 22px;
     color: var(--accent-purple);
+    font-size: 22px;
     font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.property-desc {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--text-gray);
-    font-size: 14px;
-    margin: 10px 0;
-    min-height: 3em; /* Резервируем место под текст */
-}
-
-/* Футер карточки (адрес и продавец) */
+/* ФУТЕР КАРТОЧКИ (Адрес, Телефон, Автор) */
 .property-footer {
-    border-top: 1px solid var(--border-color);
+    margin-top: auto;
     padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-details {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    font-size: 13px;
-    color: #ccc;
+    gap: 6px;
 }
 
-/* Адаптив */
+.property-address, .property-phone, .property-seller {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-gray);
+}
 
+.property-phone a {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
 
-/* --- МАГИЯ АДАПТИВА (Media Queries) --- */
+.property-address i, .property-phone i, .property-seller i {
+    color: var(--accent-purple);
+    width: 14px;
+    text-align: center;
+}
 
-@media (max-width: 1024px) {
+/* --- КНОПКИ УПРАВЛЕНИЯ --- */
+.property-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-edit, .btn-del {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-edit {
+    background: #262626;
+    color: white;
+    border: 1px solid #333;
+}
+
+.btn-edit:hover {
+    background: #333;
+    color: var(--accent-light);
+}
+
+.form-del { flex: 1; display: flex; }
+
+.btn-del {
+    width: 100%;
+    background: rgba(255, 69, 58, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(255, 69, 58, 0.2);
+}
+
+.btn-del:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* --- АДАПТИВ --- */
+@media (max-width: 768px) {
     .hero-section .container {
-        flex-direction: column; /* На планшетах и телефонах — всё в столбик */
-        text-align: center;     /* Текст по центру */
+        flex-direction: column;
+        text-align: center;
     }
-
-    .hero-content {
-        flex: 1 1 auto;
-        max-width: 100%;
-    }
-
-    .hero-content h1 {
-        font-size: 32px;        /* Уменьшаем шрифт, чтобы не вылезал */
-    }
+    .hero-content { text-align: center; }
+    .grid-container { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-    .search-main {
-        flex-direction: column; /* Кнопка поиска прыгает под инпут */
-    }
-    
-    .filters-grid {
-        grid-template-columns: 1fr; /* Фильтры по одному в ряд */
-    }
-
-    .btn-search {
-        width: 100%;
-        justify-content: center;
-        padding: 15px;
-    }
-}
-
-
-
-/* 1. Глобальное правило: запрещаем элементам выходить за края */
-* {
-    box-sizing: border-box; /* Чтобы padding не увеличивал ширину блока */
-}
-
-html, body {
-    overflow-x: hidden; /* Прячем горизонтальный скролл на корню */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-/* 2. Убираем фиксированные отступы и ширину в контейнере */
-.container {
-    width: 100% !important;
-    max-width: 1200px;
-    margin: 0 auto !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-}
-
-/* 3. Фикс героя для мобилок */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 60px 0; /* Уменьшаем гигантские отступы */
-    }
-    
-    .hero-content h1 {
-        font-size: 28px !important; /* Большой текст не будет рвать экран */
-        word-wrap: break-word;
-    }
-
-    /* Главная проблема: убираем flex-basis или min-width, которые шире экрана */
-    .hero-content, .search-container {
-        flex: 1 1 100% !important; 
-        min-width: 0 !important; 
-        width: 100% !important;
-    }
-
-    /* Поиск и кнопки */
-    .search-main {
+    .property-footer {
         flex-direction: column;
-    }
-    
-    .btn-search {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    /* Сетка фильтров — если их 5 в ряд, они точно вылезут за экран */
-    .filters-grid {
-        grid-template-columns: 1fr 1fr !important; /* Максимум 2 в ряд */
+        align-items: flex-start;
         gap: 10px;
     }
-}
-
-/* 4. Фикс карточек объявлений */
-.properties-list .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-    gap: 20px;
-}
-
-.property-card {
-    flex-direction: column !important; /* На мобилке картинка всегда над текстом */
-    padding: 15px !important;
-}
-
-.property-image img {
-    width: 100% !important;
-    height: auto !important;
+    .property-actions { flex-direction: column; }
 }

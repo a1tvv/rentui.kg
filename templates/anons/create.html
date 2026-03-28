@@ -1,69 +1,71 @@
 {% extends "base.html" %}
-{% load static %}  {% block title %} <title>Создать объявление</title> {% endblock title %}
+{% load static %}
+
+{% block title %} <title>Создать объявление</title> {% endblock title %}
 
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/create.css' %}">
 
-<div class="create-section">
-    <div class="create-container">
-        <h2>Новое объявление</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            
-            {% for field in form %}
-                <div class="form-group">
-                    <label>{{ field.label }}</label>
-                    {{ field }}
-                    
-                    {% if field.name == 'image' %}
-                        <small class="form-text">Можно выбрать несколько фото (зажмите Ctrl или Shift)</small>
-                        <div id="preview-container" class="preview-grid"></div>
-                    {% endif %}
+<main class="create-page-wrapper">
+    <section class="create-section">
+        <div class="create-container">
+            <h2>{% if edit_mode %}Редактировать{% else %}Новое{% endif %} объявление</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {{ field }}
+                        
+                        {% if field.name == 'image' or field.name == 'images' %}
+                            <small class="form-text">Можно выбрать несколько фото (зажмите Ctrl или Shift)</small>
+                            <div id="preview-container" class="preview-grid"></div>
+                        {% endif %}
 
-                    {% if field.errors %}
-                        <small style="color: #ff4d4d;">{{ field.errors }}</small>
-                    {% endif %}
-                </div>
-            {% endfor %}
-
-            {% if edit_mode %}
-                <div class="existing-images">
-                    <p>Уже загруженные фото:</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        {% for img_obj in form.instance.images.all %}
-                            <img src="{{ img_obj.image.url }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                        {% endfor %}
+                        {% if field.errors %}
+                            <div class="error-msg">{{ field.errors }}</div>
+                        {% endif %}
                     </div>
-                </div>
-            {% endif %}
+                {% endfor %}
 
-            <button type="submit" class="submit-btn">
-        {% if edit_mode %}Сохранить изменения{% else %}Опубликовать{% endif %}
-    </button>
-</form>
+                {% if edit_mode %}
+                    <div class="existing-images">
+                        <p>Уже загруженные фото:</p>
+                        <div class="image-preview-row">
+                            {% for img_obj in form.instance.images.all %}
+                                <img src="{{ img_obj.image.url }}" class="old-img">
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="submit-btn">
+                    {% if edit_mode %}Сохранить изменения{% else %}Опубликовать{% endif %}
+                </button>
+            </form>
+        </div>
+    </section>
+</main>
 
 <script>
-    // Скрипт для отображения выбранных фото перед загрузкой
-    document.querySelector('input[type="image"], input[name="image"]').addEventListener('change', function(e) {
-        const container = document.getElementById('preview-container');
-        container.innerHTML = '';
-        [...this.files].forEach(file => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.width = '70px';
-                img.style.height = '70px';
-                img.style.objectFit = 'cover';
-                img.style.borderRadius = '5px';
-                container.appendChild(img);
-            }
-            reader.readAsDataURL(file);
+    // Исправленный скрипт превью
+    const fileInput = document.querySelector('input[type="file"]');
+    if (fileInput) {
+        fileInput.addEventListener('change', function(e) {
+            const container = document.getElementById('preview-container');
+            container.innerHTML = '';
+            [...this.files].forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'preview-img';
+                    container.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
         });
-    });
+    }
 </script>
-    </div>
-</div>
-
-</body>
-{% endblock %}
+{% endblock main %}

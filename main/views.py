@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from anons.models import Announcement
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin  # ✅ Добавьте этот импорт
+from django.core.paginator import Paginator
+from django.views.generic import ListView
+
+from anons.models import Announcement
 from anons.forms import AnnouncementForm
 
 # Create your views here.
 
-
-
 def contacts(request):
     if request.method == 'POST':
-        # Сохраняем данные
         Announcement.objects.create(
             first_name=request.POST.get('first_name'),
             last_name=request.POST.get('last_name'),
@@ -22,40 +23,50 @@ def contacts(request):
         )
         messages.success(request, 'Ваше сообщение успешно отправлено!')
         return redirect('contacts') 
-
-    # Если это просто заход на страницу (GET), показываем шаблон
     return render(request, 'main/contacts.html')
-
 
 def home(request):
     return render(request, 'base.html')
 
 def about(request):
-    return render(request,'main/about.html')
+    return render(request, 'main/about.html')
 
 def services(request):
     return render(request, 'main/services.html')
 
-@login_required
-def properties(request): 
-    anons = Announcement.objects.all()
-    return render(request, 'main/properties.html', {'anons': anons})
+
+class Search(LoginRequiredMixin, ListView): 
+    model = Announcement
+    template_name = 'main/properties.html'
+    paginate_by = 20
+
+    def get_queryset(self):
+        queryset = Announcement.objects.all().order_by('-created_at')
+        search_query = self.request.GET.get('search')
+        if search_query:
+            queryset = queryset.filter(title__icontains=search_query)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_query'] = self.request.GET.get('search', '')
+        return context
 
 def property_detail(request):
     return render(request, 'main/property_det.html')
 
-
 @login_required
 def create(request):
+    
+
     if request.method == 'POST':
-        # Передаем данные из запроса в форму
         form = AnnouncementForm(request.POST, request.FILES) 
         if form.is_valid():
             announcement = form.save(commit=False)
-            announcement.author = request.user # Привязываем автора
+            announcement.author = request.user
             announcement.save()
             return redirect('properties')
     else:
-        form = AnnouncementForm() # Создаем пустую форму для GET запроса
-    
+        form = AnnouncementForm()
     return render(request, 'anons/create.html', {'form': form})
+

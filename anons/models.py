@@ -5,7 +5,7 @@ from django.contrib.auth.models import User # Импортируем встро�
 class Announcement(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок")
     description = models.TextField(verbose_name="Описание")
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
+    price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Цена")
     image = models.ImageField("Главное фото", upload_to="photos/%Y/%m/%d/", blank=True, null=True)
     phone = models.CharField(max_length=20, verbose_name="Номер телефона", default="+996 ")
     address = models.CharField(max_length=255, verbose_name="Адрес", blank=True, null=True)

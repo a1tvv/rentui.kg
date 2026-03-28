@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import AnnouncementForm 
 from .models import AnnouncementImage, Announcement
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 # --- РЕГИСТРАЦИЯ И ВХОД ---
 def signup(request):
@@ -59,26 +61,39 @@ def create(request):
             announcement = form.save(commit=False)
             announcement.author = request.user
             
-            # Устанавливаем главное фото из первого выбранного
             if files:
                 announcement.image = files[0]
             
             announcement.save()
 
-            # Сохраняем все фото в галерею
             for f in files:
                 AnnouncementImage.objects.create(announcement=announcement, image=f)
             
             messages.success(request, "Объявление успешно создано!")
             return redirect('home')
         else:
-            # Если форма невалидна, Django сам вернет ошибки в шаблон через {{ form.errors }}
             messages.error(request, "Проверьте правильность заполнения полей.")
     else:
         form = AnnouncementForm()
     
     return render(request, 'anons/create.html', {'form': form})
 
+
+def property_list(request):
+    announcements_list = Announcement.objects.select_related('author').all().order_by('-id')
+    
+    search_query = request.GET.get('search')
+    if search_query:
+        announcements_list = announcements_list.filter(
+            Q(title__icontains=search_query) | 
+            Q(description__icontains=search_query)
+        )
+
+    paginator = Paginator(announcements_list, 2                ) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    return render(request, 'anons/property_list.html', {'page_obj': page_obj})
 
 @login_required
 def property_edit(request, pk):
@@ -91,29 +106,20 @@ def property_edit(request, pk):
     if request.method == "POST":
         form = AnnouncementForm(request.POST, request.FILES, instance=property_item)
         files = request.FILES.getlist('image')
-        
         if form.is_valid():
             announcement = form.save(commit=False)
-            
             if files:
-                # Если загружены новые фото, меняем главное фото
                 announcement.image = files[0]
-                # ОПЦИОНАЛЬНО: Удаляем старые фото из галереи перед добавлением новых
-                # announcement.images.all().delete() 
-                
-                announcement.save() # Сначала сохраняем основную модель
-
+                announcement.save()
                 for f in files:
                     AnnouncementImage.objects.create(announcement=announcement, image=f)
             else:
                 announcement.save()
-
             messages.success(request, "Объявление обновлено!")
             return redirect('home')
     else:
         form = AnnouncementForm(instance=property_item)
     
-    # Передаем сам объект, чтобы в шаблоне вывести уже существующие фото
     return render(request, 'anons/create.html', {
         'form': form, 
         'edit_mode': True, 

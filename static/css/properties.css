@@ -9,164 +9,6 @@
     --danger: #ff453a;
 }
 
-.slider-prev, .slider-next {
-    position: absolute;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 40px !important;
-    height: 40px !important;
-    background: rgba(112, 59, 247, 0.9) !important; /* Яркий фиолетовый */
-    color: white !important;
-    border: 2px solid #ffffff !important;
-    border-radius: 50% !important;
-    cursor: pointer !important;
-    z-index: 100 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 18px !important;
-    transition: all 0.2s ease;
-}
-
-.slider-prev { left: 10px !important; }
-.slider-next { right: 10px !important; }
-
-.slider-prev:hover, .slider-next:hover {
-    background: #ffffff !important;
-    color: #703BF7 !important;
-}
-
-/* Контейнер для слайдера должен иметь позиционирование */
-.property-image-slider {
-    position: relative;
-    width: 100%;
-    height: 250px; /* или твоя высота */
-    overflow: hidden;
-    border-radius: 12px 12px 0 0;
-}
-
-/* Все слайды по умолчанию скрыты, кроме активного */
-.slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.slide.active {
-    display: block;
-}
-
-/* СТИЛИ ДЛЯ КНОПОК (чтобы они точно были видны) */
-.slider-prev, .slider-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s;
-    border-radius: 4px;
-}
-
-.slider-prev { left: 10px; }
-.slider-next { right: 10px; }
-
-.slider-prev:hover, .slider-next:hover {
-    background: rgba(112, 59, 247, 0.8); /* Фиолетовый при наведении */
-}
-
-/* 1. ОБЯЗАТЕЛЬНО: Контейнер для фото */
-.property-image-slider {
-    position: relative !important;
-    width: 100% !important;
-    height: 250px !important;
-    overflow: hidden !important;
-    background: #222;
-}
-
-/* 2. Слайды */
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none; /* Вместо opacity используем display */
-}
-
-.slide.active {
-    display: block !important;
-}
-
-/* 3. КНОПКИ (Сделал их КРАСНЫМИ для теста, чтобы ты их точно увидел) */
-.slider-prev, .slider-next {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 999 !important; /* Чтобы были поверх всего */
-    width: 45px !important;
-    height: 45px !important;
-    background: #ff0000 !important; /* ПОТОМ ПОМЕНЯЕМ НА ФИОЛЕТОВЫЙ */
-    color: white !important;
-    border: 2px solid white !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.slider-prev { left: 10px !important; }
-.slider-next { right: 10px !important; }
-
-/* 4. Счетчик */
-.photo-badge {
-    position: absolute !important;
-    bottom: 15px !important;
-    right: 15px !important;
-    z-index: 999 !important;
-    background: rgba(0,0,0,0.8) !important;
-    color: white !important;
-    padding: 5px 12px !important;
-    border-radius: 20px !important;
-    font-size: 12px !important;
-    border: 1px solid #444;
-}
-
-.photo-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 12px;
-    z-index: 10;
-}
-
-/* Убедись, что badge тоже виден */
-.photo-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    z-index: 100;
-    border: 1px solid var(--border-color);
-}
-
-/* Общие стили */
 body {
     background-color: var(--bg-dark);
     color: var(--white);
@@ -182,10 +24,8 @@ body {
 
 a { text-decoration: none; }
 
-/* --- HERO SECTION --- */
-.hero-section {
-    padding: 80px 0;
-}
+/* --- HERO & ПОИСК --- */
+.hero-section { padding: 80px 0; }
 
 .hero-section .container {
     display: flex;
@@ -195,34 +35,18 @@ a { text-decoration: none; }
     gap: 40px;
 }
 
-.hero-content {
-    flex: 1 1 500px;
-}
+.hero-content { flex: 1 1 500px; }
+.hero-content h1 { font-size: 40px; margin-bottom: 20px; }
+.hero-content p { color: var(--text-gray); line-height: 1.6; }
 
-.hero-content h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    color: var(--text-gray);
-    line-height: 1.6;
-}
-
-/* Поиск и фильтры */
 .search-container {
-    flex: 1 1 500px;
     background: var(--card-bg);
     padding: 24px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
 }
 
-.search-main {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-}
+.search-main { display: flex; gap: 12px; margin-bottom: 20px; }
 
 .search-input {
     flex: 1;
@@ -269,7 +93,66 @@ a { text-decoration: none; }
     font-size: 13px;
 }
 
-/* --- КАРТОЧКИ ОБЪЯВЛЕНИЙ --- */
+
+
+/* Стилизация выпадающего списка для темной темы */
+.filter-item select {
+    background: var(--card-bg);
+    color: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filter-item select:hover {
+    border-color: var(--accent-purple);
+}
+
+.filter-item select:focus {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 2px rgba(112, 59, 247, 0.2);
+}
+
+.filter-item select option {
+    background: var(--card-bg);
+    color: var(--white);
+    padding: 10px;
+}
+
+.filter-item select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+}
+
+.filter-item select {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-purple) var(--border-color);
+}
+
+
+.filter-item select option:hover,
+.filter-item select option:focus,
+.filter-item select option:active {
+    background: var(--accent-purple);
+    color: var(--white);
+}
+
+
+
+
+
+
+
+/* --- СЕТКА КАРТОЧЕК --- */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -287,21 +170,69 @@ a { text-decoration: none; }
     transition: 0.3s;
 }
 
-.property-card:hover {
-    border-color: var(--text-gray);
-}
 
-.property-image {
+/* --- СЛАЙДЕР ВНУТРИ КАРТОЧКИ --- */
+.property-image-slider {
+    position: relative;
     width: 100%;
-    height: 220px;
+    height: 250px;
+    overflow: hidden;
+    background: #222;
 }
 
-.property-image img {
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: none;
 }
 
+.slide.active { display: block; }
+
+.slider-prev, .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-purple);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.slider-prev { left: 10px; }
+.slider-next { right: 10px; }
+
+.slider-prev:hover, .slider-next:hover {
+    background: var(--white);
+    color: var(--accent-purple);
+}
+
+.photo-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+}
+
+/* --- ИНФО И КНОПКИ --- */
 .property-info {
     padding: 20px;
     display: flex;
@@ -309,11 +240,7 @@ a { text-decoration: none; }
     flex-grow: 1;
 }
 
-.property-title {
-    font-size: 20px;
-    margin: 10px 0;
-}
-
+.property-title { font-size: 20px; margin: 10px 0; }
 .property-price {
     color: var(--accent-purple);
     font-size: 22px;
@@ -321,7 +248,6 @@ a { text-decoration: none; }
     margin-bottom: 15px;
 }
 
-/* ФУТЕР КАРТОЧКИ (Адрес, Телефон, Автор) */
 .property-footer {
     margin-top: auto;
     padding-top: 15px;
@@ -331,11 +257,7 @@ a { text-decoration: none; }
     align-items: flex-end;
 }
 
-.footer-details {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
+.footer-details { display: flex; flex-direction: column; gap: 6px; }
 
 .property-address, .property-phone, .property-seller {
     display: flex;
@@ -345,23 +267,14 @@ a { text-decoration: none; }
     color: var(--text-gray);
 }
 
-.property-phone a {
-    color: var(--accent-purple);
-    font-weight: 600;
-}
-
+.property-phone a { color: var(--accent-purple); font-weight: 600; }
 .property-address i, .property-phone i, .property-seller i {
     color: var(--accent-purple);
     width: 14px;
     text-align: center;
 }
 
-/* --- КНОПКИ УПРАВЛЕНИЯ --- */
-.property-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
+.property-actions { display: flex; gap: 10px; margin-top: 15px; }
 
 .btn-edit, .btn-del {
     flex: 1;
@@ -380,13 +293,9 @@ a { text-decoration: none; }
     border: 1px solid #333;
 }
 
-.btn-edit:hover {
-    background: #333;
-    color: var(--accent-light);
-}
+.btn-edit:hover { background: #333; color: var(--accent-light); }
 
 .form-del { flex: 1; display: flex; }
-
 .btn-del {
     width: 100%;
     background: rgba(255, 69, 58, 0.1);
@@ -394,125 +303,197 @@ a { text-decoration: none; }
     border: 1px solid rgba(255, 69, 58, 0.2);
 }
 
-.btn-del:hover {
-    background: var(--danger);
+.btn-del:hover { background: var(--danger); color: white; }
+
+/* --- ПАГИНАЦИЯ --- */
+.pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.pagination-container {
+    display: flex;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.page-link {
+    padding: 8px 16px;
+    background: #262626;
+    color: var(--white);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.page-link:hover {
+    background: var(--accent-purple);
     color: white;
 }
 
-.property-image-slider {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Настрой высоту под свой дизайн */
-    overflow: hidden;
-    background: #222;
+.page-link.active {
+    background: var(--accent-purple);
+    border-color: var(--accent-light);
+    font-weight: bold;
 }
 
-.slider-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
+.pagination {
+    margin: 40px 0;
+    text-align: center;
 }
 
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
+.pagination-list {
+    display: inline-flex;
+    list-style: none;
+    gap: 10px;
+    padding: 0;
 }
 
-.slide.active {
-    opacity: 1;
-}
-
-.slider-prev, .slider-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
+.page-link {
+    padding: 10px 18px;
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
     border-radius: 5px;
     transition: 0.3s;
 }
 
-.slider-prev:hover, .slider-next:hover {
-    background: rgba(111, 66, 193, 0.8); /* Твой фиолетовый акцент */
+.page-link:hover {
+    background: #f0f0f0;
 }
 
-.slider-prev { left: 10px; }
-.slider-next { right: 10px; }
-
-.photo-badge {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 12px;
+.page-link.active {
+    background: #007bff; /* Твой основной цвет */
+    color: #fff;
+    border-color: #007bff;
 }
 
-/* Убедись, что контейнер имеет позицию relative */
-.property-image-slider {
-    position: relative;
-    z-index: 1; /* Чтобы кнопки не ушли под инфо-блок */
+.empty-state {
+    grid-column: 1 / -1; /* Чтобы блок растянулся на всю ширину сетки */
+    display: flex;
+    flex-direction: column; /* Элементы будут друг под другом */
+    align-items: center;    /* Центрируем по горизонтали */
+    justify-content: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px dashed var(--border-color);
+    margin: 40px 0;
+    text-align: center;
 }
 
-.slider-prev, .slider-next {
-    display: flex !important;
+.empty-text {
+    font-size: 18px;
+    color: var(--text-gray);
+    margin-bottom: 20px; /* Отступ от текста до кнопки */
+}
+
+.main-btn2 {
+    display: inline-block;
+    background-color: var(--accent-purple);
+    padding: 14px 28px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.main-btn2:hover {
+    background-color: #946cf9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(112, 59, 247, 0.3);
+}
+
+
+/* --- СТИЛИЗАЦИЯ ПАГИНАЦИИ --- */
+
+.pagination {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-list {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    align-items: center;
+}
+
+/* Базовый стиль ссылок (кнопки с числами) */
+.page-link {
+    display: flex;
     align-items: center;
     justify-content: center;
     min-width: 40px;
-    min-height: 40px;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-.slider-prev, .slider-next {
-    position: absolute;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: rgba(112, 59, 247, 0.8) !important; /* Яркий фиолетовый из твоего дизайна */
-    color: #ffffff !important;
-    border: none !important;
-    padding: 12px 15px !important;
-    cursor: pointer;
-    z-index: 9999 !important; /* Максимальный приоритет */
-    display: block !important; /* Принудительно показываем */
+    height: 40px;
+    padding: 0 15px;
+    background: #1A1A1A; /* Твой основной темный фон карточек */
+    color: #ffffff;
+    border: 1px solid #262626; /* Твои границы */
     border-radius: 8px;
-    font-size: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.slider-prev { left: 10px; }
-.slider-next { right: 10px; }
+/* Эффект при наведении */
+.page-link:hover {
+    background: #262626;
+    border-color: #703bf7; /* Фиолетовый акцент */
+    color: #ffffff;
+}
 
-.photo-badge {
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--border-color);
+/* Активная страница (где мы сейчас) */
+.page-link.active {
+    background: #703bf7 !important; /* Твой фирменный фиолетовый */
+    border-color: #946cf9;
+    color: #ffffff;
+    cursor: default;
+    box-shadow: 0 0 15px rgba(112, 59, 247, 0.4);
+}
+
+/* Кнопки Назад / Вперед */
+.pagination-list li:first-child .page-link,
+.pagination-list li:last-child .page-link {
+    background: #141414;
+    border-color: #262626;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 480px) {
+    .page-link {
+        min-width: 35px;
+        height: 35px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .page-link {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
 }
 
 /* --- АДАПТИВ --- */
 @media (max-width: 768px) {
-    .hero-section .container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero-content { text-align: center; }
+    .hero-section .container { flex-direction: column; text-align: center; }
     .grid-container { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-    .property-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
+    .property-footer { flex-direction: column; align-items: flex-start; gap: 10px; }
     .property-actions { flex-direction: column; }
+    .hero-content{ margin-bottom: -100px;}
 }

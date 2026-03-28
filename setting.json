@@ -1,0 +1,8 @@
+{
+    "emmet.showSuggestionsAsSnippets": true,
+    "editor.snippetSuggestions": "top",
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "emmet.triggerExpansionOnTab": true
+}

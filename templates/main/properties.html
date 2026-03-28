@@ -6,9 +6,13 @@
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/properties.css' %}">
 
+
 <main class="hero-section">
+
     <div class="container">
+        
         <div class="hero-content">
+
             <h1>Найдите дом своей мечты</h1>
             <p>
                 Добро пожаловать в RentUi: здесь недвижимость вашей мечты ждет вас в любом уголке нашего прекрасного мира.
@@ -17,36 +21,59 @@
         </div>
 
         <div class="search-container">
-            <div class="search-main">
-                <input type="text" placeholder="Поиск недвижимости..." class="search-input">
-                <button type="button" class="btn-search">
+
+            <form action="{% url 'properties' %}" method="GET" class="search-main">
+
+                <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search }}">
+                
+                <button type="submit" class="btn-search">
                     <span class="icon-search">🔍</span> Поиск
                 </button>
-            </div>
+
+            </form>
 
             <div class="filters-grid">
+
                 <div class="filter-item">
                     <span class="filter-icon">📍</span>
-                    <select name="location"><option value="">Локация</option></select>
+
+                    <select name="location">
+                        <option value="">Выберите город</option>
+                        <option value="Бишкек">🏙️ Бишкек</option>
+                        <option value="Ош">🏛️ Ош</option>
+                        <option value="Джалал-Абад">🌄 Джалал-Абад</option>
+                        <option value="Каракол">🏔️ Каракол</option>
+                        <option value="Токмок">🏞️ Токмок</option>
+                        <option value="Нарын">⛰️ Нарын</option>
+                        <option value="Талас">🌾 Талас</option>
+                        <option value="Баткен">🏜️ Баткен</option>
+                        <option value="Кызыл-Кия">🛢️ Кызыл-Кия</option>
+                    </select>
+                    
                 </div>
-                <div class="filter-item">
+                
+                {% comment %} <div class="filter-item">
                     <span class="filter-icon">🏠</span>
                     <select name="property-type"><option value="">Тип жилья</option></select>
                 </div>
+
                 <div class="filter-item">
                     <span class="filter-icon">💰</span>
                     <select name="pricing-range"><option value="">Цена</option></select>
-                </div>
+                </div> {% endcomment %}
+
             </div>
+
         </div>
+        
     </div>
+    
 </main>
 
 <section class="properties-list">
     <div class="container grid-container">
-        {% for el in anons %}
+        {% for el in page_obj %}
         <div class="property-card">
-
             <div class="property-image-slider">
                 <div class="slider-wrapper" id="slider-{{ el.id }}">
                     {% if el.image %}
@@ -107,46 +134,79 @@
         </div>
         {% empty %}
             <div class="empty-state">
-                <p>Объявлений пока нет.</p>
-                <a href="{% url 'create' %}" class="main-btn-2">Создать объявление</a>
+                <p class='empty-text'>Объявлений пока нет.</p>
+                <a href="{% url 'create' %}" class="main-btn2">Создать объявление</a>
             </div>
         {% endfor %}
     </div>
+
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+        <div class="container">
+            <ul class="pagination-list">
+                {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="page-link">
+                            &laquo; Назад
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li><span class="page-link active">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li>
+                            <a href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="page-link">
+                                {{ num }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li>
+                        <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="page-link">
+                            Вперед &raquo;
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+    
+    
+
 </section>
 
 <script>
-function moveSlide(id, step) {
-    const container = document.getElementById('slider-' + id);
-    if (!container) return;
+    function moveSlide(id, step) {
+        const container = document.getElementById('slider-' + id);
+        if (!container) return;
 
-    const slides = container.querySelectorAll('.slide');
-    const badge = container.parentElement.querySelector('.photo-badge');
-    
-    if (slides.length <= 1) return; // Смысла листать нет
+        const slides = container.querySelectorAll('.slide');
+        const badge = container.parentElement.querySelector('.photo-badge');
+        
+        if (slides.length <= 1) return;
 
-    let activeIndex = -1;
+        let activeIndex = -1;
+        slides.forEach((slide, index) => {
+            if (slide.classList.contains('active')) {
+                activeIndex = index;
+                slide.classList.remove('active');
+            }
+        });
 
-    // Ищем индекс текущего активного слайда
-    slides.forEach((slide, index) => {
-        if (slide.classList.contains('active')) {
-            activeIndex = index;
-            slide.classList.remove('active');
+        let nextIndex = activeIndex + step;
+        if (nextIndex >= slides.length) nextIndex = 0;
+        if (nextIndex < 0) nextIndex = slides.length - 1;
+
+        slides[nextIndex].classList.add('active');
+        
+        if (badge) {
+            badge.innerText = (nextIndex + 1) + ' / ' + slides.length;
         }
-    });
-
-    // Высчитываем следующий индекс
-    let nextIndex = activeIndex + step;
-    if (nextIndex >= slides.length) nextIndex = 0;
-    if (nextIndex < 0) nextIndex = slides.length - 1;
-
-    // Активируем новый слайд
-    slides[nextIndex].classList.add('active');
-    
-    // Обновляем счетчик (бадж)
-    if (badge) {
-        badge.innerText = (nextIndex + 1) + ' / ' + slides.length;
     }
-}
 </script>
-
 {% endblock main %}

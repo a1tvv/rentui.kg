@@ -66,10 +66,9 @@
 
             <div class="main-left">
                 
-                <h1 class='main-desc'> Rent Ui - Ваш надежный проводник в мире недвижимости Кыргызстана.</h1>
+                <h1 class='main-desc'> Аренда домов в Бишкеке.</h1>
                 <p>
-                    Аренда и продажа проверенных объектов в Бишкеке, Оше и по всей стране.
-                    Мы объединяем владельцев и арендаторов на одной платформе для прозрачных сделок.
+                    Rent Ui - Ваш надежный проводник в мире недвижимости Бишкека.
                 </p>
 
                 <a href="{% url 'about'%}" class='main-btn-1'>Узнать больше</a>
@@ -101,7 +100,7 @@
 
     </main>
 
-{% comment %} Reiews {% endcomment %}
+            {% comment %} Reiews {% endcomment %}
 
     <section class="reviews">
 
@@ -137,9 +136,11 @@
                         <div class="reviews-text">
 
                             <h2>Отличный сайт!</h2>
-                            <p>Очень крутой сервис!
+                            <p>
+                                Очень крутой сервис!
                                Нашли подходящий вариант буквально за пару дней. Всё чётко, профессионально и, главное, без нервов. 
-                               Спасибо!</p>
+                               Спасибо!
+                            </p>
 
                         </div>
 
@@ -244,22 +245,19 @@
                 </div>
 
                 <nav class="footer-nav">
-                    <div class="nav-column">
-                        <a href="{% url 'home' %}">Главная</a>
-                        <a href="{% url 'home' %}#hero">Главная страница</a>
-                    </div>
+
                     <div class="nav-column">
 
                         <a href="{% url 'about' %}#">О нас</a>
-
-                        <a href="https://www.instagram.com/fidea.312/" target="_blank">
-                            Наша команда
-                        </a>
+                        <a href="{% url 'home' %}">Главная</a>
 
                     </div>
                     <div class="nav-column">
                         <a href="{% url 'properties' %}">Объявления</a>
-                        <a href="#">Наши клиенты</a>
+                        
+                        <a href="https://www.instagram.com/fidea.312/" target="_blank">
+                            Наша команда
+                        </a>
                     </div>
                     <div class="nav-column">
                         <a href="{% url 'contacts' %}">Связаться с нами</a>

@@ -30,6 +30,11 @@
 	--grey-60: #999;
 }
 
+::selection{
+    background-color: #703bf7;
+    color: #1a1a1a;
+}
+
 a{
     text-decoration: none;
 }
@@ -46,7 +51,7 @@ header {
 
 header a.active {
     color: var(--purple-60) !important;
-    background-color: rgba(112, 59, 247, 0.1); /* Легкий фиолетовый фон */
+    background-color: rgba(112, 59, 247, 0.1);
     font-weight: 600;
 }
 
@@ -61,7 +66,7 @@ header a.active {
 
 .header-left{
     display: flex;
-    align-items: center; /* Это выровняет картинку и текст по вертикальной оси */
+    align-items: center;
     gap: 12px;
 }
 
@@ -86,7 +91,7 @@ header a {
 
 
 header a:hover{
-    color: #a685fa;
+    color: #703bf7;
     transform: scale(1.02);
 }
 
@@ -94,7 +99,6 @@ header a:hover{
     background-color: #252525;
     padding: 14px 24px;
 }
-
 
 
 
@@ -272,11 +276,10 @@ main{
     margin: 20px 0;
 }
 
-/* 1. Делаем контейнер профиля флексбоксом, чтобы фото и текст были в ряд */
 .reviews-profile {
     display: flex;
-    align-items: center; /* Центрируем аватарку и текст по вертикали */
-    gap: 12px;           /* Расстояние между фото и текстом */
+    align-items: center;
+    gap: 12px;
 }
 
 .reviews-profile img {
@@ -292,7 +295,7 @@ main{
     justify-content: center;
 }
 
-/* 4. Сбрасываем лишние отступы у заголовков внутри профиля */
+
 .reviews-profile-text h2 {
     margin: 0;
     font-size: 18px;
@@ -336,7 +339,7 @@ footer .logo img{
     padding: 0 20px;
 }
 
-/* Верхняя часть: Лого + Навигация */
+
 .footer-top {
     display: flex;
     justify-content: space-between;
@@ -345,7 +348,7 @@ footer .logo img{
     margin-bottom: 50px;
 }
 
-/* Блок бренда и подписки */
+
 .footer-brand {
     flex: 0 1 300px;
 }
@@ -420,20 +423,18 @@ footer .logo img{
 
 
 
-/* Обновляем нижнюю часть */
 .footer-bottom {
     display: flex;
-    justify-content: space-between; /* Расталкивает блоки в разные стороны */
+    justify-content: space-between;
     align-items: center;
-    width: 100%; /* Занимает всю ширину контейнера */
+    width: 100%;
     padding: 20px 0;
-    flex-direction: column-reverse; /* Соцсети сверху, копирайт снизу */
+    flex-direction: column-reverse;
     gap: 25px;
     padding-top: 30px;
     border-top: 1px solid #f4f0fe;
 }
 
-/* Блок с текстом слева */
 .footer-info {
     display: flex;
     gap: 20px;
@@ -450,14 +451,13 @@ footer .logo img{
     margin-top: 40px;
 }
 
-/* Блок с иконками справа */
+
 .social-links {
     display: flex;
     gap: 10px;
-    justify-content: flex-end; /* Дополнительная страховка */
+    justify-content: flex-end;
 }
 
-/* Стили для самих иконок (чтобы они были круглыми, как на макете) */
 .social-links a {
     display: flex;
     align-items: center;
@@ -478,9 +478,6 @@ footer .logo img{
 }
 
 
-/* ----------------------------------------- */
-
-/* ----------------------------------------- */
 /* --- ОБЩИЙ АДАПТИВ (Планшеты и Телефоны) --- */
 
 
@@ -517,6 +514,11 @@ footer .logo img{
     header a {
         margin: 5px !important;
         font-size: 14px;
+    }
+
+    .header-right a{
+        padding: 20px 80px;
+        border: 1px solid #703bf7;
     }
 
     /* 3. Герой-секция (Main) */

@@ -41,12 +41,16 @@ a{
 
 body{
     background-color: #1a1a1a;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 header {
     width: 100%;
     padding: 20px 0; 
     margin-bottom: 100px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 header a.active {
@@ -58,10 +62,11 @@ header a.active {
 .container {
     max-width: 1200px; 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .header-left{
@@ -81,25 +86,46 @@ header a.active {
 }
 
 header a {
-    margin: 0 15px; 
+    margin: 0 8px; 
     color: white;
     border-radius: 12px;
     display: inline-block;
+    font-size: 20px;
 
     transition: all 0.3s ease;
 }
 
-
 header a:hover{
     color: #703bf7;
-    transform: scale(1.02);
 }
 
 .header-right a{
-    background-color: #252525;
-    padding: 14px 24px;
+    border: 1px solid #703bf7;
+    padding: 10px 28px;
 }
 
+.parallax-section {
+    /* Ссылка на картинку (укажи правильный путь) */
+    background-image: url('../img/headerbg.png'); 
+
+    /* Основной эффект параллакса */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Высота блока. Настрой под себя (например, 500px или 100vh на весь экран) */
+    width: 100%;
+    height: 800px;
+    margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+    .parallax-section {
+        background-attachment: scroll;
+        height: 300px;
+    }
+}
 
 
 
@@ -239,7 +265,6 @@ main{
     color: #999999;
 }
 
-
 .reviews-bottom{
     display: flex;
 }
@@ -254,7 +279,7 @@ main{
     border: 1px solid #262626;
     border-radius: 12px;
     margin-right: 30px;
-    padding: 60px;
+    padding: 20px;
 }
 
 .reviews-item:last-of-type{
@@ -321,6 +346,7 @@ main{
     color: white;
     padding: 80px 0 40px 0;
     font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
 }
 
 footer .logo img{
@@ -346,11 +372,12 @@ footer .logo img{
     align-items: flex-start;
     gap: 60px;
     margin-bottom: 50px;
+    position: relative;
 }
 
 
 .footer-brand {
-    flex: 0 1 300px;
+    flex: 0 0 200px;
 }
 
 .footer-brand .logo {
@@ -396,7 +423,6 @@ footer .logo img{
 /* Навигация */
 .footer-nav {
     display: flex;
-    flex: 1;
     justify-content: space-between;
     gap: 100px;
 }
@@ -466,6 +492,7 @@ footer .logo img{
     height: 40px;
     border-radius: 50%;
     color: var(--gray-30);
+    font-size: 20px;
 }
 
 .social-links a{
@@ -531,13 +558,21 @@ footer .logo img{
         padding: 0;
     }
 
+    .main-right {
+        display: flex !important;
+        flex-direction: column;
+        gap: 15px;
+        
+        margin-top: 50px; 
+        
+        width: 100%;
+        align-items: center;
+    }
+
     .main-desc {
         font-size: 28px;
     }
 
-    .main-right {
-        display: none !important; /* Убираем картинку, если она мешает */
-    }
 
     .main-btn-2 {
         margin-left: 0 !important;

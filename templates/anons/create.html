@@ -4,9 +4,11 @@
 {% block title %} <title>Создать объявление</title> {% endblock title %}
 
 {% block main %}
+
 <link rel="stylesheet" href="{% static 'css/create.css' %}">
 
 <main class="create-page-wrapper">
+
     <section class="create-section">
         <div class="create-container">
             <h2>{% if edit_mode %}Редактировать{% else %}Новое{% endif %} объявление</h2>

@@ -53,11 +53,13 @@
                 {% endif %}
             </div>
 
-            </div>
+        </div>
 
     </header>
 
     {% block main %}
+
+    <section class="parallax-section"></section>
 
     <main class='hero' id='hero'>
 
@@ -73,26 +75,23 @@
                 <a href="{% url 'about'%}" class='main-btn-1'>Узнать больше</a>
                 <a href="{% url 'properties' %}" class='main-btn-2'>Посмотреть объявлнеия</a>
 
-                <div class="main-stat">
+            </div>
+
+            <div class="main-right">
 
                     <div class="main-stat-1">
-                        <h1>100%</h1>
-                        <h2>Проверенные объекты</h2>
+                        <h2>100% Проверенные объекты</h2>
                     </div>
 
                     <div class="main-stat-2">
-                        <h1>Новые</h1>
-                        <h2>Объекты каждый день</h2>
+                        <h2>Новые объявления каждый день</h2>
                     </div>
 
                     <div class="main-stat-3">
-                        <h1>Премиум</h1>
-                        <h2>Выбор объектов</h2>
+                        <h2>Премиум выбор объявлений</h2>
                     </div>
 
                 </div>
-
-            </div>
 
         </div>
 
@@ -110,7 +109,7 @@
                 <div class="reviews-top-desc">
 
                     <h1>Что говорят наши клиенты</h1>
-                    <p>Посмотрите реальные истории тех, кто уже нашел жилье через наш сервис. 
+                    <p>Посмотрите реальные истории тех, кто уже нашел жилье через наш сервис.
                        Узнайте, почему Rent Ui выбирают для поиска идеального дома в аренду.</p>
 
                 </div>
@@ -246,22 +245,27 @@
                 <nav class="footer-nav">
 
                     <div class="nav-column">
-
                         <a href="{% url 'about' %}#">О нас</a>
                         <a href="{% url 'home' %}">Главная</a>
-
                     </div>
+
                     <div class="nav-column">
-                        <a href="{% url 'properties' %}">Объявления</a>
-                        
+                        <a href="{% url 'home' %}">Преимущества</a>
                         <a href="https://www.instagram.com/fidea.312/" target="_blank">
                             Наша команда
                         </a>
                     </div>
+
                     <div class="nav-column">
                         <a href="{% url 'contacts' %}">Связаться с нами</a>
                         <a href="{%url 'contacts'%}#register">Контакты</a>
                     </div>
+
+                    <div class="nav-column">
+                        <a href="{% url 'properties' %}">Арендовать жилье</a>
+                        <a href="{%url 'properties'%}">Сдать в аренду жилье</a>
+                    </div>
+
                 </nav>
             </div>
 

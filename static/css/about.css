@@ -102,6 +102,9 @@ main {
 /*                              Values                                 */
 /* ------------------------------------------------------------------- */
 
+.values{
+    margin-bottom: 100px;
+}
 
 .values-container {
     display: flex;

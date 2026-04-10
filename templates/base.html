@@ -35,19 +35,19 @@
 
                 <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">О нас</a>
 
-                <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
-
                 {% if user.is_authenticated %}
-                    <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">Сервис</a>
+                <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
                 {% else %}
-                    <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Сервис</a>
+                    <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Объявления</a>
                 {% endif %}
-
+            
+                <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">Контакты</a>
+                
             </div>
 
             <div class="header-right">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'create'%}">Создать</a>
+                    <a href="{% url 'create'%}">Создать объявление</a>
                     {% else%}
                     <a href="{% url 'sign-up'%}">Авторизоваться</a>
                 {% endif %}
@@ -59,7 +59,9 @@
 
     {% block main %}
 
-    <section class="parallax-section"></section>
+    <section class="parallax-section">
+        <h1 class="glass-text">Rent Ui</h1>
+    </section>
 
     <main class='hero' id='hero'>
 
@@ -69,7 +71,10 @@
                 
                 <h1 class='main-desc'> Аренда домов в Бишкеке.</h1>
                 <p>
-                    Rent Ui - Ваш надежный проводник в мире недвижимости Бишкека.
+                    Rent Ui — инновационная платформа для аренды жилья. <br> 
+                    Мы автоматизировали процесс проверки объявлений, чтобы вы могли <br> 
+                    сосредоточиться на выборе комфортного дома, а не на проверке документов. 
+                    <br> Наша цель — сделать рынок аренды в Кыргызстане открытым и безопасным.
                 </p>
 
                 <a href="{% url 'about'%}" class='main-btn-1'>Узнать больше</a>
@@ -123,12 +128,14 @@
 
                     <div class="reviews-item">
 
-                        <div class="reviews-stars">
-                            <img src="{% static 'img/stars.png' %}" alt="">
-                            <img src="{% static 'img/stars.png' %}" alt="">
-                            <img src="{% static 'img/stars.png' %}" alt="">
-                            <img src="{% static 'img/stars.png' %}" alt="">
-                            <img src="{% static 'img/stars.png' %}" alt="">
+                        <div class="reviews-profile">
+
+                            <img src="{% static 'img/Profile.png' %}" alt="">
+                            <div class="reviews-profile-text">
+                                <h2>Домердиев Альберт</h2>
+                                <p>Кыргызстан, Баткен</p>
+                            </div>
+
                         </div>
 
                         <div class="reviews-text">
@@ -142,20 +149,6 @@
 
                         </div>
 
-                        <div class="reviews-profile">
-
-                            <img src="{% static 'img/Profile.png' %}" alt="">
-                            <div class="reviews-profile-text">
-                                <h2>Домердиев Альберт</h2>
-                                <p>Кыргызстан, Баткен</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="reviews-item">
-
                         <div class="reviews-stars">
                             <img src="{% static 'img/stars.png' %}" alt="">
                             <img src="{% static 'img/stars.png' %}" alt="">
@@ -164,14 +157,9 @@
                             <img src="{% static 'img/stars.png' %}" alt="">
                         </div>
 
-                        <div class="reviews-text">
+                    </div>
 
-                            <h2>Проверенный и надежный</h2>
-                            <p>Отличный сервис! 
-                               Сдали жилье выгодно и без лишней волокиты.
-                               Если цените свое время и нервы - вам точно сюда.</p>
-
-                        </div>
+                    <div class="reviews-item">
 
                         <div class="reviews-profile">
 
@@ -183,9 +171,14 @@
 
                         </div>
 
-                    </div>
+                        <div class="reviews-text">
 
-                    <div class="reviews-item">
+                            <h2>Проверенный и надежный</h2>
+                            <p>Отличный сервис! 
+                               Сдали жилье выгодно и без лишней волокиты.
+                               Если цените свое время и нервы - вам точно сюда.</p>
+
+                        </div>
 
                         <div class="reviews-stars">
                             <img src="{% static 'img/stars.png' %}" alt="">
@@ -193,6 +186,20 @@
                             <img src="{% static 'img/stars.png' %}" alt="">
                             <img src="{% static 'img/stars.png' %}" alt="">
                             <img src="{% static 'img/stars.png' %}" alt="">
+                        </div>
+
+                    </div>
+
+                    <div class="reviews-item">
+
+                        <div class="reviews-profile">
+
+                            <img src="{% static 'img/Profile.png' %}" alt="">
+                            <div class="reviews-profile-text">
+                                <h2>Коркоев Мирлан</h2>
+                                <p>Кыргызстан, Ош</p>
+                            </div>
+
                         </div>
 
                         <div class="reviews-text">
@@ -206,14 +213,12 @@
 
                         </div>
 
-                        <div class="reviews-profile">
-
-                            <img src="{% static 'img/Profile.png' %}" alt="">
-                            <div class="reviews-profile-text">
-                                <h2>Коркоев Мирлан</h2>
-                                <p>Кыргызстан, Ош</p>
-                            </div>
-
+                        <div class="reviews-stars">
+                            <img src="{% static 'img/stars.png' %}" alt="">
+                            <img src="{% static 'img/stars.png' %}" alt="">
+                            <img src="{% static 'img/stars.png' %}" alt="">
+                            <img src="{% static 'img/stars.png' %}" alt="">
+                            <img src="{% static 'img/stars.png' %}" alt="">
                         </div>
 
                     </div>

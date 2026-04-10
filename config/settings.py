@@ -20,9 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-73y4!-fk_6x$66y2n38ce9k%14n=k#rf7_h*!iq0g+y+wlx3s7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-# Разрешаем все поддомены vercel и локалку
+
 ALLOWED_HOSTS = ['rentuikg.vercel.app', '*']
 
 
@@ -79,7 +79,6 @@ DATABASES = {
         conn_max_age=600
     )
 }
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 

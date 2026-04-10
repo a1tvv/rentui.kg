@@ -135,3 +135,29 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* Контейнер для превью */
+.preview-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Ограничиваем саму картинку */
+.preview-img, .old-img {
+    width: 150px;       /* Фиксированная ширина */
+    height: 150px;      /* Фиксированная высота */
+    object-fit: cover;  /* Чтобы фото не сплющивалось, а обрезалось */
+    border-radius: 8px;
+    border: 2px solid #703bf7;
+}
+
+/* Стили для контейнера уже загруженных фото */
+.image-preview-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto; /* Если фото много, можно будет скроллить вбок */
+    padding-bottom: 5px;
+}

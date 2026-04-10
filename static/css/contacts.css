@@ -32,12 +32,16 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    /* Меняет цвет текста на белый */
     -webkit-text-fill-color: #ffffff;
-    /* Убирает стандартный фон браузера и заменяет его на ваш #262626 */
     box-shadow: 0 0 0px 1000px #262626 inset;
-    /* Плавный переход для цвета (чтобы не моргало) */
     transition: background-color 5000s ease-in-out 0s;
+}
+
+main, .hero-section, .contact-form-section, .register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .hero-section {
@@ -111,6 +115,11 @@ select:-webkit-autofill:focus {
     justify-content: center;
 }
 
+.fa-instagram{
+    font-size: 40px;
+    color: #6c5ce7;
+}
+
 .arrow {
     position: absolute;
     top: 15px;
@@ -123,8 +132,9 @@ select:-webkit-autofill:focus {
 /* -------------------------------------------------------- */
 /* -------------------------------------------------------- */
 
-.register{
-    margin-bottom: 100px;
+.register {
+    padding: 80px 0; /* Равномерные отступы сверху и снизу секции */
+    margin-bottom: 0; /* Убираем тот самый margin */
 }
 
 .register-h1 h1{
@@ -139,6 +149,7 @@ select:-webkit-autofill:focus {
     font-size: 18px;
     line-height: 150%;
     color: var(--grey-60);
+    margin-bottom: 40px;
 }
 
 .register-h1{
@@ -149,6 +160,7 @@ select:-webkit-autofill:focus {
     border: 1px #999 solid;
     border-radius: 12px;
     padding: 40px;
+    margin-bottom: 50px;
 }
 
 .contact-form-section {
@@ -172,6 +184,7 @@ select:-webkit-autofill:focus {
 }
 
 .form-group {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -208,6 +221,7 @@ select:-webkit-autofill:focus {
     justify-content: space-between;
     align-items: center;
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .checkbox-group {

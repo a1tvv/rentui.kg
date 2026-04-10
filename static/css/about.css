@@ -1,273 +1,278 @@
-*{
+/* ========== ГЛОБАЛЬНЫЕ СТИЛИ ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Чтобы паддинги не раздували ширину блоков */
     color: #fff;
 }
 
 :root {
-	--absolute-white: #fff;
-	--absolute-black: #000;
-	--purple-60: #703bf7;
-	--purple-65: #8254f8;
-	--purple-70: #946cf9;
-	--purple-75: #a685fa;
-	--purple-90: #dbcefd;
-	--purple-95: #ede7fe;
-	--purple-97: #f4f0fe;
-	--purple-99: #fbfaff;
-	--white-90: #e4e4e7;
-	--white-95: #f1f1f3;
-	--white-97: #f7f7f8;
-	--white-99: #fcfcfd;
-	--grey-08: #141414;
-	--grey-10: #1a1a1a;
-	--grey-15: #262626;
-	--grey-20: #333;
-	--grey-30: #4d4d4d;
-	--grey-40: #666;
-	--grey-50: #808080;
-	--grey-60: #999;
+    --absolute-white: #fff;
+    --grey-08: #141414;
+    --grey-10: #1a1a1a;
+    --grey-15: #262626;
+    --grey-60: #999;
+    --purple-60: #703bf7;
 }
 
-body{
+body {
     background: var(--grey-08);
+    font-family: sans-serif; /* Или твой шрифт */
 }
 
+/* ========== ГЛАВНЫЙ КОНТЕЙНЕР (СЕТКА) ========== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* ========== MAIN SECTION (Наше путешествие) ========== */
 main {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.main-flex {
     display: flex;
-    flex-direction: row; /* На компьютерах в ряд */
-    justify-content: center;
-    align-items: flex-start;
-    max-width: 1200px; /* Ограничиваем ширину, чтобы не разъезжалось */
-    margin: 0 auto;    /* Центрируем сам контейнер main */
-    padding: 0 20px;   /* Отступы по бокам, чтобы текст не лип к краям экрана */
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
 }
 
-.main-about-left{
+.main-about-left {
     flex: 1;
-    padding-right: 50px;
 }
 
-.main-about-left h1{
+.main-about-left h1 {
     margin-bottom: 14px;
     font-weight: 600;
     font-size: 48px;
-    line-height: 150%;
+    line-height: 1.2;
     color: #d5d5d5;
 }
 
-.main-about-left p{
-    font-weight: 500;
+.main-about-left p {
     font-size: 18px;
-    line-height: 150%;
+    line-height: 1.5;
     color: #d5d5d5;
     margin-bottom: 40px;
 }
 
-.main-about-right{
+.main-about-content {
+    display: flex;
+    gap: 20px;
+}
+
+.main-about-item {
+    border: #d5d5d5 1px solid;
+    border-radius: 12px;
+    padding: 15px 24px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.main-about-item:hover {
+    transform: scale(1.01);
+    background-color: #262626;
+}
+
+.main-about-right {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
 
-.main-about-content{
-    display: flex;
+.main-about-right img {
+    max-width: 100%;
+    height: auto;
 }
 
-.main-about-item{
-    margin-right: 20px;
-    border: #d5d5d5 1px solid;
-    border-radius: 12px;
-    padding: 7px 24px;
+/* ========== HERO SECTION (Услуги) ========== */
+.hero-section {
+    padding: 80px 0;
+}
 
+.hero-text {
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--grey-15);
+    padding-bottom: 40px;
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: var(--grey-60);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+}
+
+.service-card {
+    background: var(--grey-10);
+    border: 1px solid var(--grey-15);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    text-align: center;
     transition: all 0.4s ease;
 }
 
-.main-about-item:hover{
-    transform: scale(1.02);
-    background-color: #4d4d4d;
+.service-card:nth-child(3) {
+    grid-column: 1 / span 2;
 }
 
-.main-about-item p{
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 150%;
-    color: #999;
+.service-card a {
+    text-decoration: none;
 }
 
-.main-about-item:last-of-type{
-    margin-right: 0;
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--purple-60);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px var(--grey-10), 0 0 0 5px rgba(112, 59, 247, 0.2);
 }
 
+.arrow {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    opacity: 0.5;
+}
 
-/* ------------------------------------------------------------------- */
-/*                              Values                                 */
-/* ------------------------------------------------------------------- */
-
-.values{
-    margin-bottom: 100px;
+/* ========== VALUES SECTION (Ценности) ========== */
+.values {
+    padding: 80px 0;
 }
 
 .values-container {
     display: flex;
-    justify-content: space-between; /* Расталкивает текст влево, а сетку вправо */
-    align-items: flex-start;
-    gap: 40px;                      /* Минимальный зазор между ними */
-    padding: 80px 0;                /* Вертикальные отступы для дыхания секции */
-    width: 100%;
+    justify-content: space-between;
+    gap: 60px;
 }
 
 .values-left {
-    flex: 0 1 400px;  /* Не дает тексту раздуваться шире 400px */
-    margin: 0;        /* Убираем все старые маржины, которые мешали */
-    text-align: left;
+    flex: 0 0 400px;
 }
 
-.values-left h1{
-    font-weight: 600;
+.values-left h1 {
     font-size: 48px;
-    line-height: 150%;
-    color: var(--absolute-white);
-    margin-bottom: 14px;
-}
-
-.values-left p{
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 150%;
-    color: var(--grey-60);
+    margin-bottom: 20px;
 }
 
 .values-right {
-    flex: 1;          /* Занимает всё оставшееся пространство справа */
-    max-width: 800px; /* Чтобы сетка не становилась слишком гигантской на больших мониторах */
-    background: #1A1A1A;
-    border: 1px solid #262626;
+    flex: 1;
+    background: var(--grey-10);
+    border: 1px solid var(--grey-15);
     border-radius: 12px;
-    padding: 40px;
-    /* Убираем автоматические отступы, если они были */
 }
 
-/* Сетка 2 колонки и 2 строки */
 .values-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0; /* Управляем линиями через border */
 }
 
 .values-grid-item {
-    padding: 30px;
-    border-bottom: 1px solid #262626;
+    padding: 40px;
+    border-bottom: 1px solid var(--grey-15);
 }
 
-/* Убираем нижнюю границу у последнего ряда */
-.values-grid-item:nth-child(3),
-.values-grid-item:nth-child(4) {
+.values-grid-item:nth-child(odd) {
+    border-right: 1px solid var(--grey-15);
+}
+
+.values-grid-item:nth-last-child(-n+2) {
     border-bottom: none;
 }
 
-/* Вертикальная линия */
-.values-grid-item:nth-child(odd) {
-    border-right: 1px solid #262626;
+/* ========== INFO SECTION (Решения) ========== */
+/* 
+.info {
+    padding-bottom: 100px;
 }
 
-/* Стили элементов внутри карточки */
-.values-item-header {
+.info-flex {
     display: flex;
-    align-items: center;
-    margin-bottom: 26px;
+    gap: 60px;
 }
 
-.values-item-header h2{
-    margin-left: 10px;
+.info-left {
+    flex: 0 0 400px;
 }
 
-.icon-circle {
-    width: 48px;
-    height: 48px;
-    border: 1px solid #703BF7; /* Фиолетовый круг */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;
+.info-left h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
-.values-item-header h2 {
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
+
+.info-bottom a {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: var(--grey-08);
+    border: 1px solid var(--grey-15);
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 20px;
 }
 
-.values-grid-item p {
-    color: #999999;
-    font-size: 16px;
-    line-height: 1.5;
+.info-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-/* ----------------------------- */
+.info-card {
+    background: var(--grey-10);
+    border: 1px solid var(--grey-15);
+    border-radius: 12px;
+    padding: 30px;
+} */
 
-@media (max-width: 768px) {
-    .main-about-right {
-        display: none !important;
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+    .main-flex, .values-container, .info-flex {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
     
-    main {
-        flex-direction: column; /* Элементы встают в столбик */
-        align-items: center;    /* Центрируем содержимое */
-        text-align: center;
-    }
-
-    .main-about-left {
-        padding-right: 0;      /* Убираем правый паддинг, который толкает текст влево */
-        margin-bottom: 30px;
+    .values-left, .info-left {
+        flex: none;
         width: 100%;
     }
 
-    .main-about-left h1 {
-        font-size: 28px !important;
-        margin-top: 40px;
+    .main-about-right {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid, .values-grid, .info-right {
+        grid-template-columns: 1fr;
     }
 
-    .main-about-content {
-        flex-direction: column; /* Статистика (200+, 10k+) в столбик */
-        gap: 15px;
-    }
-
-    .main-about-item {
-        margin-right: 0 !important;
-        width: 100%;
-    }
-
-    /* 4. Секция Our Values (Левая часть с заголовком) */
-    .values-left {
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 30px;
-        text-align: center;
-    }
-
-    .values-left h1 {
-        font-size: 28px !important;
-    }
-
-    /* 5. ПЕРЕВОДИМ СЕТКУ В 1 КОЛОНКУ (Values Grid) */
-    .values-right {
-        padding: 10px !important;
-        margin-bottom: 40px;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr !important; /* Было 2, стало 1 */
+    .values-grid-item:nth-child(odd) {
+        border-right: none;
     }
 
     .values-grid-item {
-        border-right: none !important; /* Убираем вертикальную разделительную линию */
-        border-bottom: 1px solid #262626 !important; /* Добавляем горизонтальную всем */
-        padding: 30px 15px !important;
-    }
-
-    .values-grid-item:last-child {
-        border-bottom: none !important; /* У последней карточки линию убираем */
+        border-bottom: 1px solid var(--grey-15);
     }
 }

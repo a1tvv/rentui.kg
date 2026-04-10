@@ -34,6 +34,7 @@ def user_login(request):
         form = AuthenticationForm()
     return render(request, 'anons/login.html', {'form': form})
 
+
 def user_logout(request):
     logout(request)
     messages.success(request, "Вы вышли из аккаунта")

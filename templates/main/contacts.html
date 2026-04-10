@@ -40,15 +40,13 @@
                 </a>
             </div>
 
-            {% comment %} <div class="service-card">
-                <a href="">
-
-                <div class="icon-box"><img src="{% static 'img/location.png' %}" alt=""></div>
-                <p>Main Headquarters</p>
-                <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
-
+            <div class="service-card">
+                <a href="https://www.instagram.com/rent.ui/">
+                    <div class="icon-box"> <i class="fa-brands fa-instagram"></i>  </div>
+                    <p>Instagram</p>
+                    <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
                 </a>
-            </div> {% endcomment %}
+            </div>
 
 
         </div>
@@ -56,7 +54,7 @@
 </main>
 
 
-{% comment %} <section class="register" id='register'>
+<section class="register" id='register'>
 
     <div class="container">
 
@@ -78,7 +76,7 @@
                 background: url("{% static 'img/forms-bg.jpg' %}") no-repeat center center fixed;
                 background-size: cover;
             }
-        </style> 
+        </style>  {% endcomment %}
 
         <form action="{% url 'contacts' %}" method="post" class="contact-form">
             {% csrf_token %} <div class="form-grid">
@@ -139,6 +137,6 @@
 
     </div>
 
-</section> {% endcomment %}
+</section>
 
 {% endblock main %}

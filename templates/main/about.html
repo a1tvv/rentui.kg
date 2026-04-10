@@ -9,9 +9,56 @@
 
 {% block main %}
 
+<section class="hero-section">
+    
+    <div class="container">
+        <div class="hero-text">
+            <h1>Выходим на новый уровень в поиске жилья в аренду</h1>
+            <p>Добро пожаловать в Rentui. 
+               Здесь ваши планы по недвижимости встречаются с экспертной поддержкой.
+               Изучите наши услуги, созданные для того, чтобы решить любой ваш вопрос — от поиска квартиры до управления объектами.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <a href="{% url 'properties' %}">
+
+                    <div class="icon-box"><img src="{% static 'img/service3.png' %}" alt=""></div>
+                    <p>Найти дом мечты</p>
+                    <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="{% url 'about' %}">
+
+                <div class="icon-box"><img src="{% static 'img/service1.png' %}" alt=""></div>
+                <p>Оценить недвижимость</p>
+                <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+            <div class="service-card">
+                <a href="https://www.instagram.com/fidea.312/">
+
+                <div class="icon-box"><img src="{% static 'img/service.png' %}" alt=""></div>
+                <p>Управление объектами</p>
+                <img class="arrow" src="{% static 'img/arrow.png' %}" alt="">
+
+                </a>
+            </div>
+
+
+
+        </div>
+    </div>
+</section>
+
 <main>
 
-    <div class="container">
+    <div class="container main-flex">
         
         <div class="main-about-left">
             <h1>Наше путешествие</h1>
@@ -28,23 +75,20 @@
                     <p>Проверенные объекты</p>
                 </a>
                 <a href="{% url 'properties' %}" class="main-about-item">
-                    <h2>Новые</h2>
-                    <p>Объекты каждый день</p>
+                    <h2>10</h2>
+                    <p>Подписчиков в Instagram</p>
                 </a>
-                <a href="{% url 'properties' %}" class="main-about-item">
-                    <h2>Премиум</h2>
-                    <p>Выбор объектов</p>
-                </a>
+
             </div>
         </div>
-
+        
         <div class="main-about-right">
             <img src="{% static 'img/main-about.png' %}" alt="About Us">
         </div>
-
     </div>
 
 </main>
+
 
 <section class="values">
     <div class="container values-container">
@@ -94,5 +138,83 @@
 
     </div>
 </section>
+
+{% comment %} 
+<section class="info">
+
+    <div class="container">
+
+        <div class="info-left">
+
+            <h1>Умные и взвешенные решения</h1>
+            <p>Создание портфеля недвижимости требует стратегии.
+            Наши консультации помогут вам инвестировать с умом и не упускать выгоду.</p>
+            
+
+        </div>
+
+        <div class="info-right">
+
+            <div class="info-right-top">
+
+
+                    <div class="info-card">
+
+                        <div>
+                            <img src="{% static 'img/stats.png' %}">
+                            <h2>Анализ рынка</h2>
+                        </div>
+
+                        <p>Будьте на шаг впереди трендов. Мы проводим глубокий анализ рынка, чтобы вы знали реальную ситуацию в сфере недвижимости.</p>
+
+                    </div>
+
+
+                    <div class="info-card">
+                        <div>
+                            <img src="{% static 'img/stats.png' %}" alt="LinkedIn">
+                            <h2>Оценка рисков</h2>
+                        </div>
+
+                        <p>Помогаем предусмотреть всё.
+                        Анализируем юридические и финансовые нюансы перед каждой важной сделкой.</p>
+
+                    </div>
+
+            </div>
+
+
+
+            <div class="info-right-bottom">
+
+                    <div class="info-card">
+                        
+                        <div>
+                            <img src="{% static 'img/stats.png' %}" alt="LinkedIn">
+                            <h2>Тренды цен</h2>
+                        </div>
+
+                        <p>Мы отслеживаем динамику цен, чтобы вы арендовали на минимуме, и получали кайф по максимуму.</p>
+
+                    </div>
+
+
+                    <div class="info-card">
+                        <div>
+                            <img src="{% static 'img/stats.png' %}" alt="LinkedIn">
+                            <h2>Стратегия роста</h2>
+                        </div>
+                        <p>Составляем план развития ваших объектов, чтобы со временем их стоимость и доходность только росли.</p>
+
+                    </div>
+        
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</section> {% endcomment %}
 
 {% endblock main %}

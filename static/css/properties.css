@@ -288,12 +288,11 @@ a { text-decoration: none; }
 }
 
 .btn-edit {
-    background: #262626;
+    background: #703BF7;
     color: white;
-    border: 1px solid #333;
 }
 
-.btn-edit:hover { background: #333; color: var(--accent-light); }
+.btn-edit:hover { background: #703BF7; }
 
 .form-del { flex: 1; display: flex; }
 .btn-del {

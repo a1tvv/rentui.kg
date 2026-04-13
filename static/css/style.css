@@ -173,6 +173,10 @@ main{
     color: #cdcdcd;
 }
 
+.main-left{
+    max-width: 600px;
+}
+
 .main-left p{
     margin-top: 24px;
     font-size: 18px;

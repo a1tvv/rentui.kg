@@ -50,13 +50,12 @@ main {
     font-weight: 600;
     font-size: 48px;
     line-height: 1.2;
-    color: #d5d5d5;
 }
 
 .main-about-left p {
     font-size: 18px;
     line-height: 1.5;
-    color: #d5d5d5;
+    color: #5d5d5d;
     margin-bottom: 40px;
 }
 
@@ -172,6 +171,11 @@ main {
 .values-left h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    line-height: 50px;
+}
+
+.values-left p, .values-right p{
+    color: #5d5d5d;
 }
 
 .values-right {
@@ -179,6 +183,12 @@ main {
     background: var(--grey-10);
     border: 1px solid var(--grey-15);
     border-radius: 12px;
+}
+
+.values-right h2{
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
 .values-grid {

@@ -25,7 +25,7 @@
             <form action="{% url 'properties' %}" method="GET" class="search-main">
                 <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search }}">
                 
-                <div class="search-location-wrapper">
+                {% comment %} <div class="search-location-wrapper">
                     <span class="location-icon">📍</span>
                     <select name="location" class="search-location-select">
                         <option value="">Все города</option>
@@ -39,7 +39,7 @@
                         <option value="Баткен" {% if request.GET.location == 'Баткен' %}selected{% endif %}>Баткен</option>
                         <option value="Кызыл-Кия" {% if request.GET.location == 'Кызыл-Кия' %}selected{% endif %}>Кызыл-Кия</option>
                     </select>
-                </div>
+                </div> {% endcomment %}
                 
                 <button type="submit" class="btn-search">
                     <span class="icon-search">🔍</span> Поиск

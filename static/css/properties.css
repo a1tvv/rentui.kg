@@ -67,85 +67,84 @@ a { text-decoration: none; }
     transition: 0.3s;
 }
 
-.filters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 12px;
-    background: #111;
-    padding: 12px;
-    border-radius: 10px;
-}
-
-.filter-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    border-radius: 8px;
+/* Основная форма */
+.search-main {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    background: #1a1a1a; /* Темный фон как на фото */
+    border-radius: 12px;
+    padding: 5px;
+    border: 1px solid #333;
+    gap: 10px;
 }
 
-.filter-item select {
+/* Поле ввода */
+.search-input {
+    flex: 1;
     background: transparent;
-    color: white;
     border: none;
-    width: 100%;
-    font-size: 13px;
+    color: white;
+    padding: 10px 15px;
+    outline: none;
+    font-size: 16px;
 }
 
+/* Контейнер для селекта */
+.search-location-wrapper {
+    display: flex;
+    align-items: center;
+    border-left: 1px solid #333; /* Разделитель между поиском и городом */
+    padding-left: 15px;
+    position: relative;
+}
 
+.location-icon {
+    margin-right: 8px;
+}
 
-/* Стилизация выпадающего списка для темной темы */
-.filter-item select {
-    background: var(--card-bg);
-    color: var(--white);
-    border: 1px solid var(--border-color);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 14px;
+/* Сам выпадающий список */
+.search-location-select {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
     outline: none;
-    transition: all 0.3s ease;
+    appearance: none; /* Убираем стандартную стрелку */
+    padding-right: 25px;
 }
 
-.filter-item select:hover {
-    border-color: var(--accent-purple);
+/* Кастомная стрелочка для селекта */
+.search-location-wrapper::after {
+    content: '▼';
+    font-size: 10px;
+    color: #888;
+    position: absolute;
+    right: 5px;
+    pointer-events: none;
 }
 
-.filter-item select:focus {
-    border-color: var(--accent-purple);
-    box-shadow: 0 0 0 2px rgba(112, 59, 247, 0.2);
+/* Кнопка поиска */
+.btn-search {
+    background: #703BF7;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.filter-item select option {
-    background: var(--card-bg);
-    color: var(--white);
-    padding: 10px;
+.btn-search:hover {
+    background: #5b4cc4;
 }
 
-.filter-item select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 35px;
+/* Опции внутри списка */
+.search-location-select option {
+    background: #1a1a1a;
+    color: white;
 }
-
-.filter-item select {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-purple) var(--border-color);
-}
-
-
-.filter-item select option:hover,
-.filter-item select option:focus,
-.filter-item select option:active {
-    background: var(--accent-purple);
-    color: var(--white);
-}
-
 
 
 

@@ -21,51 +21,33 @@
         </div>
 
         <div class="search-container">
-
+            
             <form action="{% url 'properties' %}" method="GET" class="search-main">
-
                 <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search }}">
+                
+                <div class="search-location-wrapper">
+                    <span class="location-icon">📍</span>
+                    <select name="location" class="search-location-select">
+                        <option value="">Все города</option>
+                        <option value="Бишкек" {% if request.GET.location == 'Бишкек' %}selected{% endif %}>Бишкек</option>
+                        <option value="Ош" {% if request.GET.location == 'Ош' %}selected{% endif %}>Ош</option>
+                        <option value="Джалал-Абад" {% if request.GET.location == 'Джалал-Абад' %}selected{% endif %}>Джалал-Абад</option>
+                        <option value="Каракол" {% if request.GET.location == 'Каракол' %}selected{% endif %}>Каракол</option>
+                        <option value="Токмок" {% if request.GET.location == 'Токмок' %}selected{% endif %}>Токмок</option>
+                        <option value="Нарын" {% if request.GET.location == 'Нарын' %}selected{% endif %}>Нарын</option>
+                        <option value="Талас" {% if request.GET.location == 'Талас' %}selected{% endif %}>Талас</option>
+                        <option value="Баткен" {% if request.GET.location == 'Баткен' %}selected{% endif %}>Баткен</option>
+                        <option value="Кызыл-Кия" {% if request.GET.location == 'Кызыл-Кия' %}selected{% endif %}>Кызыл-Кия</option>
+                    </select>
+                </div>
                 
                 <button type="submit" class="btn-search">
                     <span class="icon-search">🔍</span> Поиск
                 </button>
-
             </form>
 
-            <div class="filters-grid">
-
-                <div class="filter-item">
-                    <span class="filter-icon">📍</span>
-
-                    <select name="location">
-                        <option value="">Выберите город</option>
-                        <option value="Бишкек">🏙️ Бишкек</option>
-                        <option value="Ош">🏛️ Ош</option>
-                        <option value="Джалал-Абад">🌄 Джалал-Абад</option>
-                        <option value="Каракол">🏔️ Каракол</option>
-                        <option value="Токмок">🏞️ Токмок</option>
-                        <option value="Нарын">⛰️ Нарын</option>
-                        <option value="Талас">🌾 Талас</option>
-                        <option value="Баткен">🏜️ Баткен</option>
-                        <option value="Кызыл-Кия">🛢️ Кызыл-Кия</option>
-                    </select>
-                    
-                </div>
-                
-                {% comment %} <div class="filter-item">
-                    <span class="filter-icon">🏠</span>
-                    <select name="property-type"><option value="">Тип жилья</option></select>
-                </div>
-
-                <div class="filter-item">
-                    <span class="filter-icon">💰</span>
-                    <select name="pricing-range"><option value="">Цена</option></select>
-                </div> {% endcomment %}
-
-            </div>
-
         </div>
-        
+                
     </div>
     
 </main>

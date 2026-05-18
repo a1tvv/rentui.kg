@@ -53,90 +53,58 @@
     </div>
 </main>
 
-
+{% comment %} 
 <section class="register" id='register'>
 
     <div class="container">
 
         <div class="register-h1">
 
-            <h1>Let's Connect</h1>
+            <h1>Давай пообщаемся</h1>
             <p>
-                We're excited to connect with you and learn more about your real estate goals. Use the form below to get in touch with Estatein.
-                Whether you're a prospective client, partner, or simply curious about our services, we're here to answer your questions and provide the assistance you need.
+                Мы будем рады общению с вами и возможности узнать больше о ваших целях в сфере недвижимости. Воспользуйтесь формой ниже, чтобы связаться с RentUi.
             </p>
 
         </div>
 
     </div>
 
-    <div class="container">
-        {% comment %} <style>
-            form {
-                background: url("{% static 'img/forms-bg.jpg' %}") no-repeat center center fixed;
-                background-size: cover;
-            }
-        </style>  {% endcomment %}
-
         <form action="{% url 'contacts' %}" method="post" class="contact-form">
             {% csrf_token %} <div class="form-grid">
                 <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="Enter First Name">
+                    <label for="first_name">Имя </label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Введите ваше имя">
                 </div>
 
                 <div class="form-group">
-                    <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" placeholder="Enter Last Name">
+                    <label for="last_name">Фамилия</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Введите вашу фамилию">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your Email">
+                    <input type="email" id="email" name="email" placeholder="Введите ваш gmail">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number">
+                    <label for="phone">Номер телефона</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Введите ваш номер телефона">
                 </div>
 
-                <div class="form-group">
-                    <label for="inquiry_type">Inquiry Type</label>
-                    <select id="inquiry_type" name="inquiry_type">
-                        <option value="" disabled selected>Select Inquiry Type</option>
-                        <option value="general">General</option>
-                        <option value="support">Support</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="source">How Did You Hear About Us?</label>
-                    <select id="source" name="source">
-                        <option value="" disabled selected>Select</option>
-                        <option value="google">Google</option>
-                        <option value="social">Instagram</option>
-                        <option value="social">Tik Tok</option>
-                        <option value="social">Whats'up</option>
-                    </select>
-                </div>
             </div>
 
             <div class="form-group full-width">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Enter your Message here.."></textarea>
+                <label for="message">Ваше сообщение</label>
+                <textarea id="message" name="message" rows="5" placeholder="Введите ваше сообщение.."></textarea>
             </div>
 
             <div class="form-footer">
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement">I agree with <a href="#" class='terms'>Terms of Use</a> and <a href="#" class='terms'>Privacy Policy</a></label>
-                </div>
-                <button type="submit" class="submit-btn">Send Your Message</button>
+                <button type="submit" class="submit-btn">Отправить сообщение</button>
             </div>
         </form>
 
     </div>
 
-</section>
+</section> {% endcomment %}
 
 {% endblock main %}

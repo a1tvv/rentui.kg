@@ -115,7 +115,7 @@ main, .hero-section, .contact-form-section, .register {
     justify-content: center;
 }
 
-.fa-instagram{
+main .fa-instagram{
     font-size: 40px;
     color: #6c5ce7;
 }
@@ -178,7 +178,7 @@ main, .hero-section, .contact-form-section, .register {
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    grid-template-columns: repeat(2, 1fr); /* 3 колонки */
     gap: 20px;
     margin-bottom: 20px;
 }

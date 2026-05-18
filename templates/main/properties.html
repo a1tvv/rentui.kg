@@ -6,13 +6,9 @@
 {% block main %}
 <link rel="stylesheet" href="{% static 'css/properties.css' %}">
 
-
 <main class="hero-section">
-
     <div class="container">
-        
         <div class="hero-content">
-
             <h1>Найдите дом своей мечты</h1>
             <p>
                 Добро пожаловать в RentUi: здесь недвижимость вашей мечты ждет вас в любом уголке нашего прекрасного мира.
@@ -21,35 +17,14 @@
         </div>
 
         <div class="search-container">
-            
             <form action="{% url 'properties' %}" method="GET" class="search-main">
-                <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search }}">
-                
-                {% comment %} <div class="search-location-wrapper">
-                    <span class="location-icon">📍</span>
-                    <select name="location" class="search-location-select">
-                        <option value="">Все города</option>
-                        <option value="Бишкек" {% if request.GET.location == 'Бишкек' %}selected{% endif %}>Бишкек</option>
-                        <option value="Ош" {% if request.GET.location == 'Ош' %}selected{% endif %}>Ош</option>
-                        <option value="Джалал-Абад" {% if request.GET.location == 'Джалал-Абад' %}selected{% endif %}>Джалал-Абад</option>
-                        <option value="Каракол" {% if request.GET.location == 'Каракол' %}selected{% endif %}>Каракол</option>
-                        <option value="Токмок" {% if request.GET.location == 'Токмок' %}selected{% endif %}>Токмок</option>
-                        <option value="Нарын" {% if request.GET.location == 'Нарын' %}selected{% endif %}>Нарын</option>
-                        <option value="Талас" {% if request.GET.location == 'Талас' %}selected{% endif %}>Талас</option>
-                        <option value="Баткен" {% if request.GET.location == 'Баткен' %}selected{% endif %}>Баткен</option>
-                        <option value="Кызыл-Кия" {% if request.GET.location == 'Кызыл-Кия' %}selected{% endif %}>Кызыл-Кия</option>
-                    </select>
-                </div> {% endcomment %}
-                
+                <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search|default:'' }}">
                 <button type="submit" class="btn-search">
                     <span class="icon-search">🔍</span> Поиск
                 </button>
             </form>
-
         </div>
-                
     </div>
-    
 </main>
 
 <section class="properties-list">
@@ -59,13 +34,15 @@
             <div class="property-image-slider">
                 <div class="slider-wrapper" id="slider-{{ el.id }}">
                     {% if el.image %}
-                        <img src="{{ el.image.url }}" class="slide active">
+                        <img src="{{ el.image.url }}" class="slide active" alt="{{ el.title }}" loading="lazy">
                     {% else %}
-                        <img src="https://via.placeholder.com/400x300?text=No+Photo" class="slide active">
+                        <img src="https://via.placeholder.com/400x300?text=No+Photo" class="slide active" alt="Нет фото">
                     {% endif %}
 
                     {% for img_obj in el.images.all %}
-                        <img src="{{ img_obj.image.url }}" class="slide">
+                        {% if img_obj.image %}
+                            <img src="{{ img_obj.image.url }}" class="slide" alt="Галерея" loading="lazy">
+                        {% endif %}
                     {% endfor %}
                 </div>
 
@@ -157,12 +134,10 @@
         </div>
     </div>
     {% endif %}
-    
-    
-
 </section>
 
 <script>
+    // Скрипт слайдера картинок (оставляем старый рабочий вариант)
     function moveSlide(id, step) {
         const container = document.getElementById('slider-' + id);
         if (!container) return;

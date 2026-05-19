@@ -29,7 +29,7 @@ class Announcement(models.Model):
     title = models.CharField(max_length=200, verbose_name="Заголовок")
     description = models.CharField(max_length=2000, verbose_name="Описание")
     price = models.DecimalField(
-        max_digits=7, 
+        max_digits=9, 
         decimal_places=2, 
         verbose_name="Цена",
         validators=[MinValueValidator(0.01, message="Цена должна быть больше нуля!")]

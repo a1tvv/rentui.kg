@@ -231,6 +231,12 @@ a { text-decoration: none; }
     border: 1px solid var(--border-color);
 }
 
+
+
+/* -------------------------------------------------------------------- */
+
+
+
 /* --- ИНФО И КНОПКИ --- */
 .property-info {
     padding: 20px;
@@ -272,6 +278,34 @@ a { text-decoration: none; }
     width: 14px;
     text-align: center;
 }
+
+
+.property-desc {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+    word-break: break-word; /* Защита от слишком длинных слов, чтобы карточка не ломалась */
+}
+
+.btn-toggle-desc {
+    background: none;
+    border: none;
+    color: var(--accent-purple); /* Фиолетовый акцент (#703BF7) */
+    font-weight: 600;
+    font-size: 13px;
+    padding: 0;
+    margin-left: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: color 0.2s ease;
+}
+
+.btn-toggle-desc:hover {
+    color: var(--accent-light); /* Светло-фиолетовый при наведении (#946cf9) */
+    text-decoration: underline;
+}
+
 
 .property-actions { display: flex; gap: 10px; margin-top: 15px; }
 

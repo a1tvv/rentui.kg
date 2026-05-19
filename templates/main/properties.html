@@ -57,7 +57,15 @@
                     <h2 class="property-title">{{ el.title }}</h2>
                 </div>
                 
-                <p class="property-desc">{{ el.description|truncatewords:15 }}</p>
+                <p class="property-desc" id="desc-{{ el.id }}">
+                    {% if el.description|length > 100 %}
+                        <span class="short-text">{{ el.description|slice:":100" }}...</span>
+                        <span class="full-text" style="display: none;">{{ el.description }}</span>
+                        <button class="btn-toggle-desc" onclick="toggleDescription('{{ el.id }}')">Далее</button>
+                    {% else %}
+                        {{ el.description }}
+                    {% endif %}
+                </p>
                 
                 <div class="property-price-row">
                     <p class="property-price">{{ el.price }} <span>сом</span></p>
@@ -137,7 +145,27 @@
 </section>
 
 <script>
-    // Скрипт слайдера картинок (оставляем старый рабочий вариант)
+    // Скрипт переключения текста "Далее" / "Скрыть"
+    function toggleDescription(id) {
+        const container = document.getElementById('desc-' + id);
+        if (!container) return;
+
+        const shortText = container.querySelector('.short-text');
+        const fullText = container.querySelector('.full-text');
+        const btn = container.querySelector('.btn-toggle-desc');
+
+        if (fullText.style.display === 'none') {
+            fullText.style.display = 'inline';
+            shortText.style.display = 'none';
+            btn.innerText = 'Скрыть';
+        } else {
+            fullText.style.display = 'none';
+            shortText.style.display = 'inline';
+            btn.innerText = 'Далее';
+        }
+    }
+
+    // Скрипт слайдера картинок
     function moveSlide(id, step) {
         const container = document.getElementById('slider-' + id);
         if (!container) return;

@@ -40,10 +40,17 @@ def user_logout(request):
     messages.success(request, "Вы вышли из аккаунта")
     return redirect('home')
 
+
 @login_required
 def property_delete(request, pk):
-    property_item = get_object_or_404(Announcement, pk=pk)
+    # Вместо жесткого get_object_or_404 используем фильтр, чтобы проект не падал
+    property_item = Announcement.objects.filter(pk=pk).first()
     
+    # Если объект не найден (например, уже удален), просто уводим пользователя на список
+    if not property_item:
+        return redirect('properties')
+    
+    # Твоя родная логика проверки автора
     if property_item.author == request.user:
         property_item.delete()
         messages.success(request, "Объявление удалено.")

@@ -39,7 +39,7 @@ class Announcement(models.Model):
     image = models.ImageField(upload_to=get_main_photo_path, blank=True, null=True, validators=[validate_image_size])
     
     # Номер телефона храним в чистом виде (9 цифр: 555123456)
-    phone = models.CharField(max_length=9, verbose_name="Номер телефона")
+    phone = models.CharField(max_length=20, verbose_name="Номер телефона")
     address = models.CharField(max_length=30, verbose_name="Адрес", blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Автор")

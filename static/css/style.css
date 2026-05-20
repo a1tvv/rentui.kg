@@ -105,6 +105,7 @@ header a:hover{
 }
 
 .parallax-section {
+    background-image: url(/static/img/register.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

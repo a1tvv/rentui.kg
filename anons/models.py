@@ -62,23 +62,24 @@ class AnnouncementImage(models.Model):
         verbose_name_plural = "Фотографии галереи"
 
 
+
+from django.db.models.signals import pre_delete  # Импортируем pre_delete вместо post_delete
+
 # --- СИГНАЛЫ ДЛЯ АВТОУДАЛЕНИЯ ФАЙЛОВ ИЗ DIGITALOCEAN SPACES ---
 
-@receiver(post_delete, sender=Announcement)
+@receiver(pre_delete, sender=Announcement)
 def delete_main_image_on_announcement_delete(sender, instance, **kwargs):
-    """Удаляет главное фото автоматически при удалении объявления"""
+    """Удаляет главное фото ДО того, как объявление сотрётся из базы"""
     if instance.image:
         try:
-            # Универсальный метод django-storages: сам удалит и из DO Spaces, и с локалки
+            # Сначала удаляем физический файл из облака
             instance.image.delete(save=False)
         except Exception as e:
-            # Оборачиваем в try-except, чтобы даже если файл в облаке не нашелся, 
-            # само объявление в БД успешно удалялось и пользователь не видел 500 ошибку
             print(f"Ошибка при удалении главного фото: {e}")
 
-@receiver(post_delete, sender=AnnouncementImage)
+@receiver(pre_delete, sender=AnnouncementImage)
 def delete_gallery_image_on_announcement_image_delete(sender, instance, **kwargs):
-    """Удаляет фото из галереи при удалении объекта фотографии"""
+    """Удаляет фото из галереи ДО того, как объект фото сотрётся из базы"""
     if instance.image:
         try:
             instance.image.delete(save=False)

@@ -20,41 +20,46 @@
 </head>
 <body>
 
+    <div class="burger-trigger" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="menu-overlay" onclick="toggleMenu()"></div>
 
     <header>
-
-        <div class="container">
+        <div class="container header-container">
 
             <div class="header-left">
                 <img src="{% static 'img/Logo.png' %}" alt="Logo">
                 <h2>Rent Ui</h2>
             </div>
 
-            <div class="header-center">
-                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Главная</a>
+            <div class="mobile-sidebar" id="mobileSidebar">
+                <div class="sidebar-close" onclick="toggleMenu()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
 
-                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">О нас</a>
+                <div class="header-center">
+                    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Главная</a>
+                    <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">О нас</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
+                    {% else %}
+                        <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Объявления</a>
+                    {% endif %}
+                    <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">Контакты</a>
+                </div>
 
-                {% if user.is_authenticated %}
-                <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
-                {% else %}
-                    <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Объявления</a>
-                {% endif %}
-            
-                <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">Контакты</a>
-                
-            </div>
-
-            <div class="header-right">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'create'%}">Создать объявление</a>
-                    {% else%}
-                    <a href="{% url 'sign-up'%}">Авторизоваться</a>
-                {% endif %}
+                <div class="header-right">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'create' %}" class="btn-main-action">Создать объявление</a>
+                    {% else %}
+                        <a href="{% url 'sign-up' %}" class="btn-main-action">Авторизоваться</a>
+                    {% endif %}
+                </div>
             </div>
 
         </div>
-
     </header>
 
     {% block main %}
@@ -138,7 +143,66 @@
 
     </footer>
 
+    <script>
+        const sidebar = document.getElementById('mobileSidebar');
+        const overlay = document.querySelector('.menu-overlay');
 
+        // Функция переключения меню по клику
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            // Блокируем скролл основной страницы при открытом меню
+            if (sidebar.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // ================= СВАЙПЫ (Touch Events) =================
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        // Минимальное расстояние свайпа в пикселях
+        const swipeThreshold = 60; 
+        // Зона у левого края (в пикселях), откуда начинается свайп для открытия меню
+        const edgeZone = 40; 
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, {passive: true});
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, {passive: true});
+
+        function handleSwipe() {
+            const xDiff = touchEndX - touchStartX;
+            const yDiff = touchEndY - touchStartY;
+
+            // Проверяем, что движение было именно горизонтальным, а не вертикальным скроллом
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                
+                // 1. СВАЙП ВПРАВО (Открытие) -> Меню закрыто + старт свайпа был у левой границы экрана
+                if (xDiff > swipeThreshold && !sidebar.classList.contains('active')) {
+                    if (touchStartX <= edgeZone) {
+                        toggleMenu();
+                    }
+                }
+                
+                // 2. СВАЙП ВЛЕВО (Закрытие) -> Меню уже открыто, смахиваем обратно налево
+                else if (xDiff < -swipeThreshold && sidebar.classList.contains('active')) {
+                    toggleMenu();
+                }
+            }
+        }
+    </script>
     
 
 </body>

@@ -97,7 +97,6 @@ main, .hero-section, .contact-form-section, .register {
 }
 
 .service-card:hover{
-	background: #262626;
 	transform: scale(1.02);
 }
 

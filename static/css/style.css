@@ -28,6 +28,12 @@
 	--grey-40: #666;
 	--grey-50: #808080;
 	--grey-60: #999;
+
+    --bg-color: #0B0E14; 
+    --card-bg: #151921; /* Чуть светлее для карточек (создает глубину) */
+    
+    --absolute-white: #fff;
+    --purple-60: #703bf7;
 }
 
 ::selection{
@@ -38,29 +44,37 @@
 a{
     text-decoration: none;
 }
-
-body{
-    background-color: #1a1a1a;
+/* 1. Сбрасываем лишние отступы у body */
+body {
+    background-color: var(--bg-color);
     overflow-x: hidden;
     width: 100%;
+    /* Добавляем только верхний паддинг, чтобы контент не прятался под хедер */
+    padding-top: 90px; 
 }
 
+/* 2. Чистый хедер */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 20px 0; 
-    margin-bottom: 100px;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    z-index: 1000;
+    
+    /* Стеклянный эффект */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Убираем лишние маржины, они тут не нужны! */
+    padding: 15px 0;
+    margin-bottom: 0 !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(11, 14, 20, 0.7);
 }
 
-header a.active {
-    color: var(--purple-60) !important;
-    background-color: rgba(112, 59, 247, 0.1);
-    font-weight: 600;
-}
-
+/* 3. Контейнер — сердце верстки */
 .container {
-    max-width: 1200px; 
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,42 +83,62 @@ header a.active {
     padding: 0 20px;
 }
 
-.header-left{
+/* 4. Исправляем левую часть (Лого) */
+.header-left {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.header-left img{
-    width: 50px;
-    height: 50px;
+.header-left img {
+    width: 40px; /* Немного уменьшил, чтобы не было гигантским */
+    height: 40px;
 }
 
-.header-left h2{
-    font-size: 30px;
+.header-left h2 {
+    font-size: 24px;
     color: var(--white-99);
 }
 
-header a {
-    margin: 0 8px; 
-    color: white;
-    border-radius: 12px;
-    display: inline-block;
-    font-size: 20px;
+/* 5. Навигация */
+nav {
+    display: flex;
+    align-items: center;
+}
 
+header a {
+    margin: 0 15px; 
+    color: white;
+    font-size: 16px;
     transition: all 0.3s ease;
 }
 
-header a:hover{
-    color: #703bf7;
+header a:hover {
+    color: var(--purple-60);
 }
 
-.header-right a{
-    border: 1px solid #703bf7;
-    padding: 10px 28px;
+.header-right a {
+    border: 1px solid var(--purple-60);
+    padding: 8px 20px;
+    border-radius: 8px;
+    color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .parallax-section {
+    margin-top: 40px;
     background-image: url(/static/img/register.jpg);
     background-attachment: fixed;
     background-position: center;
@@ -229,8 +263,15 @@ main{
     gap: 20px;
 }
 
+
+.main-stat-1, .main-stat-2, .main-stat-3, 
+.service-card, .reviews-item {
+    background-color: var(--card-bg); /* Использовать новый фон для карточек */
+    border: 1px solid #1f2530;       /* Чуть более мягкая рамка */
+}
+
 .main-stat-1, .main-stat-2, .main-stat-3{
-    background-color: #1a1a1a;
+    background-color: var(--card-bg);
     padding: 16px 34px;
     border-radius: 10px;
     border: #9c9c9c 1px solid;
@@ -536,6 +577,34 @@ footer .logo img{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- ОБЩИЙ АДАПТИВ (Планшеты и Телефоны) --- */
 
 
@@ -548,6 +617,11 @@ footer .logo img{
 }
 
 @media (max-width: 768px) {
+
+    body{
+        padding-top: 150px;
+    }
+
     /* 1. Сбрасываем жесткие отступы контейнера */
     .container, .featured .container {
         flex-direction: column;
@@ -558,27 +632,38 @@ footer .logo img{
     }
 
     /* 2. Хедер */
+
+    header{
+        margin-bottom: 0 !important;
+    }
+
     header .container {
+        flex-direction: column;
         gap: 15px;
+        padding: 15px;
     }
     
-    header nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+   header nav {
+        flex-direction: column; /* Ссылки в столбик */
+        align-items: center;
         gap: 10px;
+        padding-bottom: 20px; /* Немного уменьшим нижний паддинг у навигации */
     }
 
     header a {
-        margin: 5px !important;
-        font-size: 14px;
+        margin: 5px 0 !important; 
+        padding: 12px 10px; /* Сделаем паддинги ссылок чуть компактнее на мобилках */
+        font-size: 16px;
     }
 
-    .header-right a{
-        padding: 20px 80px;
-        border: 1px solid #703bf7;
+    .header-right a {
+        display: inline-block;   /* Обязательно, чтобы margin-top применился */
+        margin-top: 35px;        /* Отодвигаем кнопку вниз от последней ссылки навигации */
+        padding: 12px 40px;      
+        width: 100%;             
+        text-align: center;
+        box-sizing: border-box;  /* Чтобы паддинги не взрывали ширину */
     }
-
     /* 3. Герой-секция (Main) */
     .hero {
         flex-direction: column;

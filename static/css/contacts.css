@@ -21,6 +21,8 @@
 	--grey-40: #666;
 	--grey-50: #808080;
 	--grey-60: #999;
+
+    --card-bg: #151921; 
 }
 
 input:-webkit-autofill,
@@ -84,7 +86,7 @@ main, .hero-section, .contact-form-section, .register {
 .service-card {
     flex: 1;
     min-width: 250px;
-    background: #1A1A1A;
+    background: var(--card-bg);
     border: 1px solid #262626;
     border-radius: 12px;
     padding: 24px;

@@ -111,7 +111,7 @@ main {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: 1fr; 
     gap: 20px;
 }
 
@@ -125,9 +125,7 @@ main {
     transition: all 0.4s ease;
 }
 
-.service-card:nth-child(3) {
-    grid-column: 1 / span 2;
-}
+
 
 .service-card a {
     text-decoration: none;
@@ -192,6 +190,7 @@ main {
 }
 
 .values-grid {
+    background-color: #0B0E14;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -208,6 +207,7 @@ main {
 .values-grid-item:nth-last-child(-n+2) {
     border-bottom: none;
 }
+
 
 /* ========== INFO SECTION (Решения) ========== */
 /* 

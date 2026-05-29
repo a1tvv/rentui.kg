@@ -1,6 +1,8 @@
 :root {
+    --bg-color: #0B0E14; 
+    --card-bg: #151921; 
+    
     --bg-dark: #141414;
-    --card-bg: #1A1A1A;
     --border-color: #262626;
     --accent-purple: #703BF7;
     --accent-light: #946cf9;
@@ -10,7 +12,7 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: #0B0E14;
     color: var(--white);
     margin: 0;
     font-family: 'Urbanist', sans-serif;

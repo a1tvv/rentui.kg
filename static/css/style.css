@@ -89,6 +89,12 @@ body {
     width: 100%;
     flex-grow: 1;
     margin-left: 40px;
+
+    background: rgba(11, 14, 20, 0.4); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(20px);       /* Сильное размытие заднего плана */
+    -webkit-backdrop-filter: blur(20px); /* Поддержка для Safari/iOS */
+        
+    border-right: 1px solid rgba(255, 255, 255, 0.08);    
 }
 .header-center {
     display: flex;
@@ -102,17 +108,8 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    
-    /* Стеклянный эффект */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    
-    /* Убираем лишние маржины, они тут не нужны! */
-    padding: 15px 0;
-    margin-bottom: 0 !important; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(11, 14, 20, 0.7);
 }
+
 
 /* 3. Контейнер — сердце верстки */
 .container {
@@ -658,23 +655,16 @@ footer .logo img{
     }
 }
 
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
 
-    body{
-        padding-top: 150px;
-    }
-
-    /* 1. Сбрасываем жесткие отступы контейнера */
     .container, .featured .container {
         flex-direction: column;
         margin: 0 auto !important;
         padding: 0 15px;
         text-align: center;
         width: 100%;
-    }
+    } 
 
-
-    @media (max-width: 768px) {
     body {
         padding-top: 60px; /* Уменьшаем паддинг под высоту нового мобильного хедера */
     }
@@ -725,15 +715,21 @@ footer .logo img{
         color: var(--purple-60);
     }
 
-    /* Превращаем блок навигации в выезжающий слева Сайдбар */
     .mobile-sidebar {
         position: fixed;
         top: 0;
         left: 0;
         width: 280px; /* Комфортная ширина */
         height: 100vh;
-        background: #11141a; /* Темный глубокий цвет фона */
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        
+        /* Эффект матового стекла (Glassmorphism) */
+        background: rgba(11, 14, 20, 0.4); /* Полупрозрачный глубокий цвет */
+        backdrop-filter: blur(20px);       /* Сильное размытие фона */
+        -webkit-backdrop-filter: blur(20px); /* Поддержка для iOS/Safari */
+        
+        /* Тонкая неоновая/стеклянная линия на стыке */
+        border-right: 1px solid rgba(255, 255, 255, 0.08); 
+        
         z-index: 999;
         margin-left: 0;
         padding: 40px 24px;

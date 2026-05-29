@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <link rel="icon" type="image/svg+xml" href="{% static 'img/icon.png' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,22 +15,27 @@
     {% block extra_css %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock extra_css %}
-
 </head>
 <body>
-
-    <div class="burger-trigger" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i>
-    </div>
 
     <div class="menu-overlay" onclick="toggleMenu()"></div>
 
     <header>
         <div class="container header-container">
 
+            <div class="burger-trigger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="header-left">
+                <img src="{% static 'img/Logo.png' %}" alt="Logo">
+            </div>
+
             <div class="mobile-sidebar" id="mobileSidebar">
-                <div class="sidebar-close" onclick="toggleMenu()">
-                    <i class="fa-solid fa-xmark"></i>
+                <div class="sidebar-header">
+                    <div class="sidebar-close" onclick="toggleMenu()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
                 </div>
 
                 <div class="header-center">
@@ -63,91 +67,55 @@
     <hr>
     
     <footer class="footer">
-        
         <div class="container">
             <div class="footer-top">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <img src="{% static 'img/Logo.png' %}" alt="Logo">
-                    </div>
-                </div>
 
                 <nav class="footer-nav">
-
                     <div class="nav-column">
                         <a href="{% url 'about' %}#">О нас</a>
                         <a href="{% url 'home' %}">Главная</a>
                     </div>
-
                     <div class="nav-column">
                         <a href="{% url 'home' %}">Преимущества</a>
-                        <a href="https://www.instagram.com/fidea.312/" target="_blank">
-                            Наша команда
-                        </a>
+                        <a href="https://www.instagram.com/fidea.312/" target="_blank">Наша команда</a>
                     </div>
-
                     <div class="nav-column">
                         <a href="{% url 'contacts' %}">Связаться с нами</a>
-                        <a href="{%url 'contacts'%}#register">Контакты</a>
+                        <a href="{% url 'contacts' %}#register">Контакты</a>
                     </div>
-
                     <div class="nav-column">
                         <a href="{% url 'properties' %}">Арендовать жилье</a>
-                        <a href="{%url 'properties'%}">Сдать в аренду жилье</a>
+                        <a href="{% url 'properties' %}">Сдать в аренду жилье</a>
                     </div>
-
                 </nav>
             </div>
-
-            
-
         </div>
-
-        {% comment %} ------------------- {% endcomment %}
         
         <div class="container">
-
             <div class="footer-bottom">
                 <div class="footer-info">
                     <span>@2026 RentUi. Made by 
                         <a href="https://www.instagram.com/aaa.trz" style="color: #703BF7;" target="_blank">Abdurakhim</a>
-                {% comment %}                     
-                        <a href="https://wa.me/+996554016042"> <span>   +996 554 016 042</span> </a> 
-                        <a href="https://wa.me/+996999888615"> <span>   +996 999 888 615</span> </a>  {% endcomment %}
                     </span>
-
                 </div>
         
-            <div class="social-links">                    
-                <a href="https://www.instagram.com/fidea.312/" target="_blank">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="https://wa.me/+996999888615" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-
-                <a href="https://t.me/fidea_kg" target="_blank">
-                    <i class="fa-brands fa-telegram"></i>
-                </a>
+                <div class="social-links">                    
+                    <a href="https://www.instagram.com/fidea.312/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/+996999888615" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://t.me/fidea_kg" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                </div>
             </div>
-            
         </div>
-
-        </div>
-
     </footer>
 
     <script>
         const sidebar = document.getElementById('mobileSidebar');
         const overlay = document.querySelector('.menu-overlay');
 
-        // Функция переключения меню по клику
         function toggleMenu() {
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
             
-            // Блокируем скролл основной страницы при открытом меню
             if (sidebar.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -155,15 +123,13 @@
             }
         }
 
-        // ================= СВАЙПЫ (Touch Events) =================
+        // ================= СВАЙПЫ =================
         let touchStartX = 0;
         let touchEndX = 0;
         let touchStartY = 0;
         let touchEndY = 0;
 
-        // Минимальное расстояние свайпа в пикселях
         const swipeThreshold = 60; 
-        // Зона у левого края (в пикселях), откуда начинается свайп для открытия меню
         const edgeZone = 40; 
 
         document.addEventListener('touchstart', function(e) {
@@ -181,24 +147,17 @@
             const xDiff = touchEndX - touchStartX;
             const yDiff = touchEndY - touchStartY;
 
-            // Проверяем, что движение было именно горизонтальным, а не вертикальным скроллом
             if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                
-                // 1. СВАЙП ВПРАВО (Открытие) -> Меню закрыто + старт свайпа был у левой границы экрана
                 if (xDiff > swipeThreshold && !sidebar.classList.contains('active')) {
                     if (touchStartX <= edgeZone) {
                         toggleMenu();
                     }
                 }
-                
-                // 2. СВАЙП ВЛЕВО (Закрытие) -> Меню уже открыто, смахиваем обратно налево
                 else if (xDiff < -swipeThreshold && sidebar.classList.contains('active')) {
                     toggleMenu();
                 }
             }
         }
-</script>
-    
-
+    </script>
 </body>
 </html>

@@ -18,48 +18,70 @@
 </head>
 <body>
 
-    <div class="menu-overlay" onclick="toggleMenu()"></div>
-
-    <header>
-        <div class="container header-container">
-
-            <div class="burger-trigger" onclick="toggleMenu()">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-
+    <header class="desktop-header">
+        <div class="container">
             <div class="header-left">
                 <img src="{% static 'img/Logo.png' %}" alt="Logo">
             </div>
 
-            <div class="mobile-sidebar" id="mobileSidebar">
-                <div class="sidebar-header">
-                    <div class="sidebar-close" onclick="toggleMenu()">
-                        <i class="fa-solid fa-xmark"></i>
-                    </div>
-                </div>
-
-                <div class="header-center">
-                    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Главная</a>
-                    <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">О нас</a>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
-                    {% else %}
-                        <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Объявления</a>
-                    {% endif %}
-                    <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">Контакты</a>
-                </div>
-
-                <div class="header-right">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'create' %}" class="btn-main-action">Создать объявление</a>
-                    {% else %}
-                        <a href="{% url 'sign-up' %}" class="btn-main-action">Авторизоваться</a>
-                    {% endif %}
-                </div>
+            <div class="header-center">
+                <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Главная</a>
+                <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">О нас</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'properties' %}" class="{% if request.resolver_match.url_name == 'properties' %}active{% endif %}">Объявления</a>
+                {% else %}
+                    <a href="{% url 'sign-up' %}" class="{% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">Объявления</a>
+                {% endif %}
+                <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">Контакты</a>
             </div>
 
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create' %}" class="btn-main-action">Создать объявление</a>
+                {% else %}
+                    <a href="{% url 'sign-up' %}" class="btn-main-action">Авторизоваться</a>
+                {% endif %}
+            </div>
         </div>
     </header>
+
+    <nav class="mobile-tabbar">
+        <a href="{% url 'home' %}" class="tab-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+            <i class="fa-solid fa-house"></i>
+            <span>Главная</span>
+        </a>
+        <a href="{% url 'about' %}" class="tab-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>О нас</span>
+        </a>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'create' %}" class="tab-item tab-center-btn {% if request.resolver_match.url_name == 'create' %}active{% endif %}">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </a>
+            <a href="{% url 'properties' %}" class="tab-item {% if request.resolver_match.url_name == 'properties' %}active{% endif %}">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Объявления</span>
+            </a>
+        {% else %}
+            <a href="{% url 'sign-up' %}" class="tab-item tab-center-btn {% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+            </a>
+            <a href="{% url 'sign-up' %}" class="tab-item {% if request.resolver_match.url_name == 'sign-up' %}active{% endif %}">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Объявления</span>
+            </a>
+        {% endif %}
+
+        <a href="{% url 'contacts' %}" class="tab-item {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
+            <i class="fa-solid fa-address-book"></i>
+            <span>Контакты</span>
+        </a>
+    </nav>
 
     {% block main %}
     {% endblock %}
@@ -69,7 +91,6 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
-
                 <nav class="footer-nav">
                     <div class="nav-column">
                         <a href="{% url 'about' %}#">О нас</a>
@@ -94,8 +115,8 @@
         <div class="container">
             <div class="footer-bottom">
                 <div class="footer-info">
-                    <span>@2026 RentUi. Made by 
-                        <a href="https://www.instagram.com/aaa.trz" style="color: #703BF7;" target="_blank">Abdurakhim</a>
+                    <span>@2026 RentUi. Разработано командой
+                        <a href="https://www.instagram.com/rent.ui" style="color: #703BF7;" target="_blank">Fidea</a>
                     </span>
                 </div>
         
@@ -108,56 +129,5 @@
         </div>
     </footer>
 
-    <script>
-        const sidebar = document.getElementById('mobileSidebar');
-        const overlay = document.querySelector('.menu-overlay');
-
-        function toggleMenu() {
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            if (sidebar.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        }
-
-        // ================= СВАЙПЫ =================
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        const swipeThreshold = 60; 
-        const edgeZone = 40; 
-
-        document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, {passive: true});
-
-        document.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
-            const xDiff = touchEndX - touchStartX;
-            const yDiff = touchEndY - touchStartY;
-
-            if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                if (xDiff > swipeThreshold && !sidebar.classList.contains('active')) {
-                    if (touchStartX <= edgeZone) {
-                        toggleMenu();
-                    }
-                }
-                else if (xDiff < -swipeThreshold && sidebar.classList.contains('active')) {
-                    toggleMenu();
-                }
-            }
-        }
-    </script>
 </body>
 </html>

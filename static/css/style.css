@@ -6,31 +6,31 @@
 }
 
 :root {
-	--absolute-white: #fff;
-	--absolute-black: #000;
-	--purple-60: #703bf7;
-	--purple-65: #8254f8;
-	--purple-70: #946cf9;
-	--purple-75: #a685fa;
-	--purple-90: #dbcefd;
-	--purple-95: #ede7fe;
-	--purple-97: #f4f0fe;
-	--purple-99: #fbfaff;
-	--white-90: #e4e4e7;
-	--white-95: #f1f1f3;
-	--white-97: #f7f7f8;
-	--white-99: #fcfcfd;
-	--grey-08: #141414;
-	--grey-10: #1a1a1a;
-	--grey-15: #262626;
-	--grey-20: #333;
-	--grey-30: #4d4d4d;
-	--grey-40: #666;
-	--grey-50: #808080;
-	--grey-60: #999;
+    --absolute-white: #fff;
+    --absolute-black: #000;
+    --purple-60: #703bf7;
+    --purple-65: #8254f8;
+    --purple-70: #946cf9;
+    --purple-75: #a685fa;
+    --purple-90: #dbcefd;
+    --purple-95: #ede7fe;
+    --purple-97: #f4f0fe;
+    --purple-99: #fbfaff;
+    --white-90: #e4e4e7;
+    --white-95: #f1f1f3;
+    --white-97: #f7f7f8;
+    --white-99: #fcfcfd;
+    --grey-08: #141414;
+    --grey-10: #1a1a1a;
+    --grey-15: #262626;
+    --grey-20: #333;
+    --grey-30: #4d4d4d;
+    --grey-40: #666;
+    --grey-50: #808080;
+    --grey-60: #999;
 
     --bg-color: #0B0E14; 
-    --card-bg: #151921; /* Светлее для карточек (глубина) */
+    --card-bg: #151921; 
 }
 
 ::selection {
@@ -50,50 +50,7 @@ body {
     color: var(--white-99);
 }
 
-/* ========== БУРГЕР И СЛАЙД-МЕНЮ ========== */
-
-/* Элементы скрыты на десктопе */
-.burger-trigger, .sidebar-close, .sidebar-header {
-    display: none;
-}
-
-/* Затемняющий оверлей */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(11, 14, 20, 0.6);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    z-index: 998;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-.menu-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Стили навигации для ПК */
-.mobile-sidebar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    flex-grow: 1;
-    margin-left: 40px;
-}
-
-.header-center {
-    display: flex;
-    align-items: center;
-}
-
-/* Шапка сайта фиксированная */
+/* ========== ДЕСКТОПНАЯ ШАПКА ========== */
 header {
     position: fixed;
     top: 0;
@@ -128,9 +85,9 @@ header {
     height: 40px;
 }
 
-.header-left h2 {
-    font-size: 24px;
-    color: var(--white-99);
+.header-center {
+    display: flex;
+    align-items: center;
 }
 
 header a {
@@ -140,7 +97,7 @@ header a {
     transition: all 0.3s ease;
 }
 
-header a:hover {
+header a:hover, header a.active {
     color: var(--purple-60);
 }
 
@@ -149,10 +106,19 @@ header a:hover {
     padding: 8px 20px;
     border-radius: 8px;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.header-right a:hover {
+    background-color: var(--purple-60);
+}
+
+/* Скрываем мобильный таб-бар на ПК */
+.mobile-tabbar {
+    display: none;
 }
 
 /* ========== СЕКЦИИ КОНТЕНТА ========== */
-
 .parallax-section {
     margin-top: 40px;
     background-image: url(/static/img/register.jpg);
@@ -281,7 +247,6 @@ main {
 }
 
 /* ========== REVIEWS ========== */
-
 .reviews .container {
     display: flex;
     flex-direction: column;
@@ -369,7 +334,6 @@ main {
 }
 
 /* ========== FOOTER ========== */
-
 .footer {
     color: white;
     padding: 80px 0 40px 0;
@@ -476,8 +440,7 @@ footer .logo img {
     transform: scale(1.1);
 }
 
-/* ========== АДАПТИВ ========== */
-
+/* ========== АДАПТИВ И МОБИЛЬНЫЙ ТАБ-БАР ========== */
 @media (max-width: 1024px) {
     .container {
         margin-left: auto;
@@ -489,9 +452,91 @@ footer .logo img {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; 
+        padding-top: 20px; /* Убираем гигантский верхний паддинг, так как шапки вверху больше нет */
+        padding-bottom: 90px; /* Добавляем паддинг снизу, чтобы таб-бар не перекрывал контент */
     }
 
+    /* Полностью прячем верхний десктопный хедер */
+    header.desktop-header {
+        display: none !important;
+    }
+
+    /* СТИЛИЗАЦИЯ НИЖНЕГО ТАБ-БАРА (Glassmorphism) */
+    .mobile-tabbar {
+        display: flex;
+        position: fixed;
+        bottom: 20px; /* Приподнимаем над краем экрана в стиле iOS */
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 30px); /* Небольшие отступы по бокам */
+        max-width: 450px;
+        height: 65px;
+        background: rgba(21, 25, 33, 0.75); /* var(--card-bg) с прозрачностью */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        z-index: 9999;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .tab-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 11px;
+        font-weight: 500;
+        text-align: center;
+        flex: 1;
+        gap: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .tab-item i {
+        font-size: 20px;
+    }
+
+    /* Активный пункт меню */
+    .tab-item.active {
+        color: var(--purple-60);
+    }
+
+    /* Центральная круглая кнопка действия (Создать/Войти) */
+    .tab-center-btn {
+        position: relative;
+        top: -15px; /* Выносим кнопку чуть выше уровня таб-бара */
+        overflow: visible;
+    }
+
+    .tab-center-btn .icon-wrapper {
+        width: 52px;
+        height: 52px;
+        background: var(--purple-60);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(112, 59, 247, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    .tab-center-btn .icon-wrapper i {
+        color: #fff;
+        font-size: 22px;
+    }
+
+    .tab-center-btn:hover .icon-wrapper,
+    .tab-center-btn.active .icon-wrapper {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(112, 59, 247, 0.7);
+    }
+
+    /* Контентные адаптивные стили */
     .container {
         flex-direction: column;
         margin: 0 auto !important;
@@ -510,137 +555,6 @@ footer .logo img {
         height: 300px;
     }
 
-    /* Мобильный фиксированный хедер */
-    header {
-        height: 60px !important;
-        padding: 0 !important;
-        display: flex;
-        align-items: center;
-        margin-bottom: 0 !important;
-    }
-
-    header .container {
-        flex-direction: row; /* Возвращаем в строку элементы хедера */
-        justify-content: center; 
-        position: relative;
-        height: 100%;
-    }
-
-    .header-left { gap: 8px; }
-    .header-left img { width: 32px; height: 32px; }
-    .header-left h2 { font-size: 20px; }
-
-    /* Бургер слева */
-    .burger-trigger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute; /* Позиционирование внутри контейнера шапки */
-        top: 15px;
-        left: 20px;
-        z-index: 1001; 
-        color: var(--white-99);
-        font-size: 22px;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        transition: color 0.3s ease;
-    }
-    .burger-trigger:hover { color: var(--purple-60); }
-
-    /* МОБИЛЬНЫЙ САЙДБАР С МАТОВЫМ СТЕКЛОМ */
-    .mobile-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 280px; 
-        height: 100vh;
-        
-        background: rgba(11, 14, 20, 0.4); 
-        backdrop-filter: blur(20px);       
-        -webkit-backdrop-filter: blur(20px); 
-        border-right: 1px solid rgba(255, 255, 255, 0.08); 
-        
-        z-index: 999;
-        margin-left: 0;
-        padding: 0 24px 40px 24px; 
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 30px;
-        
-        transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .mobile-sidebar.active {
-        transform: translateX(0);
-    }
-
-    /* Шапка меню (выравнивает крестик ровно под высоту хедера 60px) */
-    .sidebar-header {
-        display: flex;
-        width: 100%;
-        height: 60px; 
-        align-items: center;
-        justify-content: flex-end; 
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-        margin-bottom: 10px;
-    }
-
-    /* Крестик */
-    .sidebar-close {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white-99);
-        font-size: 24px;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        transition: color 0.3s ease;
-    }
-    .sidebar-close:hover { color: var(--purple-60); }
-
-    /* Ссылки списком */
-    .header-center {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        gap: 10px;
-    }
-
-    header .header-center a {
-        display: block;
-        width: 100%;
-        padding: 12px 0;
-        margin: 0 !important;
-        font-size: 18px;
-        font-weight: 500;
-        text-align: left;
-        color: rgba(255, 255, 255, 0.85);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    /* Кнопка внизу сайдбара */
-    .header-right {
-        width: 100%;
-        margin-top: auto; 
-    }
-
-    .header-right a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-        background: var(--purple-60);
-        border: none;
-        border-radius: 10px;
-        font-weight: 600;
-    }
-
-    /* Стили остального контента для мобилок */
     .main-left { width: 100%; padding: 0; }
     .main-right {
         display: flex !important;

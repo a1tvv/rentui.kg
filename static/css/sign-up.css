@@ -1,43 +1,10 @@
+/* Автозаполнение полей браузером */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    /* Меняет цвет текста на белый */
+input:-webkit-autofill:focus {
     -webkit-text-fill-color: #ffffff;
-    /* Убирает стандартный фон браузера и заменяет его на ваш #262626 */
-    box-shadow: 0 0 0px 1000px #262626 inset;
-    /* Плавный переход для цвета (чтобы не моргало) */
+    box-shadow: 0 0 0px 1000px #1a1a1a inset;
     transition: background-color 5000s ease-in-out 0s;
-}
-
-:root {
-	--absolute-white: #fff;
-	--absolute-black: #000;
-	--purple-60: #703bf7;
-	--purple-65: #8254f8;
-	--purple-70: #946cf9;
-	--purple-75: #a685fa;
-	--purple-90: #dbcefd;
-	--purple-95: #ede7fe;
-	--purple-97: #f4f0fe;
-	--purple-99: #fbfaff;
-	--white-90: #e4e4e7;
-	--white-95: #f1f1f3;
-	--white-97: #f7f7f8;
-	--white-99: #fcfcfd;
-	--grey-08: #141414;
-	--grey-10: #1a1a1a;
-	--grey-15: #262626;
-	--grey-20: #333;
-	--grey-30: #4d4d4d;
-	--grey-40: #666;
-	--grey-50: #808080;
-	--grey-60: #999;
 }
 
 .auth-section {
@@ -45,28 +12,28 @@ select:-webkit-autofill:focus {
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .auth-container {
     padding: 40px;
     border-radius: 12px;
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 120px 7px #2f2f2f;
+    max-width: 440px;
+    box-shadow: 0 0 120px 7px rgba(112, 59, 247, 0.15);
     text-align: center;
-    transition: all 0.73s ease;
+    transition: all 0.5s ease;
 
-    /* --- ЭФФЕКТ СТЕКЛА --- */
-    background: rgba(255, 255, 255, 0.05); /* Полупрозрачный белый фон */
-    backdrop-filter: blur(10px);           /* Размытие того, что ПОД блоком */
-    -webkit-backdrop-filter: blur(10px);   /* Поддержка для Safari */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая рамка для блика */
+    /* Эффект стекла */
+    background: rgba(21, 25, 33, 0.7);
+    backdrop-filter: blur(10px);           
+    -webkit-backdrop-filter: blur(10px);   
+    border: 1px solid rgba(255, 255, 255, 0.08); 
 }
 
 .auth-form {
     text-align: left;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .form-group {
@@ -76,32 +43,44 @@ select:-webkit-autofill:focus {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #ccc;
+    color: #999;
+    font-size: 14px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #1a1a1a;
     border: 1px solid #333;
     border-radius: 8px;
     color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #703bf7;
 }
 
 .password-wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .toggle-btn {
     position: absolute;
-    right: 10px;
+    right: 14px;
     background: none;
     border: none;
-    color: #6c5ce7;
+    color: #999;
     cursor: pointer;
     font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .auth-btn {
@@ -112,14 +91,16 @@ select:-webkit-autofill:focus {
     border: none;
     border-radius: 8px;
     font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 .auth-btn:hover {
-    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.7);
-    transform: scale(1.02);
+    box-shadow: 0 0 20px 7px rgba(106, 47, 255, 0.5);
+    transform: scale(1.01);
 }
 
 .checkbox-container {
@@ -128,75 +109,70 @@ select:-webkit-autofill:focus {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     cursor: pointer;
 }
 
-#create{
+#create {
     margin-top: 10px;
-    color: #fff;
+    color: #999;
+    font-size: 15px;
 }
 
-.remind-me{
+.remind-me {
     display: inline-block;
     color: #ccc;
 }
 
-.auth-footer{
-    color: #fff;
+.auth-footer {
+    color: #999;
+    text-align: center;
+    font-size: 15px;
 }
 
-.auth-footer a{
+.auth-footer a {
     color: #fff;
     text-decoration: none;
-    display: inline-block;
-
+    font-weight: 600;
     transition: all 0.3s ease;
+    margin-left: 5px;
 }
 
-.auth-footer a:hover{
-    color: var(--purple-60);
+.auth-footer a:hover {
+    color: #703bf7;
 }
+
+.error-messages {
+    background: rgba(255, 75, 75, 0.1);
+    border: 1px solid #ff4b4b;
+    padding: 10px;
+    border-radius: 8px;
+    color: #ff4b4b;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.errorlist {
+    color: #ff4b4b;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* ========== ЧИСТЫЙ АДАПТИВ БЕЗ КОНФЛИКТОВ ========== */
 @media (max-width: 768px) {
-    /* 1. Скрываем меню шапки, которое налезает на логотип */
-    nav, .header-menu, .nav-links { 
-        display: none !important; 
-    }
-    
-    /* 2. Растягиваем форму */
     .auth-section {
-        padding: 20px 10px !important;
-        min-height: 100vh !important;
-        align-items: center !important;
+        padding: 60px 15px; /* Корректные отступы */
+        min-height: calc(100vh - 150px);
     }
 
     .auth-container {
-        width: 100% !important;
-        max-width: 360px !important; /* Чтобы не была слишком широкой на лопатах */
-        padding: 25px 15px !important;
-        margin: 0 auto !important;
-        box-shadow: 0 0 50px rgba(0,0,0,0.5) !important;
+        padding: 30px 20px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
     }
 
-    /* 3. Исправляем поля (убираем padding, который может раздувать ширину) */
     .form-group input {
-        box-sizing: border-box !important;
-        width: 100% !important;
-        height: 45px !important;
-        font-size: 16px !important;
-    }
-
-    /* 4. Лечим футер (тот самый список внизу на скрине) */
-    footer, .footer-container {
-        display: flex !important;
-        flex-direction: column !important; /* Выстраиваем ссылки в столбик */
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-    .footer-links, .footer-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
+        height: 48px;
+        font-size: 16px;
     }
 }

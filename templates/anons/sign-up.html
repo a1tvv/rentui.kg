@@ -4,7 +4,6 @@
 {% block title %}<title>Регистрация</title>{% endblock %}
 
 {% block main %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
 
 <section class="auth-section">
@@ -55,7 +54,6 @@
 </section>
 
 <script>
-    // Универсальный скрипт для всех полей пароля (пароль и подтверждение)
     document.querySelectorAll('.togglePassword').forEach(button => {
         button.addEventListener('click', function () {
             const input = this.previousElementSibling;

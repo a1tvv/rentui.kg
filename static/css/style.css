@@ -545,14 +545,26 @@ footer .logo img {
         width: 100%;
     }
 
-    .glass-text { 
-        font-size: 60px; 
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
+    .parallax-section {
+        height: 100dvh; /* Высота ровно на весь экран устройства */
+        width: 100%;
+        
+        background-size: cover !important;
+        
+        margin-top: 0;
+        margin-bottom: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .parallax-section {
-        background-attachment: scroll;
-        height: 300px;
+    /* Адаптируем огромный стеклянный текст под экран мобилки */
+    .glass-text { 
+        font-size: 54px !important; /* Уменьшаем размер букв, чтобы помещалось */
+        text-align: center;
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
+        padding: 0 10px;
+        line-height: 1.1;
     }
 
     .main-left { width: 100%; padding: 0; }

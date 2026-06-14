@@ -120,7 +120,6 @@ header a:hover, header a.active {
 
 /* ========== СЕКЦИИ КОНТЕНТА ========== */
 .parallax-section {
-    margin-top: 40px;
     background-image: url(https://fideakg.ams3.cdn.digitaloceanspaces.com/static-img/register.jpg);
     background-attachment: fixed;
     background-position: center;

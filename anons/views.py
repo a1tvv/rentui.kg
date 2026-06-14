@@ -43,20 +43,20 @@ def user_logout(request):
 
 @login_required
 def property_delete(request, pk):
-    # Вместо жесткого get_object_or_404 используем фильтр, чтобы проект не падал
+    # Безопасно вытягиваем объявление
     property_item = Announcement.objects.filter(pk=pk).first()
-    
-    # Если объект не найден (например, уже удален), просто уводим пользователя на список
+
+    # Если объявление не найдено (или уже удалено), молча редиректим
     if not property_item:
         return redirect('properties')
-    
-    # Твоя родная логика проверки автора
-    if property_item.author == request.user:
+
+    # Проверяем: либо текущий юзер — автор, либо текущий юзер — СУПЕРЮЗЕР
+    if property_item.author == request.user or request.user.is_superuser:
         property_item.delete()
-        messages.success(request, "Объявление удалено.")
+        messages.success(request, "Объявление успешно удалено.")
     else:
-        messages.error(request, "Вы не можете удалить чужое объявление.")
-        
+        messages.error(request, "У вас нет прав на удаление этого объявления.")
+
     return redirect('properties')
 
 @login_required 

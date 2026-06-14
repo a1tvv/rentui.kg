@@ -15,7 +15,7 @@ def signup(request):
         if form.is_valid():
             user = form.save() 
             login(request, user) 
-            return redirect('home')
+            return redirect('properties')
     else:
         form = UserCreationForm()
     return render(request, 'anons/sign-up.html', {'form': form})
@@ -27,7 +27,7 @@ def user_login(request):
             user = form.get_user()
             login(request, user)
             messages.success(request, "Вы успешно вошли в аккаунт!")
-            return redirect('home')
+            return redirect('properties')
         else:
             messages.error(request, "Неверный логин или пароль")
     else:

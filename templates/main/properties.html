@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                {% if user.is_authenticated and el.author == user %}
+                {% if user.is_authenticated and el.author == user or user.is_superuser %}
                 <div class="property-actions">
                     <a href="{% url 'property_edit' el.id %}" class="btn-edit">Изменить</a>
                     <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del" style="display:inline;">

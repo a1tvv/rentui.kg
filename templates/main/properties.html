@@ -4,7 +4,7 @@
 {% block title %}<title>Объявления - RentUi</title>{% endblock %}
 
 {% block main %}
-<link rel="stylesheet" href="{% static 'css/properties.css' %}">
+<link rel="stylesheet" href="{% static 'css/properties.css' %}?v=2">
 
 <main class="hero-section">
     <div class="container">
@@ -52,46 +52,30 @@
             </div>
 
             <div class="property-info">
-                <div class="property-header">
-                    <p class="property-created">{{ el.created_at|date:"d E Y" }} г.</p>
-                    <h2 class="property-title">{{ el.title }}</h2>
-                </div>
-                
-                <p class="property-desc" id="desc-{{ el.id }}">
-                    {% if el.description|length > 100 %}
-                        <span class="short-text">{{ el.description|slice:":100" }}...</span>
-                        <span class="full-text" style="display: none;">{{ el.description }}</span>
-                        <button class="btn-toggle-desc" onclick="toggleDescription('{{ el.id }}')">Далее</button>
-                    {% else %}
-                        {{ el.description }}
-                    {% endif %}
-                </p>
-                
-                <div class="property-price-row">
-                    <p class="property-price">{{ el.price }} <span>сом</span></p>
-                </div>
+                <p class="property-price">{{ el.price }} <span>сом</span></p>
+
+                <h2 class="property-title">{{ el.title }}</h2>
+
+                <p class="property-desc">{{ el.description }}</p>
 
                 <div class="property-footer">
-                    <div class="footer-details">
-                        <p class="property-address">
-                            <i class="fas fa-map-marker-alt"></i> {{ el.address|default:"Бишкек" }}
-                        </p>
-                        <p class="property-phone">
-                            <i class="fas fa-phone-alt"></i> 
-                            <a href="tel:{{ el.phone }}">{{ el.phone }}</a>
-                        </p>
-                    </div>
-                    <div class="footer-author">
-                        <p class="property-seller">
-                            <i class="fas fa-user"></i> {{ el.author.username }}
-                        </p>
-                    </div>
+                    <p class="property-address">
+                        <i class="fas fa-map-marker-alt"></i> {{ el.address|default:"Бишкек" }}
+                    </p>
+                    <p class="property-phone">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:{{ el.phone }}">{{ el.phone }}</a>
+                    </p>
+                    <p class="property-seller">
+                        <i class="fas fa-user"></i> {{ el.author.username }}
+                    </p>
+                    <p class="property-created">{{ el.created_at|date:"d E Y" }} г.</p>
                 </div>
 
                 {% if user.is_authenticated and el.author == user or user.is_superuser %}
                 <div class="property-actions">
                     <a href="{% url 'property_edit' el.id %}" class="btn-edit">Изменить</a>
-                    <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del" style="display:inline;">
+                    <form action="{% url 'property_delete' el.id %}" method="POST" class="form-del">
                         {% csrf_token %}
                         <button type="submit" class="btn-del" onclick="return confirm('Удалить?')">Удалить</button>
                     </form>
@@ -145,34 +129,14 @@
 </section>
 
 <script>
-    // Скрипт переключения текста "Далее" / "Скрыть"
-    function toggleDescription(id) {
-        const container = document.getElementById('desc-' + id);
-        if (!container) return;
-
-        const shortText = container.querySelector('.short-text');
-        const fullText = container.querySelector('.full-text');
-        const btn = container.querySelector('.btn-toggle-desc');
-
-        if (fullText.style.display === 'none') {
-            fullText.style.display = 'inline';
-            shortText.style.display = 'none';
-            btn.innerText = 'Скрыть';
-        } else {
-            fullText.style.display = 'none';
-            shortText.style.display = 'inline';
-            btn.innerText = 'Далее';
-        }
-    }
-
-    // Скрипт слайдера картинок
+    // Слайдер картинок
     function moveSlide(id, step) {
         const container = document.getElementById('slider-' + id);
         if (!container) return;
 
         const slides = container.querySelectorAll('.slide');
         const badge = container.parentElement.querySelector('.photo-badge');
-        
+
         if (slides.length <= 1) return;
 
         let activeIndex = -1;
@@ -188,7 +152,7 @@
         if (nextIndex < 0) nextIndex = slides.length - 1;
 
         slides[nextIndex].classList.add('active');
-        
+
         if (badge) {
             badge.innerText = (nextIndex + 1) + ' / ' + slides.length;
         }

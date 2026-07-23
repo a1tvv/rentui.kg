@@ -8,27 +8,50 @@
 <link rel="stylesheet" href="{% static 'css/create.css' %}">
 
 <main class="create-page-wrapper">
-
     <section class="create-section">
         <div class="create-container">
             <h2>{% if edit_mode %}Редактировать{% else %}Новое{% endif %} объявление</h2>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                
-                {% for field in form %}
-                    <div class="form-group">
-                        <label>{{ field.label }}</label>
-                        {{ field }}
-                        
-                        {% if field.name == 'image' or field.name == 'images' %}
-                            <div id="preview-container" class="preview-grid"></div>
-                        {% endif %}
 
-                        {% if field.errors %}
-                            <div class="error-msg">{{ field.errors }}</div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+            <form method="post" enctype="multipart/form-data" id="announcement-form">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                <div class="form-group">
+                    <label>Заголовок</label>
+                    {{ form.title }}
+                    {{ form.title.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label>Описание</label>
+                    {{ form.description }}
+                    {{ form.description.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label>Цена</label>
+                    {{ form.price }}
+                    {{ form.price.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label>Номер телефона</label>
+                    {{ form.phone }}
+                    {{ form.phone.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label>Адрес</label>
+                    {{ form.address }}
+                    {{ form.address.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label>Фотографии</label>
+                    <input type="file" name="images" id="id_images"
+                           class="form-control" accept="image/*" multiple>
+                    <div id="preview-container" class="preview-grid"></div>
+                </div>
 
                 {% if edit_mode %}
                     <div class="existing-images">
@@ -41,7 +64,7 @@
                     </div>
                 {% endif %}
 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submit-btn">
                     {% if edit_mode %}Сохранить изменения{% else %}Опубликовать{% endif %}
                 </button>
             </form>
@@ -50,27 +73,34 @@
 </main>
 
 <script>
-    // Исправленный скрипт превью
-    const fileInput = document.querySelector('input[type="file"]');
+    // Превью выбранных фото
+    const fileInput = document.getElementById('id_images');
     if (fileInput) {
-        fileInput.addEventListener('change', function(e) {
+        fileInput.addEventListener('change', function () {
             const container = document.getElementById('preview-container');
             container.innerHTML = '';
             [...this.files].forEach(file => {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     img.className = 'preview-img';
                     container.appendChild(img);
-                }
+                };
                 reader.readAsDataURL(file);
             });
         });
     }
+
+    // Защита от двойной отправки
+    const form = document.getElementById('announcement-form');
+    const submitBtn = document.getElementById('submit-btn');
+    if (form && submitBtn) {
+        form.addEventListener('submit', function () {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+        });
+    }
 </script>
-
-
-
 
 {% endblock main %}

@@ -1,5 +1,20 @@
+# Виртуальное окружение
+.venv/
 venv/
-*.pyc
-db.sqlite3
+env/
+
+# Python
 __pycache__/
-staticfiles/
+*.py[cod]
+*.egg-info/
+
+# Django
+db.sqlite3
+/media/
+/staticfiles/
+
+# Секреты
+.env
+
+# macOS
+.DS_Store

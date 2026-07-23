@@ -4,28 +4,18 @@
 {% block title %}<title>Объявления - RentUi</title>{% endblock %}
 
 {% block main %}
-<link rel="stylesheet" href="{% static 'css/properties.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/properties.css' %}?v=3">
 
-<main class="hero-section">
+<section class="search-section">
     <div class="container">
-        <div class="hero-content">
-            <h1>Найдите дом своей мечты</h1>
-            <p>
-                Добро пожаловать в RentUi: здесь недвижимость вашей мечты ждет вас в любом уголке нашего прекрасного мира.
-                Исследуйте нашу подборку эксклюзивных объектов.
-            </p>
-        </div>
-
-        <div class="search-container">
-            <form action="{% url 'properties' %}" method="GET" class="search-main">
-                <input type="text" name="search" placeholder="Поиск недвижимости..." class="search-input" value="{{ request.GET.search|default:'' }}">
-                <button type="submit" class="btn-search">
-                    <span class="icon-search">🔍</span> Поиск
-                </button>
-            </form>
-        </div>
+        <form action="{% url 'properties' %}" method="GET" class="search-main">
+            <span class="icon-search">🔍</span>
+            <input type="text" name="search" placeholder="Поиск недвижимости..."
+                   class="search-input" value="{{ request.GET.search|default:'' }}">
+            <button type="submit" class="btn-search">Найти</button>
+        </form>
     </div>
-</main>
+</section>
 
 <section class="properties-list">
     <div class="container grid-container">
@@ -36,7 +26,7 @@
                     {% if el.image %}
                         <img src="{{ el.image.url }}" class="slide active" alt="{{ el.title }}" loading="lazy">
                     {% else %}
-                        <img src="https://via.placeholder.com/400x300?text=No+Photo" class="slide active" alt="Нет фото">
+                        <div class="slide active no-photo">Нет фото</div>
                     {% endif %}
 
                     {% for img_obj in el.images.all %}
@@ -52,24 +42,13 @@
             </div>
 
             <div class="property-info">
-                <p class="property-price">{{ el.price }} <span>сом</span></p>
-
                 <h2 class="property-title">{{ el.title }}</h2>
 
-                <p class="property-desc">{{ el.description }}</p>
+                <p class="property-price">{{ el.price }} <span>сом</span></p>
 
-                <div class="property-footer">
-                    <p class="property-address">
-                        <i class="fas fa-map-marker-alt"></i> {{ el.address|default:"Бишкек" }}
-                    </p>
-                    <p class="property-phone">
-                        <i class="fas fa-phone-alt"></i>
-                        <a href="tel:{{ el.phone }}">{{ el.phone }}</a>
-                    </p>
-                    <p class="property-seller">
-                        <i class="fas fa-user"></i> {{ el.author.username }}
-                    </p>
-                    <p class="property-created">{{ el.created_at|date:"d E Y" }} г.</p>
+                <div class="property-meta">
+                    <p><i class="fas fa-map-marker-alt"></i> {{ el.address|default:"Бишкек" }}</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:{{ el.phone }}">{{ el.phone }}</a></p>
                 </div>
 
                 {% if user.is_authenticated and el.author == user or user.is_superuser %}
@@ -98,7 +77,7 @@
                 {% if page_obj.has_previous %}
                     <li>
                         <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="page-link">
-                            &laquo; Назад
+                            &laquo;
                         </a>
                     </li>
                 {% endif %}
@@ -118,7 +97,7 @@
                 {% if page_obj.has_next %}
                     <li>
                         <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" class="page-link">
-                            Вперед &raquo;
+                            &raquo;
                         </a>
                     </li>
                 {% endif %}
@@ -129,7 +108,6 @@
 </section>
 
 <script>
-    // Слайдер картинок
     function moveSlide(id, step) {
         const container = document.getElementById('slider-' + id);
         if (!container) return;

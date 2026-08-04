@@ -93,12 +93,17 @@
     }
 
     // Защита от двойной отправки
+    // ВАЖНО: submitBtn.disabled нельзя ставить синхронно в обработчике submit —
+    // в Safari это иногда роняет файлы из multipart-тела запроса (баг WebKit),
+    // текстовые поля при этом уходят нормально. Поэтому откладываем на след. тик.
     const form = document.getElementById('announcement-form');
     const submitBtn = document.getElementById('submit-btn');
     if (form && submitBtn) {
         form.addEventListener('submit', function () {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Отправка...';
+            setTimeout(function () {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправка...';
+            }, 0);
         });
     }
 </script>

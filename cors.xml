@@ -1,0 +1,15 @@
+<CORSConfiguration>
+  <CORSRule>
+    <AllowedOrigin>https://rentui.vercel.app</AllowedOrigin>
+    <AllowedOrigin>https://rentui.it.com</AllowedOrigin>
+    <AllowedOrigin>https://www.rentui.it.com</AllowedOrigin>
+    <AllowedOrigin>http://127.0.0.1:8000</AllowedOrigin>
+    <AllowedOrigin>http://localhost:8000</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+  </CORSRule>
+</CORSConfiguration>

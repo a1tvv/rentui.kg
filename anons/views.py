@@ -125,6 +125,41 @@ def property_edit(request, pk):
 def property_list(request):
     announcements_list = Announcement.objects.select_related('author').all().order_by('-id')
 
+    # Поиск
+    search_query = request.GET.get('search')
+    if search_query:
+        announcements_list = announcements_list.filter(
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query)
+        )
+
+    # === ПУБЛИЧНЫЙ ПРЕДПРОСМОТР ===
+    # Если пользователь НЕ авторизован — показываем только 5 объявлений
+    # и рендерим шаблон с блюром на остальных.
+    if not request.user.is_authenticated:
+        # Берём первые 5 для реального показа
+        visible = announcements_list[:5]
+        # Общее количество, чтобы знать, есть ли вообще что скрывать
+        total = announcements_list.count()
+        # Сколько "фейковых" карточек дорисовать (для визуала)
+        # Например, 8 — чтобы сетка выглядела заполненной
+        hidden_count = max(0, min(8, total - 5))
+
+        return render(request, 'anons/property_list_guest.html', {
+            'announcements': visible,
+            'hidden_count': hidden_count,
+            'total': total,
+            'search_query': search_query or '',
+        })
+
+    # === АВТОРИЗОВАННЫЙ ПОЛЬЗОВАТЕЛЬ — как было, с пагинацией ===
+    paginator = Paginator(announcements_list, 6)  # было 2 — поставь 6, красивее
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'anons/property_list.html', {'page_obj': page_obj})
+    announcements_list = Announcement.objects.select_related('author').all().order_by('-id')
+
     search_query = request.GET.get('search')
     if search_query:
         announcements_list = announcements_list.filter(

@@ -1,0 +1,16 @@
+{
+  "CORSRules": [
+    {
+      "AllowedOrigins": [
+        "https://rentui.vercel.app",
+        "https://rentui.it.com",
+        "https://www.rentui.it.com",
+        "http://127.0.0.1:8000",
+        "http://localhost:8000"
+      ],
+      "AllowedMethods": ["GET", "PUT", "POST", "HEAD"],
+      "AllowedHeaders": ["*"],
+      "MaxAgeSeconds": 5
+    }
+  ]
+}

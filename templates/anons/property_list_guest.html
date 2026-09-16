@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Объявления — RentUi</title>{% endblock title %}
+
+{% block main %}
+<link rel="stylesheet" href="{% static 'css/properties.css' %}">
+
+<main class="properties-page">
+    <section class="properties-section">
+        <div class="properties-container">
+
+            <!-- Поиск -->
+            <form method="get" class="search-form">
+                <input type="text" name="search" placeholder="Поиск недвижимости..."
+                       value="{{ search_query }}" class="search-input">
+                <button type="submit" class="search-btn">Найти</button>
+            </form>
+
+            <!-- Сетка объявлений (реальные) -->
+            <div class="properties-grid">
+                {% for item in announcements %}
+                    <div class="property-card">
+                        <div class="property-image">
+                            {% if item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            {% else %}
+                                <img src="{% static 'img/no-photo.png' %}" alt="Нет фото">
+                            {% endif %}
+                        </div>
+                        <div class="property-info">
+                            <h3>{{ item.title }}</h3>
+                            <p class="price">{{ item.price }} com</p>
+                            <p class="address">{{ item.address }}</p>
+                            <p class="phone">{{ item.phone }}</p>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="no-results">Объявлений пока нет.</p>
+                {% endfor %}
+
+                <!-- Заблюренные заглушки -->
+                {% for _ in "xxxxxxxx"|slice:hidden_count %}
+                    <div class="property-card blurred-card" aria-hidden="true">
+                        <div class="property-image blurred-image"></div>
+                        <div class="property-info blurred-info">
+                            <div class="blurred-line blurred-line-title"></div>
+                            <div class="blurred-line blurred-line-price"></div>
+                            <div class="blurred-line blurred-line-address"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Плашка с призывом -->
+            {% if hidden_count > 0 %}
+            <div class="register-cta">
+                <p>Зарегистрируйтесь, чтобы увидеть все {{ total }} объявлений и связаться с арендодателями</p>
+                <a href="{% url 'signup' %}" class="register-cta-btn">Зарегистрироваться</a>
+                <a href="{% url 'login' %}" class="register-cta-login">Войти</a>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
+</main>
+{% endblock main %}

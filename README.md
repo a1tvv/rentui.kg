@@ -13,7 +13,14 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-[🌐 Открыть сайт](https://rentui.it.com) · [🚀 Возможности](#-функционал) · [⚙️ Установка](#️-установка-и-запуск-локально) · [🤝 Помочь проекту](#-как-помочь-проекту)
+<div align="center">
+
+[![Демо](https://img.shields.io/badge/🌐_Открыть_сайт-rentui.it.com-4CAF50?style=for-the-badge)](https://rentui.it.com)
+[![Возможности](https://img.shields.io/badge/🚀_Возможности-перейти-blue?style=for-the-badge)](#-функционал)
+[![Установка](https://img.shields.io/badge/⚙️_Установка-инструкция-orange?style=for-the-badge)](#️-установка-и-запуск-локально)
+[![Помочь](https://img.shields.io/badge/🤝_Помочь_проекту-участвовать-red?style=for-the-badge)](#-как-помочь-проекту)
+
+</div>
 
 </div>
 

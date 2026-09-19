@@ -153,7 +153,6 @@ rentui.kg/
 
 ---
 
----
 
 <div align="center">
 

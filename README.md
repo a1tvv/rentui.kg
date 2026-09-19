@@ -14,7 +14,6 @@
 ![Django](https://img.shields.io/badge/Django-4.x-092E20?style=for-the-badge&logo=django&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge)
 
 <!-- Навигация -->
 [🌐 Демо](https://rentui.it.com) · [🚀 Возможности](#-функционал) · [⚙️ Установка](#️-установка-и-запуск-локально) · [📌 Планы](#-планы-по-развитию)
@@ -150,12 +149,9 @@ rentui.kg/
 3. Закоммить изменения (`git commit -m 'Add some AmazingFeature'`)
 4. Запушь (`git push origin feature/AmazingFeature`)
 5. Открой Pull Request
+6. Буду рад инвестициям в проект) 
 
 ---
-
-## 📄 Лицензия
-
-Проект распространяется под лицензией **MIT**. Подробнее — в файле [LICENSE](LICENSE).
 
 ---
 

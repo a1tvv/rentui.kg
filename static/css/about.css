@@ -111,8 +111,13 @@ main {
 
 .services-grid {
     display: grid;
-    grid-template-columns: 1fr; 
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
+}
+
+/* Третья карточка занимает всю ширину второго ряда, как на странице контактов. */
+.service-card:nth-child(3) {
+    grid-column: 1 / -1;
 }
 
 .service-card {
@@ -276,6 +281,10 @@ main {
 @media (max-width: 768px) {
     .services-grid, .values-grid, .info-right {
         grid-template-columns: 1fr;
+    }
+
+    .service-card:nth-child(3) {
+        grid-column: auto;
     }
 
     .values-grid-item:nth-child(odd) {

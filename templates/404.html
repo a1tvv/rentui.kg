@@ -1,68 +1,205 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Страница не найдена</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+{% block title %}<title>Регистрация — RentUi</title>{% endblock title %}
+
+{% block main %}
+
+<style>
+    /* ===== ФОН СТРАНИЦЫ ===== */
+    body {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+            url("{% static 'img/register.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+
+    /* ===== ОБЁРТКА ===== */
+    .signup-page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .signup-card {
+        width: 100%;
+        max-width: 440px;
+        background: rgba(20, 20, 30, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(124, 92, 255, 0.35);
+        border-radius: 18px;
+        padding: 40px 32px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .signup-card h2 {
+        color: #fff;
+        font-size: 26px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .signup-card .subtitle {
+        color: #b8b0d9;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    /* ===== ПОЛЯ ФОРМЫ ===== */
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #cfc6ff;
+        font-size: 13px;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: 0.2s;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+        border-color: #7c5cff;
+        background: rgba(124, 92, 255, 0.08);
+    }
+
+    .form-group input::placeholder {
+        color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* ===== ОШИБКИ ===== */
+    .errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 6px 0 0;
+        color: #ff6b8a;
+        font-size: 12.5px;
+    }
+
+    .non-field-errors {
+        background: rgba(255, 60, 90, 0.12);
+        border: 1px solid rgba(255, 60, 90, 0.35);
+        color: #ff8ca3;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    /* ===== КНОПКА ===== */
+    .signup-btn {
+        width: 100%;
+        padding: 13px;
+        margin-top: 8px;
+        background: linear-gradient(135deg, #7c5cff 0%, #5b3ee6 100%);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .signup-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(124, 92, 255, 0.4);
+    }
+
+    .signup-btn:active {
+        transform: translateY(0);
+    }
+
+    /* ===== ССЫЛКА НА ЛОГИН ===== */
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+        color: #b8b0d9;
+        font-size: 14px;
+    }
+
+    .login-link a {
+        color: #a99cff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+    @media (max-width: 480px) {
+        .signup-card {
+            padding: 30px 22px;
+            border-radius: 14px;
         }
-        body {
-            background: #f0f0f0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+        .signup-card h2 {
+            font-size: 22px;
         }
-        .error-wrapper {
-            text-align: center;
-            max-width: 500px;
-        }
-        .error-wrapper img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        .error-wrapper h1 {
-            margin-top: 20px;
-            font-size: 28px;
-            color: #333;
-        }
-        .error-wrapper p {
-            margin-top: 10px;
-            color: #666;
-            font-size: 16px;
-        }
-        .error-wrapper a {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 12px 28px;
-            background: #7c5cff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .error-wrapper a:hover {
-            background: #6b4ce6;
-            transform: translateY(-2px);
-        }
-    </style>
-</head>
-<body>
-    <div class="error-wrapper">
-        <img src="{% static 'img/bg_404.png' %}" alt="404">
-        <h1>Страница не найдена</h1>
-        <p>Похоже, этой страницы не существует или её переместили.</p>
-        <a href="/">На главную</a>
+    }
+</style>
+
+<main class="signup-page">
+    <div class="signup-card">
+        <h2>Регистрация</h2>
+        <p class="subtitle">Создайте аккаунт, чтобы публиковать объявления</p>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Пароль</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Подтверждение пароля</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <button type="submit" class="signup-btn">Зарегистрироваться</button>
+        </form>
+
+        <p class="login-link">
+            Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+        </p>
     </div>
-</body>
-</html>
+</main>
+
+{% endblock main %}
